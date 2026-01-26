@@ -1,7 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { Mail, Phone, MapPin, MessageSquare, CheckCircle } from 'lucide-react';
 import { Button } from '../components/Button';
-import { supabase } from '../lib/supabase';
+import { apiService } from '../services/api';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -23,16 +23,18 @@ export function Contact() {
     setSuccess(false);
 
     try {
-      const { error: dbError } = await supabase.from('demo_requests').insert({
+      const response = await apiService.submitDemoRequest({
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        company_name: formData.companyName,
-        hotel_size: formData.hotelSize,
+        companyName: formData.companyName,
+        hotelSize: formData.hotelSize,
         message: formData.message,
       });
 
-      if (dbError) throw dbError;
+      if (!response.success) {
+        throw new Error(response.error || 'Failed to submit demo request');
+      }
 
       setSuccess(true);
       setFormData({
@@ -86,7 +88,7 @@ export function Contact() {
             Request a Demo
           </h1>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            See HotelOpsX in action. Schedule a personalized demo and learn how we can transform your
+            See HotelOps in action. Schedule a personalized demo and learn how we can transform your
             hotel operations.
           </p>
         </div>
@@ -283,7 +285,7 @@ export function Contact() {
               </div>
               <h3 className="font-semibold text-slate-900 mb-2">Personalized Demo</h3>
               <p className="text-slate-600 text-sm">
-                We show you HotelOpsX features relevant to your hotel size and requirements.
+                We show you HotelOps features relevant to your hotel size and requirements.
               </p>
             </div>
             <div>
@@ -292,7 +294,7 @@ export function Contact() {
               </div>
               <h3 className="font-semibold text-slate-900 mb-2">Start Your Trial</h3>
               <p className="text-slate-600 text-sm">
-                Get a 14-day free trial with full features and support to test HotelOpsX at your property.
+                Get a 14-day free trial with full features and support to test HotelOps at your property.
               </p>
             </div>
           </div>

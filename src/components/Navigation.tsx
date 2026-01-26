@@ -15,7 +15,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     { name: 'About', path: 'about' },
     { name: 'Products', path: 'products' },
     { name: 'Pricing', path: 'pricing' },
-    { name: 'Why HotelOpsX', path: 'why' },
+    { name: 'Why HotelOps', path: 'why' },
     { name: 'Contact', path: 'contact' },
   ];
 
@@ -33,10 +33,14 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             className="flex items-center cursor-pointer"
             onClick={() => handleNavigate('home')}
           >
-            <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+            <div className="w-40 h-40 flex items-center justify-center mr-3" >
+             <img src="/logo.png" alt="" />
+            </div>
+         
+            {/* <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
               <span className="text-white font-bold text-xl">H</span>
             </div>
-            <span className="text-xl font-bold text-slate-800">HotelOpsX</span>
+            <span className="text-xl font-bold text-slate-800">HotelOps</span> */}
           </div>
 
           <div className="hidden md:flex items-center space-x-8">

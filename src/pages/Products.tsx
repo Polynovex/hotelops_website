@@ -27,7 +27,7 @@ export function Products({ onNavigate }: ProductsProps) {
   const products = [
     {
       icon: Building2,
-      name: 'HotelOpsX PMS',
+      name: 'HotelOps PMS',
       tagline: 'Complete Property Management System',
       description:
         'Manage every aspect of your hotel operations from a single, intuitive platform. From reservations to housekeeping, front desk to guest services.',
@@ -45,7 +45,7 @@ export function Products({ onNavigate }: ProductsProps) {
     },
     {
       icon: CreditCard,
-      name: 'HotelOpsX POS',
+      name: 'HotelOps POS',
       tagline: 'Point of Sale for All Revenue Centers',
       description:
         'Integrated POS system for restaurant, bar, spa, and all hotel revenue centers. Accept payments with Paystack and Flutterwave integration.',
@@ -63,7 +63,7 @@ export function Products({ onNavigate }: ProductsProps) {
     },
     {
       icon: BarChart3,
-      name: 'HotelOpsX Finance',
+      name: 'HotelOps Finance',
       tagline: 'Financial Management & Reporting',
       description:
         'Comprehensive financial tools with real-time reporting, invoicing, and accounting integration. Track every naira that flows through your hotel.',
@@ -221,7 +221,7 @@ export function Products({ onNavigate }: ProductsProps) {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-            Ready to See HotelOpsX in Action?
+            Ready to See HotelOps in Action?
           </h2>
           <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
             Schedule a personalized demo and see how our platform can transform your hotel operations.

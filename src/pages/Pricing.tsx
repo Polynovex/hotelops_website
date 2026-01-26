@@ -15,8 +15,8 @@ export function Pricing({ onNavigate }: PricingProps) {
       description: 'Perfect for guesthouses, small hotels, and budget properties',
       features: [
         { name: 'Up to 30 rooms', included: true },
-        { name: 'HotelOpsX PMS', included: true },
-        { name: 'HotelOpsX POS (1 terminal)', included: true },
+        { name: 'HotelOps PMS', included: true },
+        { name: 'HotelOps POS (1 terminal)', included: true },
         { name: 'Basic Finance & Reporting', included: true },
         { name: 'Offline mode', included: true },
         { name: 'Paystack/Flutterwave', included: true },
@@ -39,8 +39,8 @@ export function Pricing({ onNavigate }: PricingProps) {
       description: 'Ideal for mid-sized hotels with multiple revenue centers',
       features: [
         { name: 'Up to 100 rooms', included: true },
-        { name: 'HotelOpsX PMS', included: true },
-        { name: 'HotelOpsX POS (5 terminals)', included: true },
+        { name: 'HotelOps PMS', included: true },
+        { name: 'HotelOps POS (5 terminals)', included: true },
         { name: 'Advanced Finance & Reporting', included: true },
         { name: 'Offline mode', included: true },
         { name: 'Paystack/Flutterwave', included: true },
@@ -63,8 +63,8 @@ export function Pricing({ onNavigate }: PricingProps) {
       description: 'Full-featured solution for large hotels and hotel chains',
       features: [
         { name: 'Unlimited rooms', included: true },
-        { name: 'HotelOpsX PMS', included: true },
-        { name: 'HotelOpsX POS (unlimited)', included: true },
+        { name: 'HotelOps PMS', included: true },
+        { name: 'HotelOps POS (unlimited)', included: true },
         { name: 'Full Finance Suite', included: true },
         { name: 'Offline mode', included: true },
         { name: 'Paystack/Flutterwave', included: true },
@@ -264,7 +264,7 @@ export function Pricing({ onNavigate }: PricingProps) {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Schedule a demo to see HotelOpsX in action and find the perfect plan for your hotel.
+            Schedule a demo to see HotelOps in action and find the perfect plan for your hotel.
           </p>
           <Button
             variant="secondary"

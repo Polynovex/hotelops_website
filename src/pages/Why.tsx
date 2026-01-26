@@ -124,7 +124,7 @@ export function Why({ onNavigate }: WhyProps) {
   const testimonials = [
     {
       quote:
-        "HotelOpsX saved us over ₦8M in the first year compared to our previous system. And it actually works better.",
+        "HotelOps saved us over ₦8M in the first year compared to our previous system. And it actually works better.",
       author: 'Chioma Okafor',
       role: 'General Manager, Lagos',
       hotel: 'Medium Hotel (45 rooms)',
@@ -151,10 +151,10 @@ export function Why({ onNavigate }: WhyProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              Why Nigerian Hotels Choose HotelOpsX
+              Why Nigerian Hotels Choose HotelOps
             </h1>
             <p className="text-xl text-slate-600">
-              We built HotelOpsX to solve real problems Nigerian hotels face every day. Here's why we're
+              We built HotelOps to solve real problems Nigerian hotels face every day. Here's why we're
               different.
             </p>
           </div>
@@ -184,7 +184,7 @@ export function Why({ onNavigate }: WhyProps) {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              HotelOpsX vs Traditional Systems
+              HotelOps vs Traditional Systems
             </h2>
             <p className="text-lg text-slate-600">
               See how we compare to expensive foreign systems like Opera, Micros, and Sage
@@ -197,7 +197,7 @@ export function Why({ onNavigate }: WhyProps) {
                 <thead className="bg-slate-900 text-white">
                   <tr>
                     <th className="px-6 py-4 text-left font-semibold">Feature</th>
-                    <th className="px-6 py-4 text-left font-semibold">HotelOpsX</th>
+                    <th className="px-6 py-4 text-left font-semibold">HotelOps</th>
                     <th className="px-6 py-4 text-left font-semibold">Traditional Systems</th>
                   </tr>
                 </thead>
@@ -233,7 +233,7 @@ export function Why({ onNavigate }: WhyProps) {
               What Hotel Operators Say
             </h2>
             <p className="text-lg text-slate-600">
-              Real feedback from Nigerian hotels using HotelOpsX
+              Real feedback from Nigerian hotels using HotelOps
             </p>
           </div>
 
@@ -286,7 +286,7 @@ export function Why({ onNavigate }: WhyProps) {
               </div>
             </div>
             <p className="text-blue-100 mb-8">
-              Average results from hotels that switched to HotelOpsX in their first year
+              Average results from hotels that switched to HotelOps in their first year
             </p>
             <Button
               variant="secondary"
@@ -304,7 +304,7 @@ export function Why({ onNavigate }: WhyProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-slate-900 rounded-2xl p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Switch to HotelOpsX?
+              Ready to Switch to HotelOps?
             </h2>
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
               Join hundreds of Nigerian hotels that made the smart choice. Schedule a demo and see the

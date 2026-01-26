@@ -1,26 +1,30 @@
-import { Target, Eye, Shield, Clock, Users, Award } from 'lucide-react';
+import { Target, Eye, Shield, Clock, Users, Award } from "lucide-react";
 
 export function About() {
   const values = [
     {
       icon: Shield,
-      title: 'Security First',
-      description: 'Bank-level encryption and data protection. Your hotel data is always secure and compliant.',
+      title: "Security First",
+      description:
+        "Bank-level encryption and data protection. Your hotel data is always secure and compliant.",
     },
     {
       icon: Clock,
-      title: 'Always Available',
-      description: '99.9% uptime guarantee with offline-first architecture. Your operations never stop.',
+      title: "Always Available",
+      description:
+        "99.9% uptime guarantee with offline-first architecture. Your operations never stop.",
     },
     {
       icon: Users,
-      title: 'Local Support',
-      description: 'Nigerian-based support team that understands your business and responds in minutes.',
+      title: "Local Support",
+      description:
+        "Nigerian-based support team that understands your business and responds in minutes.",
     },
     {
       icon: Award,
-      title: 'Quality Standards',
-      description: 'Enterprise-grade features at prices that work for hotels of all sizes in Nigeria.',
+      title: "Quality Standards",
+      description:
+        "Enterprise-grade features at prices that work for hotels of all sizes in Nigeria.",
     },
   ];
 
@@ -29,12 +33,25 @@ export function About() {
       <section className="bg-gradient-to-br from-slate-50 to-blue-50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
+            <div className="inline-block mb-4 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+              Developed by Polynovex Limited
+            </div>
             <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
               Modernizing Hotel Operations Across Nigeria
             </h1>
             <p className="text-xl text-slate-600 leading-relaxed">
-              HotelOpsX was built to solve a critical problem: Nigerian hotels are stuck using outdated,
-              expensive, and disconnected systems that weren't designed for our market.
+              HotelOps was built to solve a critical problem: Nigerian hotels
+              are stuck using outdated, expensive, and disconnected systems that
+              weren't designed for our market.
+            </p>
+            <p className="text-lg text-slate-600 leading-relaxed mt-4">
+              <span className="font-semibold">HotelOps</span> is proudly
+              developed by{" "}
+              <span className="font-semibold text-slate-900">
+                Polynovex Limited
+              </span>
+              , a Nigerian technology company committed to transforming the
+              hospitality industry.
             </p>
           </div>
         </div>
@@ -46,30 +63,37 @@ export function About() {
             <div>
               <div className="flex items-center mb-4">
                 <Target className="w-8 h-8 text-blue-600 mr-3" />
-                <h2 className="text-3xl font-bold text-slate-900">Our Mission</h2>
+                <h2 className="text-3xl font-bold text-slate-900">
+                  Our Mission
+                </h2>
               </div>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                To empower every Nigerian hotel - from small guesthouses to 5-star properties - with
-                affordable, world-class technology that actually works in our environment.
+                To empower every Nigerian hotel - from small guesthouses to
+                5-star properties - with affordable, world-class technology that
+                actually works in our environment.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed">
-                We're replacing fragmented, expensive systems like Opera, Micros, and Sage with a single,
-                integrated platform that costs less, works offline, and includes local payment integration.
+                We're replacing fragmented, expensive systems like Opera,
+                Micros, and Sage with a single, integrated platform that costs
+                less, works offline, and includes local payment integration.
               </p>
             </div>
 
             <div>
               <div className="flex items-center mb-4">
                 <Eye className="w-8 h-8 text-blue-600 mr-3" />
-                <h2 className="text-3xl font-bold text-slate-900">Our Vision</h2>
+                <h2 className="text-3xl font-bold text-slate-900">
+                  Our Vision
+                </h2>
               </div>
               <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                To become the standard hotel management platform across Africa, known for reliability,
-                affordability, and features that actually address African hospitality challenges.
+                To become the standard hotel management platform across Africa,
+                known for reliability, affordability, and features that actually
+                address African hospitality challenges.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed">
-                We believe every hotel deserves access to enterprise-grade technology without the
-                enterprise price tag or complexity.
+                We believe every hotel deserves access to enterprise-grade
+                technology without the enterprise price tag or complexity.
               </p>
             </div>
           </div>
@@ -83,7 +107,8 @@ export function About() {
               What We Stand For
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Our core values guide every decision we make and every feature we build.
+              Our core values guide every decision we make and every feature we
+              build.
             </p>
           </div>
 
@@ -91,10 +116,7 @@ export function About() {
             {values.map((value, index) => {
               const Icon = value.icon;
               return (
-                <div
-                  key={index}
-                  className="bg-white p-8 rounded-xl shadow-sm"
-                >
+                <div key={index} className="bg-white p-8 rounded-xl shadow-sm">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                     <Icon className="w-6 h-6 text-blue-600" />
                   </div>
@@ -115,18 +137,23 @@ export function About() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Built for Nigeria, Ready for Africa
             </h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              We understand the unique challenges of running a hotel in Nigeria: unreliable power,
-              inconsistent internet, local payment preferences, and the need for affordable pricing.
+            <p className="text-xl text-blue-100 mb-4 max-w-2xl mx-auto">
+              We understand the unique challenges of running a hotel in Nigeria:
+              unreliable power, inconsistent internet, local payment
+              preferences, and the need for affordable pricing.
+            </p>
+            <p className="text-lg text-blue-50 mb-8 max-w-2xl mx-auto font-semibold">
+              Polynovex Limited is committed to delivering world-class
+              hospitality solutions for Africa.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
               <div>
                 <div className="text-4xl font-bold text-white mb-2">2019</div>
-                <div className="text-blue-100">Founded in Lagos</div>
+                <div className="text-blue-100">Polynovex Founded in Lagos</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-white mb-2">500+</div>
-                <div className="text-blue-100">Hotels Using HotelOpsX</div>
+                <div className="text-blue-100">Hotels Using HotelOps</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-white mb-2">50+</div>
@@ -139,12 +166,17 @@ export function About() {
 
       <section className="py-20 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-slate-900 mb-6">
+          <h2 className="text-3xl font-bold text-slate-900 mb-2">
             Trust and Compliance
           </h2>
+          <p className="text-lg font-semibold text-slate-700 mb-6">
+            By Polynovex Limited
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="text-2xl font-bold text-blue-600 mb-2">ISO 27001</div>
+              <div className="text-2xl font-bold text-blue-600 mb-2">
+                ISO 27001
+              </div>
               <div className="text-sm text-slate-600">Security Certified</div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -157,8 +189,10 @@ export function About() {
             </div>
           </div>
           <p className="text-slate-600 mt-8">
-            Your hotel data is stored securely on servers in Nigeria, ensuring compliance with local
-            regulations and fast access times.
+            Your hotel data is stored securely on servers in Nigeria, ensuring
+            compliance with local regulations and fast access times. Polynovex
+            Limited maintains the highest standards of data security and privacy
+            for all HotelOps users.
           </p>
         </div>
       </section>

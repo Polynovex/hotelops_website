@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from "lucide-react";
 
 interface FooterProps {
   onNavigate: (page: string) => void;
@@ -12,14 +12,14 @@ export function Footer({ onNavigate }: FooterProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <div className="flex items-center mb-4">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-                <span className="text-white font-bold text-xl">H</span>
-              </div>
-              <span className="text-xl font-bold text-white">HotelOpsX</span>
+            <div className="flex mb-4">
+             <div className="flex justify-left mr-3" >
+             <img src="/logo1.png" alt="" width="50%" height="50%" />
+            </div>
             </div>
             <p className="text-sm">
-              Modern hotel management technology built for Nigerian hospitality businesses.
+              Modern hotel management technology built for Nigerian hospitality
+              businesses.
             </p>
           </div>
 
@@ -28,7 +28,7 @@ export function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-2 text-sm">
               <li>
                 <button
-                  onClick={() => onNavigate('about')}
+                  onClick={() => onNavigate("about")}
                   className="hover:text-white transition-colors"
                 >
                   About Us
@@ -36,7 +36,7 @@ export function Footer({ onNavigate }: FooterProps) {
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate('products')}
+                  onClick={() => onNavigate("products")}
                   className="hover:text-white transition-colors"
                 >
                   Products
@@ -44,7 +44,7 @@ export function Footer({ onNavigate }: FooterProps) {
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate('pricing')}
+                  onClick={() => onNavigate("pricing")}
                   className="hover:text-white transition-colors"
                 >
                   Pricing
@@ -52,7 +52,7 @@ export function Footer({ onNavigate }: FooterProps) {
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate('contact')}
+                  onClick={() => onNavigate("contact")}
                   className="hover:text-white transition-colors"
                 >
                   Contact
@@ -64,9 +64,9 @@ export function Footer({ onNavigate }: FooterProps) {
           <div>
             <h3 className="text-white font-semibold mb-4">Products</h3>
             <ul className="space-y-2 text-sm">
-              <li>HotelOpsX PMS</li>
-              <li>HotelOpsX POS</li>
-              <li>HotelOpsX Finance</li>
+              <li>HotelOps PMS</li>
+              <li>HotelOps POS</li>
+              <li>HotelOps Finance</li>
               <li>Mobile Apps</li>
             </ul>
           </div>
@@ -91,7 +91,13 @@ export function Footer({ onNavigate }: FooterProps) {
         </div>
 
         <div className="border-t border-slate-800 mt-8 pt-8 text-sm text-center">
-          <p>&copy; {currentYear} HotelOpsX. All rights reserved.</p>
+          <p>&copy; {currentYear} HotelOps. All rights reserved.</p>
+          <p className="text-slate-400 mt-2">
+            HotelOps is a product of{" "}
+            <span className="font-semibold text-slate-300">
+              Polynovex Limited
+            </span>
+          </p>
         </div>
       </div>
     </footer>
