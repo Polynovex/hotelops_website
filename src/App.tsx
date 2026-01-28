@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Navigation } from "./components/Navigation";
 import { Footer } from "./components/Footer";
+import { WhatsAppButton } from "./components/WhatsAppButton";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Products } from "./pages/Products";
@@ -25,6 +26,9 @@ function App() {
     };
 
     updateTitle();
+    
+    // Scroll to top when page changes
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage]);
 
   const handleNavigate = (page: string) => {
@@ -55,6 +59,7 @@ function App() {
       <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
       <main>{renderPage()}</main>
       <Footer onNavigate={handleNavigate} />
+      <WhatsAppButton />
     </div>
   );
 }

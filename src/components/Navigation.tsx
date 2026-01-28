@@ -33,7 +33,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             className="flex items-center cursor-pointer"
             onClick={() => handleNavigate('home')}
           >
-            <div className="w-40 h-40 flex items-center justify-center mr-3" >
+            <div className="w-40 h-40 flex items-center justify-left" >
              <img src="/logo.png" alt="" />
             </div>
          

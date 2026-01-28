@@ -57,14 +57,14 @@ export function Contact() {
     {
       icon: Phone,
       title: 'Phone',
-      value: '+234 800 000 0000',
-      link: 'tel:+2348000000000',
+      value: '+2348134393554',
+      link: 'tel:+2348134393554',
     },
     {
       icon: MessageSquare,
       title: 'WhatsApp',
-      value: '+234 800 000 0000',
-      link: 'https://wa.me/2348000000000',
+      value: '+2348134393554',
+      link: 'https://wa.me/2348134393554',
     },
     {
       icon: Mail,
@@ -81,15 +81,27 @@ export function Contact() {
   ];
 
   return (
-    <div className="bg-white">
-      <section className="bg-gradient-to-br from-slate-50 to-blue-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            Request a Demo
+    <div className="bg-white overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 -right-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+          <div className="absolute bottom-20 -left-20 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-block mb-6 px-4 py-2 bg-blue-500/20 border border-blue-400/50 text-blue-200 rounded-full text-sm font-medium backdrop-blur-sm animate-fade-in">
+            📅 Schedule Your Demo
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in animation-delay-200">
+            Request a
+            <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
+              Demo Today
+            </span>
           </h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            See HotelOps in action. Schedule a personalized demo and learn how we can transform your
-            hotel operations.
+          <p className="text-xl text-blue-100 max-w-2xl mx-auto animate-fade-in animation-delay-300">
+            See HotelOps in action. Schedule a personalized demo and learn how we can transform your hotel operations.
           </p>
         </div>
       </section>

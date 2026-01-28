@@ -29,29 +29,32 @@ export function About() {
   ];
 
   return (
-    <div className="bg-white">
-      <section className="bg-gradient-to-br from-slate-50 to-blue-50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-white overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 right-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+          <div className="absolute bottom-20 left-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="inline-block mb-4 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-              Developed by Polynovex Limited
+            <div className="inline-block mb-6 px-4 py-2 bg-blue-500/20 border border-blue-400/50 text-blue-200 rounded-full text-sm font-medium backdrop-blur-sm animate-fade-in">
+              🏢 Developed by Polynovex Limited
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-              Modernizing Hotel Operations Across Nigeria
-            </h1>
-            <p className="text-xl text-slate-600 leading-relaxed">
-              HotelOps was built to solve a critical problem: Nigerian hotels
-              are stuck using outdated, expensive, and disconnected systems that
-              weren't designed for our market.
-            </p>
-            <p className="text-lg text-slate-600 leading-relaxed mt-4">
-              <span className="font-semibold">HotelOps</span> is proudly
-              developed by{" "}
-              <span className="font-semibold text-slate-900">
-                Polynovex Limited
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in animation-delay-200">
+              Modernizing Hotel Operations
+              <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
+                Across Nigeria
               </span>
-              , a Nigerian technology company committed to transforming the
-              hospitality industry.
+            </h1>
+            <p className="text-xl text-blue-100 leading-relaxed mb-6 animate-fade-in animation-delay-300">
+              HotelOps was built to solve a critical problem: Nigerian hotels are stuck using outdated, expensive, and disconnected systems that weren't designed for our market.
+            </p>
+            <p className="text-lg text-blue-200 leading-relaxed animate-fade-in animation-delay-400">
+              <span className="font-bold">HotelOps</span> is proudly developed by{" "}
+              <span className="font-bold text-white">Polynovex Limited</span>, a Nigerian technology company committed to transforming the hospitality industry.
             </p>
           </div>
         </div>
