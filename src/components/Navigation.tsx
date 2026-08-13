@@ -15,7 +15,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     { name: 'About', path: 'about' },
     { name: 'Products', path: 'products' },
     { name: 'Pricing', path: 'pricing' },
-    { name: 'Why HotelOps', path: 'why' },
+    { name: 'Why HotelOpX', path: 'why' },
     { name: 'Contact', path: 'contact' },
   ];
 
@@ -40,7 +40,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             {/* <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
               <span className="text-white font-bold text-xl">H</span>
             </div>
-            <span className="text-xl font-bold text-slate-800">HotelOps</span> */}
+            <span className="text-xl font-bold text-slate-800">HotelOpX</span> */}
           </div>
 
           <div className="hidden md:flex items-center space-x-8">

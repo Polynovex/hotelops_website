@@ -50,11 +50,15 @@ export function About() {
               </span>
             </h1>
             <p className="text-xl text-blue-100 leading-relaxed mb-6 animate-fade-in animation-delay-300">
-              HotelOps was built to solve a critical problem: Nigerian hotels are stuck using outdated, expensive, and disconnected systems that weren't designed for our market.
+              HotelOpX was built to solve a critical problem: Nigerian hotels
+              are stuck using outdated, expensive, and disconnected systems that
+              weren't designed for our market.
             </p>
             <p className="text-lg text-blue-200 leading-relaxed animate-fade-in animation-delay-400">
-              <span className="font-bold">HotelOps</span> is proudly developed by{" "}
-              <span className="font-bold text-white">Polynovex Limited</span>, a Nigerian technology company committed to transforming the hospitality industry.
+              <span className="font-bold">HotelOpX</span> is proudly developed
+              by <span className="font-bold text-white">Polynovex Limited</span>
+              , a Nigerian technology company committed to transforming the
+              hospitality industry.
             </p>
           </div>
         </div>
@@ -156,7 +160,7 @@ export function About() {
               </div>
               <div>
                 <div className="text-4xl font-bold text-white mb-2">500+</div>
-                <div className="text-blue-100">Hotels Using HotelOps</div>
+                <div className="text-blue-100">Hotels Using HotelOpX</div>
               </div>
               <div>
                 <div className="text-4xl font-bold text-white mb-2">50+</div>
@@ -195,7 +199,7 @@ export function About() {
             Your hotel data is stored securely on servers in Nigeria, ensuring
             compliance with local regulations and fast access times. Polynovex
             Limited maintains the highest standards of data security and privacy
-            for all HotelOps users.
+            for all HotelOpX users.
           </p>
         </div>
       </section>

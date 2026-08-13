@@ -1,8 +1,8 @@
-# 🎉 HotelOps Frontend Refactoring - COMPLETE
+# 🎉 HotelOpX Frontend Refactoring - COMPLETE
 
 ## Project Summary
 
-Your HotelOps frontend has been completely refactored and is now:
+Your HotelOpX frontend has been completely refactored and is now:
 - ✅ **Standalone** - Works without backend
 - ✅ **Premium** - Beautiful Material Design
 - ✅ **Backend Ready** - Seamless Express integration
@@ -85,7 +85,7 @@ Your HotelOps frontend has been completely refactored and is now:
 
 ### Step 1: Install Dependencies
 ```bash
-cd /Users/mac/Desktop/Projects/HotelOps/hotelopsx
+cd /Users/mac/Desktop/Projects/HotelOpX/hotelopsx
 npm install
 ```
 
@@ -366,7 +366,7 @@ See: `src/services/api.ts` (well-commented)
 
 ## 🎉 You're All Set!
 
-Your HotelOps frontend is:
+Your HotelOpX frontend is:
 - 🚀 Ready to view and customize
 - 📱 Fully responsive
 - 🎨 Beautifully designed

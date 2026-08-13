@@ -1,4 +1,4 @@
-# HotelOps Frontend - Premium Website
+# HotelOpX Frontend - Premium Website
 
 Modern, beautiful hotel management platform frontend built with React, TypeScript, and Tailwind CSS.
 

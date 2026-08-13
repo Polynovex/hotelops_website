@@ -64,9 +64,9 @@ export function Footer({ onNavigate }: FooterProps) {
           <div>
             <h3 className="text-white font-semibold mb-4">Products</h3>
             <ul className="space-y-2 text-sm">
-              <li>HotelOps PMS</li>
-              <li>HotelOps POS</li>
-              <li>HotelOps Finance</li>
+              <li>HotelOpX PMS</li>
+              <li>HotelOpX POS</li>
+              <li>HotelOpX Finance</li>
               <li>Mobile Apps</li>
             </ul>
           </div>
@@ -91,9 +91,9 @@ export function Footer({ onNavigate }: FooterProps) {
         </div>
 
         <div className="border-t border-slate-800 mt-8 pt-8 text-sm text-center">
-          <p>&copy; {currentYear} HotelOps. All rights reserved.</p>
+          <p>&copy; {currentYear} HotelOpX. All rights reserved.</p>
           <p className="text-slate-400 mt-2">
-            HotelOps is a product of{" "}
+            HotelOpX is a product of{" "}
             <span className="font-semibold text-slate-300">
               Polynovex Limited
             </span>

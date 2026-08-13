@@ -1,5 +1,5 @@
-import { Check, X, ArrowRight } from 'lucide-react';
-import { Button } from '../components/Button';
+import { Check, X, ArrowRight } from "lucide-react";
+import { Button } from "../components/Button";
 
 interface PricingProps {
   onNavigate: (page: string) => void;
@@ -8,88 +8,104 @@ interface PricingProps {
 export function Pricing({ onNavigate }: PricingProps) {
   const plans = [
     {
-      name: 'Small Hotel',
-      subtitle: '10-30 Rooms',
-      price: '75,000',
-      period: 'per month',
-      description: 'Perfect for guesthouses, small hotels, and budget properties',
+      name: "Small Hotel",
+      subtitle: "10-30 Rooms",
+      price: "75,000",
+      period: "per month",
+      description:
+        "Perfect for guesthouses, small hotels, and budget properties",
       features: [
-        { name: 'Up to 30 rooms', included: true },
-        { name: 'HotelOps PMS', included: true },
-        { name: 'HotelOps POS (1 terminal)', included: true },
-        { name: 'Basic Finance & Reporting', included: true },
-        { name: 'Offline mode', included: true },
-        { name: 'Paystack/Flutterwave', included: true },
-        { name: 'Mobile app access', included: true },
-        { name: 'Email support', included: true },
-        { name: 'WhatsApp support (business hours)', included: true },
-        { name: 'Multi-property management', included: false },
-        { name: 'Advanced analytics', included: false },
-        { name: 'API access', included: false },
-        { name: 'Dedicated account manager', included: false },
+        { name: "Up to 30 rooms, 10 users", included: true },
+        { name: "HotelOpX PMS", included: true },
+        { name: "HotelOpX POS (1 terminal)", included: true },
+        { name: "QR code ordering", included: true },
+        { name: "Housekeeping workflow", included: true },
+        { name: "Basic Finance & Reporting", included: true },
+        { name: "Offline mode", included: true },
+        { name: "Paystack/Flutterwave", included: true },
+        { name: "Mobile app access", included: true },
+        { name: "Email support", included: true },
+        { name: "WhatsApp support (business hours)", included: true },
+        { name: "HR & Payroll", included: false },
+        { name: "Inventory management", included: false },
+        { name: "Multi-property management", included: false },
+        { name: "Advanced analytics", included: false },
+        { name: "API access", included: false },
+        { name: "Dedicated account manager", included: false },
       ],
       popular: false,
-      color: 'blue',
+      color: "blue",
     },
     {
-      name: 'Medium Hotel',
-      subtitle: '30-100 Rooms',
-      price: '175,000',
-      period: 'per month',
-      description: 'Ideal for mid-sized hotels with multiple revenue centers',
+      name: "Medium Hotel",
+      subtitle: "30-100 Rooms",
+      price: "175,000",
+      period: "per month",
+      description: "Ideal for mid-sized hotels with multiple revenue centers",
       features: [
-        { name: 'Up to 100 rooms', included: true },
-        { name: 'HotelOps PMS', included: true },
-        { name: 'HotelOps POS (5 terminals)', included: true },
-        { name: 'Advanced Finance & Reporting', included: true },
-        { name: 'Offline mode', included: true },
-        { name: 'Paystack/Flutterwave', included: true },
-        { name: 'Mobile app access', included: true },
-        { name: 'Priority email & phone support', included: true },
-        { name: 'WhatsApp support (24/7)', included: true },
-        { name: 'Multi-property (up to 3)', included: true },
-        { name: 'Advanced analytics & insights', included: true },
-        { name: 'Basic API access', included: true },
-        { name: 'Quarterly business reviews', included: true },
+        { name: "Up to 100 rooms, 50 users", included: true },
+        { name: "HotelOpX PMS", included: true },
+        { name: "HotelOpX POS (5 terminals)", included: true },
+        { name: "QR code ordering", included: true },
+        { name: "Housekeeping workflow", included: true },
+        { name: "Full Finance Suite & Ledger", included: true },
+        { name: "HR & Payroll (PAYE, payslips)", included: true },
+        { name: "Inventory management", included: true },
+        { name: "Offline mode", included: true },
+        { name: "Paystack/Flutterwave", included: true },
+        { name: "Mobile app access", included: true },
+        { name: "Priority email & phone support", included: true },
+        { name: "WhatsApp support (24/7)", included: true },
+        { name: "Multi-property (up to 3)", included: true },
+        { name: "Advanced analytics & insights", included: true },
+        { name: "API access", included: true },
+        { name: "White-label branding", included: false },
+        { name: "Dedicated account manager", included: false },
       ],
       popular: true,
-      color: 'green',
+      color: "green",
     },
     {
-      name: 'Enterprise',
-      subtitle: '100+ Rooms / 5-Star',
-      price: 'Custom',
-      period: 'contact us',
-      description: 'Full-featured solution for large hotels and hotel chains',
+      name: "Enterprise",
+      subtitle: "100+ Rooms / 5-Star",
+      price: "Custom",
+      period: "contact us",
+      description: "Full-featured solution for large hotels and hotel chains",
       features: [
-        { name: 'Unlimited rooms', included: true },
-        { name: 'HotelOps PMS', included: true },
-        { name: 'HotelOps POS (unlimited)', included: true },
-        { name: 'Full Finance Suite', included: true },
-        { name: 'Offline mode', included: true },
-        { name: 'Paystack/Flutterwave', included: true },
-        { name: 'Mobile app access', included: true },
-        { name: 'Priority 24/7 support', included: true },
-        { name: 'WhatsApp support (24/7)', included: true },
-        { name: 'Unlimited properties', included: true },
-        { name: 'Advanced analytics & insights', included: true },
-        { name: 'Full API access', included: true },
-        { name: 'Dedicated account manager', included: true },
+        { name: "Unlimited rooms & users", included: true },
+        { name: "HotelOpX PMS", included: true },
+        { name: "HotelOpX POS (unlimited)", included: true },
+        { name: "QR code ordering", included: true },
+        { name: "Housekeeping workflow", included: true },
+        { name: "Full Finance Suite", included: true },
+        { name: "HR & Payroll (PAYE, payslips)", included: true },
+        { name: "Inventory management", included: true },
+        { name: "Channel manager & dynamic pricing", included: true },
+        { name: "Guest portal & loyalty programme", included: true },
+        { name: "White-label branding", included: true },
+        { name: "Offline mode", included: true },
+        { name: "Paystack/Flutterwave", included: true },
+        { name: "Mobile app access", included: true },
+        { name: "Priority 24/7 support", included: true },
+        { name: "Unlimited properties", included: true },
+        { name: "Advanced analytics & insights", included: true },
+        { name: "Full API access", included: true },
+        { name: "Dedicated account manager", included: true },
       ],
       popular: false,
-      color: 'orange',
+      color: "orange",
     },
   ];
 
   const allFeatures = [
-    'Offline-first capability',
-    'Local payment integration',
-    'Real-time synchronization',
-    'Cloud backup & security',
-    'Regular software updates',
-    'Staff training included',
-    'Data migration assistance',
-    'Nigerian Naira billing',
+    "Offline-first capability",
+    "Local payment integration",
+    "Real-time synchronization",
+    "Cloud backup & security",
+    "Regular software updates",
+    "Staff training included",
+    "Data migration assistance",
+    "Nigerian Naira billing",
   ];
 
   return (
@@ -113,8 +129,8 @@ export function Pricing({ onNavigate }: PricingProps) {
             </span>
           </h1>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto animate-fade-in animation-delay-300">
-            Choose the plan that fits your hotel size. All plans include PMS, POS, and Finance modules.
-            No hidden fees, no surprises.
+            Choose the plan that fits your hotel size. All plans include PMS,
+            POS, and Finance modules. No hidden fees, no surprises.
           </p>
         </div>
       </section>
@@ -125,16 +141,18 @@ export function Pricing({ onNavigate }: PricingProps) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {plans.map((plan, index) => {
               const gradients = {
-                blue: 'from-blue-500 to-blue-600',
-                green: 'from-emerald-500 to-emerald-600',
-                orange: 'from-orange-500 to-orange-600',
+                blue: "from-blue-500 to-blue-600",
+                green: "from-emerald-500 to-emerald-600",
+                orange: "from-orange-500 to-orange-600",
               };
-              
+
               return (
                 <div
                   key={index}
                   className={`relative bg-white rounded-3xl shadow-xl border-2 transition-all duration-300 hover:-translate-y-2 animate-fade-in ${
-                    plan.popular ? 'border-emerald-500 shadow-emerald-200' : 'border-slate-200'
+                    plan.popular
+                      ? "border-emerald-500 shadow-emerald-200"
+                      : "border-slate-200"
                   }`}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
@@ -148,47 +166,76 @@ export function Pricing({ onNavigate }: PricingProps) {
 
                   <div className="p-8">
                     {/* Plan Header */}
-                    <div className={`w-14 h-14 bg-gradient-to-br ${gradients[plan.color as keyof typeof gradients]} rounded-2xl flex items-center justify-center mb-4 shadow-lg`}>
-                      <span className="text-white text-2xl font-bold">{plan.name[0]}</span>
+                    <div
+                      className={`w-14 h-14 bg-gradient-to-br ${gradients[plan.color as keyof typeof gradients]} rounded-2xl flex items-center justify-center mb-4 shadow-lg`}
+                    >
+                      <span className="text-white text-2xl font-bold">
+                        {plan.name[0]}
+                      </span>
                     </div>
-                    <h3 className="text-3xl font-bold text-slate-900 mb-1">{plan.name}</h3>
-                    <p className={`font-semibold mb-4 bg-gradient-to-r ${gradients[plan.color as keyof typeof gradients]} bg-clip-text text-transparent`}>{plan.subtitle}</p>
-                    <p className="text-slate-600 text-sm mb-6 leading-relaxed">{plan.description}</p>
+                    <h3 className="text-3xl font-bold text-slate-900 mb-1">
+                      {plan.name}
+                    </h3>
+                    <p
+                      className={`font-semibold mb-4 bg-gradient-to-r ${gradients[plan.color as keyof typeof gradients]} bg-clip-text text-transparent`}
+                    >
+                      {plan.subtitle}
+                    </p>
+                    <p className="text-slate-600 text-sm mb-6 leading-relaxed">
+                      {plan.description}
+                    </p>
 
                     {/* Pricing */}
                     <div className="mb-8 p-6 bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl">
-                      {plan.price === 'Custom' ? (
+                      {plan.price === "Custom" ? (
                         <>
-                          <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-2">Custom Pricing</div>
-                          <p className="text-slate-600 text-sm">{plan.period}</p>
+                          <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-2">
+                            Custom Pricing
+                          </div>
+                          <p className="text-slate-600 text-sm">
+                            {plan.period}
+                          </p>
                         </>
                       ) : (
                         <>
                           <div className="flex items-baseline mb-2">
-                            <span className="text-2xl font-medium text-slate-600">₦</span>
-                            <span className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">{plan.price}</span>
+                            <span className="text-2xl font-medium text-slate-600">
+                              ₦
+                            </span>
+                            <span className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                              {plan.price}
+                            </span>
                           </div>
-                          <p className="text-slate-600 text-sm">{plan.period}</p>
+                          <p className="text-slate-600 text-sm">
+                            {plan.period}
+                          </p>
                         </>
                       )}
                     </div>
 
                     {/* CTA Button */}
                     <Button
-                      variant={plan.popular ? 'primary' : 'outline'}
+                      variant={plan.popular ? "primary" : "outline"}
                       className={`w-full mb-8 transform hover:scale-105 transition-all duration-300 ${
-                        plan.popular ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 shadow-lg' : ''
+                        plan.popular
+                          ? "bg-gradient-to-r from-emerald-500 to-emerald-600 shadow-lg"
+                          : ""
                       }`}
-                      onClick={() => onNavigate('contact')}
+                      onClick={() => onNavigate("contact")}
                     >
-                      {plan.price === 'Custom' ? 'Contact Sales' : 'Get Started'}
+                      {plan.price === "Custom"
+                        ? "Contact Sales"
+                        : "Get Started"}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
 
                     {/* Features List */}
                     <div className="space-y-3">
                       {plan.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex items-start group/feature">
+                        <div
+                          key={featureIndex}
+                          className="flex items-start group/feature"
+                        >
                           {feature.included ? (
                             <div className="flex-shrink-0 w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3 mt-0.5 group-hover/feature:bg-green-200 transition-colors duration-200">
                               <Check className="w-3 h-3 text-green-600" />
@@ -200,7 +247,9 @@ export function Pricing({ onNavigate }: PricingProps) {
                           )}
                           <span
                             className={`text-sm ${
-                              feature.included ? 'text-slate-700 font-medium' : 'text-slate-400'
+                              feature.included
+                                ? "text-slate-700 font-medium"
+                                : "text-slate-400"
                             } group-hover/feature:text-slate-900 transition-colors duration-200`}
                           >
                             {feature.name}
@@ -230,15 +279,17 @@ export function Pricing({ onNavigate }: PricingProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {allFeatures.map((feature, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="group flex items-center bg-gradient-to-br from-white to-slate-50 p-5 rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 animate-fade-in"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 <div className="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4 group-hover:bg-green-200 group-hover:scale-110 transition-all duration-300">
                   <Check className="w-5 h-5 text-green-600" />
                 </div>
-                <span className="text-slate-700 font-medium group-hover:text-slate-900 transition-colors duration-300">{feature}</span>
+                <span className="text-slate-700 font-medium group-hover:text-slate-900 transition-colors duration-300">
+                  {feature}
+                </span>
               </div>
             ))}
           </div>
@@ -258,7 +309,8 @@ export function Pricing({ onNavigate }: PricingProps) {
                 Is there a setup fee?
               </h3>
               <p className="text-slate-600 leading-relaxed">
-                No setup fees. We include free onboarding, data migration, and staff training with all plans.
+                No setup fees. We include free onboarding, data migration, and
+                staff training with all plans.
               </p>
             </div>
 
@@ -267,7 +319,8 @@ export function Pricing({ onNavigate }: PricingProps) {
                 Can I upgrade or downgrade my plan?
               </h3>
               <p className="text-slate-600 leading-relaxed">
-                Yes, you can change your plan at any time. We'll prorate the difference and adjust your next billing cycle.
+                Yes, you can change your plan at any time. We'll prorate the
+                difference and adjust your next billing cycle.
               </p>
             </div>
 
@@ -276,7 +329,8 @@ export function Pricing({ onNavigate }: PricingProps) {
                 Do you offer a free trial?
               </h3>
               <p className="text-slate-600 leading-relaxed">
-                Yes, we offer a 14-day free trial with full access to all features. No credit card required.
+                Yes, we offer a 14-day free trial with full access to all
+                features. No credit card required.
               </p>
             </div>
 
@@ -285,7 +339,8 @@ export function Pricing({ onNavigate }: PricingProps) {
                 What payment methods do you accept?
               </h3>
               <p className="text-slate-600 leading-relaxed">
-                We accept bank transfer, card payments via Paystack, and can set up direct debit for annual subscriptions.
+                We accept bank transfer, card payments via Paystack, and can set
+                up direct debit for annual subscriptions.
               </p>
             </div>
 
@@ -294,7 +349,9 @@ export function Pricing({ onNavigate }: PricingProps) {
                 Is my data secure?
               </h3>
               <p className="text-slate-600 leading-relaxed">
-                Absolutely. We use bank-level encryption, store data on secure Nigerian servers, and maintain regular backups. We're ISO 27001 certified.
+                Absolutely. We use bank-level encryption, store data on secure
+                Nigerian servers, and maintain regular backups. We're ISO 27001
+                certified.
               </p>
             </div>
           </div>
@@ -314,12 +371,13 @@ export function Pricing({ onNavigate }: PricingProps) {
             Ready to Get Started?
           </h2>
           <p className="text-xl text-blue-100 mb-10 animate-fade-in animation-delay-200">
-            Schedule a demo to see HotelOps in action and find the perfect plan for your hotel.
+            Schedule a demo to see HotelOpX in action and find the perfect plan
+            for your hotel.
           </p>
           <Button
             variant="secondary"
             size="lg"
-            onClick={() => onNavigate('contact')}
+            onClick={() => onNavigate("contact")}
             className="border-2 border-blue-400 text-blue-100 hover:bg-blue-400/10 backdrop-blur-sm"
           >
             Request a Demo

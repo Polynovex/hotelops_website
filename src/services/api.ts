@@ -8,6 +8,10 @@ interface DemoRequest {
   companyName: string;
   hotelSize: string;
   message: string;
+  /** NDPR: explicit, unbundled consent captured at submission. */
+  consentGiven: boolean;
+  consentText?: string;
+  marketingOptIn?: boolean;
 }
 
 interface ApiResponse<T> {
@@ -33,7 +37,7 @@ class ApiService {
     try {
       // Try to send to backend if available
       try {
-        const response = await fetch(`${this.baseURL}/demo-requests`, {
+        const response = await fetch(`${this.baseURL}/public/demo-requests`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -52,22 +56,25 @@ class ApiService {
           data: result,
         };
       } catch (backendError) {
-        // Fall back to localStorage if backend is not available
-        console.info('Backend not available, storing locally');
-        const id = `demo_${Date.now()}`;
-        const storedData = localStorage.getItem('demoRequests');
-        const demoRequests = storedData ? JSON.parse(storedData) : [];
-        
-        demoRequests.push({
-          id,
-          ...data,
-          createdAt: new Date().toISOString(),
-        });
-        
-        localStorage.setItem('demoRequests', JSON.stringify(demoRequests));
+        // Previously this swallowed the failure, wrote the lead to the
+        // visitor's own localStorage, and still reported success — so every
+        // submission was lost with the sender believing it had gone through.
+        // A queued copy is kept for diagnostics, but the caller is now told
+        // the truth so the UI can offer an alternative contact route.
+        console.error('[api] Demo request failed to reach the backend', backendError);
+
+        try {
+          const pending = JSON.parse(localStorage.getItem('pendingDemoRequests') || '[]');
+          pending.push({ ...data, failedAt: new Date().toISOString() });
+          localStorage.setItem('pendingDemoRequests', JSON.stringify(pending));
+        } catch {
+          // Storage unavailable (private mode) — nothing further to do.
+        }
+
         return {
-          success: true,
-          data: { id },
+          success: false,
+          error:
+            'We could not submit your request. Please email hello@hotelopsx.com or try again shortly.',
         };
       }
     } catch (error) {

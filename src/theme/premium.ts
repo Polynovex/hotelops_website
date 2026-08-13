@@ -1,5 +1,5 @@
 /**
- * Premium Theme Configuration for HotelOps
+ * Premium Theme Configuration for HotelOpX
  * This file defines the advanced theme used across the application
  */
 

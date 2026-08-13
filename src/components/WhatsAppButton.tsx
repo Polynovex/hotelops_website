@@ -1,10 +1,11 @@
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle } from "lucide-react";
 
 export function WhatsAppButton() {
   // Replace with your actual WhatsApp phone number (with country code, no + or spaces)
-  const whatsappNumber = '2348134393554'; // Example: Nigeria number
-  const whatsappMessage = 'Hi! I would like to learn more about HotelOps and request a demo.';
-  
+  const whatsappNumber = "2348134393554"; // Example: Nigeria number
+  const whatsappMessage =
+    "Hi! I would like to learn more about HotelOpX and request a demo.";
+
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
@@ -18,7 +19,7 @@ export function WhatsAppButton() {
       <div className="relative">
         {/* Animated background ring */}
         <div className="absolute inset-0 bg-green-500 rounded-full animate-pulse"></div>
-        
+
         {/* Button */}
         <div className="relative bg-gradient-to-br from-green-400 to-green-600 rounded-full p-4 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110 transform">
           <MessageCircle className="w-6 h-6 text-white" strokeWidth={2} />

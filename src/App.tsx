@@ -8,6 +8,7 @@ import { Products } from "./pages/Products";
 import { Pricing } from "./pages/Pricing";
 import { Why } from "./pages/Why";
 import { Contact } from "./pages/Contact";
+import { Privacy } from "./pages/Privacy";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -15,20 +16,21 @@ function App() {
   useEffect(() => {
     const updateTitle = () => {
       const titles: Record<string, string> = {
-        home: "HotelOps - Modern Hotel Management for Nigerian Hotels",
-        about: "About Us - HotelOps",
-        products: "Products - HotelOps PMS, POS & Finance",
-        pricing: "Pricing Plans - HotelOps",
-        why: "Why HotelOps - Built for Nigerian Hotels",
-        contact: "Request a Demo - HotelOps",
+        home: "HotelOpX - Modern Hotel Management for Nigerian Hotels",
+        about: "About Us - HotelOpX",
+        products: "Products - HotelOpX PMS, POS & Finance",
+        pricing: "Pricing Plans - HotelOpX",
+        why: "Why HotelOpX - Built for Nigerian Hotels",
+        contact: "Request a Demo - HotelOpX",
+        privacy: "Privacy Notice - HotelOpX",
       };
-      document.title = titles[currentPage] || "HotelOps";
+      document.title = titles[currentPage] || "HotelOpX";
     };
 
     updateTitle();
-    
+
     // Scroll to top when page changes
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
   const handleNavigate = (page: string) => {
@@ -48,7 +50,9 @@ function App() {
       case "why":
         return <Why onNavigate={handleNavigate} />;
       case "contact":
-        return <Contact />;
+        return <Contact onNavigate={handleNavigate} />;
+      case "privacy":
+        return <Privacy />;
       default:
         return <Home onNavigate={handleNavigate} />;
     }

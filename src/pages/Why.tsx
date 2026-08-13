@@ -11,8 +11,8 @@ import {
   Globe,
   Smartphone,
   HeadphonesIcon,
-} from 'lucide-react';
-import { Button } from '../components/Button';
+} from "lucide-react";
+import { Button } from "../components/Button";
 
 interface WhyProps {
   onNavigate: (page: string) => void;
@@ -22,101 +22,101 @@ export function Why({ onNavigate }: WhyProps) {
   const reasons = [
     {
       icon: Globe,
-      title: 'Nigerian-First Design',
+      title: "Nigerian-First Design",
       description:
-        'Built specifically for Nigerian hotels, not a foreign system adapted for our market. We understand NEPA, internet issues, and local payment preferences.',
+        "Built specifically for Nigerian hotels, not a foreign system adapted for our market. We understand NEPA, internet issues, and local payment preferences.",
     },
     {
       icon: WifiOff,
-      title: 'Works With Poor Internet',
+      title: "Works With Poor Internet",
       description:
-        'Offline-first architecture means your operations never stop. When internet returns, everything syncs automatically. No more downtime.',
+        "Offline-first architecture means your operations never stop. When internet returns, everything syncs automatically. No more downtime.",
     },
     {
       icon: DollarSign,
-      title: 'Affordable Pricing',
+      title: "Affordable Pricing",
       description:
-        'Get enterprise features at a fraction of the cost of Opera, Micros, or other foreign systems. Plans start at ₦75,000/month, not millions in setup fees.',
+        "Get enterprise features at a fraction of the cost of Opera, Micros, or other foreign systems. Plans start at ₦75,000/month, not millions in setup fees.",
     },
     {
       icon: Zap,
-      title: 'Faster Check-In/Out',
+      title: "Faster Check-In/Out",
       description:
-        'Reduce check-in time from 10+ minutes to under 2 minutes. Your guests will notice and appreciate the difference.',
+        "Reduce check-in time from 10+ minutes to under 2 minutes. Your guests will notice and appreciate the difference.",
     },
     {
       icon: Shield,
-      title: 'Secure & Compliant',
+      title: "Secure & Compliant",
       description:
-        'Bank-level encryption, local data storage in Nigeria, and ISO 27001 certification. Your guest data is always protected.',
+        "Bank-level encryption, local data storage in Nigeria, and ISO 27001 certification. Your guest data is always protected.",
     },
     {
       icon: HeadphonesIcon,
-      title: 'Nigerian Support Team',
+      title: "Nigerian Support Team",
       description:
-        'Get help in minutes, not days. Our support team is based in Lagos and understands your business. Available via phone, WhatsApp, and email.',
+        "Get help in minutes, not days. Our support team is based in Lagos and understands your business. Available via phone, WhatsApp, and email.",
     },
     {
       icon: Smartphone,
-      title: 'Mobile-First',
+      title: "Mobile-First",
       description:
-        'Manage your hotel from anywhere with iOS and Android apps. Staff can update room status, take orders, and process payments on the go.',
+        "Manage your hotel from anywhere with iOS and Android apps. Staff can update room status, take orders, and process payments on the go.",
     },
     {
       icon: TrendingUp,
-      title: 'Increase Revenue',
+      title: "Increase Revenue",
       description:
-        'Better inventory management, upselling tools, and real-time insights help you maximize revenue from every room and service.',
+        "Better inventory management, upselling tools, and real-time insights help you maximize revenue from every room and service.",
     },
   ];
 
   const comparison = [
     {
-      feature: 'Setup Cost',
-      hotelops: '₦0',
-      traditional: '₦5M - ₦20M',
+      feature: "Setup Cost",
+      hotelops: "₦0",
+      traditional: "₦5M - ₦20M",
       better: true,
     },
     {
-      feature: 'Monthly Cost (Medium Hotel)',
-      hotelops: '₦175,000',
-      traditional: '₦500,000+',
+      feature: "Monthly Cost (Medium Hotel)",
+      hotelops: "₦175,000",
+      traditional: "₦500,000+",
       better: true,
     },
     {
-      feature: 'Works Offline',
-      hotelops: 'Yes',
-      traditional: 'No',
+      feature: "Works Offline",
+      hotelops: "Yes",
+      traditional: "No",
       better: true,
     },
     {
-      feature: 'Local Payment Integration',
-      hotelops: 'Paystack, Flutterwave',
-      traditional: 'Limited or None',
+      feature: "Local Payment Integration",
+      hotelops: "Paystack, Flutterwave",
+      traditional: "Limited or None",
       better: true,
     },
     {
-      feature: 'Response Time',
-      hotelops: 'Minutes (Nigerian team)',
-      traditional: 'Days (Foreign support)',
+      feature: "Response Time",
+      hotelops: "Minutes (Nigerian team)",
+      traditional: "Days (Foreign support)",
       better: true,
     },
     {
-      feature: 'Mobile Apps',
-      hotelops: 'Included',
-      traditional: 'Extra cost',
+      feature: "Mobile Apps",
+      hotelops: "Included",
+      traditional: "Extra cost",
       better: true,
     },
     {
-      feature: 'Training',
-      hotelops: 'Free, ongoing',
-      traditional: 'Extra cost',
+      feature: "Training",
+      hotelops: "Free, ongoing",
+      traditional: "Extra cost",
       better: true,
     },
     {
-      feature: 'Data Location',
-      hotelops: 'Nigeria',
-      traditional: 'Foreign servers',
+      feature: "Data Location",
+      hotelops: "Nigeria",
+      traditional: "Foreign servers",
       better: true,
     },
   ];
@@ -124,24 +124,24 @@ export function Why({ onNavigate }: WhyProps) {
   const testimonials = [
     {
       quote:
-        "HotelOps saved us over ₦8M in the first year compared to our previous system. And it actually works better.",
-      author: 'Chioma Okafor',
-      role: 'General Manager, Lagos',
-      hotel: 'Medium Hotel (45 rooms)',
+        "HotelOpX saved us over ₦8M in the first year compared to our previous system. And it actually works better.",
+      author: "Chioma Okafor",
+      role: "General Manager, Lagos",
+      hotel: "Medium Hotel (45 rooms)",
     },
     {
       quote:
         "The offline mode is a game changer. We used to lose bookings when internet went down. Not anymore.",
-      author: 'Ibrahim Yusuf',
-      role: 'Owner',
-      hotel: 'Small Hotel (22 rooms)',
+      author: "Ibrahim Yusuf",
+      role: "Owner",
+      hotel: "Small Hotel (22 rooms)",
     },
     {
       quote:
         "Check-in used to take 15 minutes. Now it's under 2 minutes. Our guests love it.",
-      author: 'Grace Adeyemi',
-      role: 'Front Desk Manager',
-      hotel: '5-Star Hotel, Abuja',
+      author: "Grace Adeyemi",
+      role: "Front Desk Manager",
+      hotel: "5-Star Hotel, Abuja",
     },
   ];
 
@@ -158,16 +158,17 @@ export function Why({ onNavigate }: WhyProps) {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-block mb-6 px-4 py-2 bg-blue-500/20 border border-blue-400/50 text-blue-200 rounded-full text-sm font-medium backdrop-blur-sm animate-fade-in">
-              💡 Why HotelOps Stands Out
+              💡 Why HotelOpX Stands Out
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in animation-delay-200">
               Why Nigerian Hotels
               <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
-                Choose HotelOps
+                Choose HotelOpX
               </span>
             </h1>
             <p className="text-xl text-blue-100 max-w-2xl mx-auto animate-fade-in animation-delay-300">
-              We built HotelOps to solve real problems Nigerian hotels face every day. Here's why we're different.
+              We built HotelOpX to solve real problems Nigerian hotels face
+              every day. Here's why we're different.
             </p>
           </div>
         </div>
@@ -183,7 +184,9 @@ export function Why({ onNavigate }: WhyProps) {
                   <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-8 h-8 text-blue-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-slate-900 mb-2">{reason.title}</h3>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                    {reason.title}
+                  </h3>
                   <p className="text-slate-600 text-sm">{reason.description}</p>
                 </div>
               );
@@ -196,10 +199,11 @@ export function Why({ onNavigate }: WhyProps) {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              HotelOps vs Traditional Systems
+              HotelOpX vs Traditional Systems
             </h2>
             <p className="text-lg text-slate-600">
-              See how we compare to expensive foreign systems like Opera, Micros, and Sage
+              See how we compare to expensive foreign systems like Opera,
+              Micros, and Sage
             </p>
           </div>
 
@@ -208,25 +212,40 @@ export function Why({ onNavigate }: WhyProps) {
               <table className="w-full">
                 <thead className="bg-slate-900 text-white">
                   <tr>
-                    <th className="px-6 py-4 text-left font-semibold">Feature</th>
-                    <th className="px-6 py-4 text-left font-semibold">HotelOps</th>
-                    <th className="px-6 py-4 text-left font-semibold">Traditional Systems</th>
+                    <th className="px-6 py-4 text-left font-semibold">
+                      Feature
+                    </th>
+                    <th className="px-6 py-4 text-left font-semibold">
+                      HotelOpX
+                    </th>
+                    <th className="px-6 py-4 text-left font-semibold">
+                      Traditional Systems
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
                   {comparison.map((item, index) => (
-                    <tr key={index} className="border-b border-slate-200 hover:bg-slate-50">
-                      <td className="px-6 py-4 font-medium text-slate-900">{item.feature}</td>
+                    <tr
+                      key={index}
+                      className="border-b border-slate-200 hover:bg-slate-50"
+                    >
+                      <td className="px-6 py-4 font-medium text-slate-900">
+                        {item.feature}
+                      </td>
                       <td className="px-6 py-4">
                         <div className="flex items-center">
                           <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" />
-                          <span className="text-slate-700">{item.hotelops}</span>
+                          <span className="text-slate-700">
+                            {item.hotelops}
+                          </span>
                         </div>
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex items-center">
                           <XCircle className="w-5 h-5 text-red-400 mr-2 flex-shrink-0" />
-                          <span className="text-slate-600">{item.traditional}</span>
+                          <span className="text-slate-600">
+                            {item.traditional}
+                          </span>
                         </div>
                       </td>
                     </tr>
@@ -245,7 +264,7 @@ export function Why({ onNavigate }: WhyProps) {
               What Hotel Operators Say
             </h2>
             <p className="text-lg text-slate-600">
-              Real feedback from Nigerian hotels using HotelOps
+              Real feedback from Nigerian hotels using HotelOpX
             </p>
           </div>
 
@@ -264,12 +283,20 @@ export function Why({ onNavigate }: WhyProps) {
                       </svg>
                     ))}
                   </div>
-                  <p className="text-slate-700 italic mb-4">"{testimonial.quote}"</p>
+                  <p className="text-slate-700 italic mb-4">
+                    "{testimonial.quote}"
+                  </p>
                 </div>
                 <div>
-                  <div className="font-semibold text-slate-900">{testimonial.author}</div>
-                  <div className="text-sm text-slate-600">{testimonial.role}</div>
-                  <div className="text-sm text-blue-600 mt-1">{testimonial.hotel}</div>
+                  <div className="font-semibold text-slate-900">
+                    {testimonial.author}
+                  </div>
+                  <div className="text-sm text-slate-600">
+                    {testimonial.role}
+                  </div>
+                  <div className="text-sm text-blue-600 mt-1">
+                    {testimonial.hotel}
+                  </div>
                 </div>
               </div>
             ))}
@@ -298,12 +325,13 @@ export function Why({ onNavigate }: WhyProps) {
               </div>
             </div>
             <p className="text-blue-100 mb-8">
-              Average results from hotels that switched to HotelOps in their first year
+              Average results from hotels that switched to HotelOpX in their
+              first year
             </p>
             <Button
               variant="secondary"
               size="lg"
-              onClick={() => onNavigate('contact')}
+              onClick={() => onNavigate("contact")}
               className="border-2 border-blue-400 text-blue-100 hover:bg-blue-400/10 backdrop-blur-sm"
             >
               Calculate Your Savings
@@ -316,23 +344,20 @@ export function Why({ onNavigate }: WhyProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-slate-900 rounded-2xl p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Switch to HotelOps?
+              Ready to Switch to HotelOpX?
             </h2>
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Join hundreds of Nigerian hotels that made the smart choice. Schedule a demo and see the
-              difference yourself.
+              Join hundreds of Nigerian hotels that made the smart choice.
+              Schedule a demo and see the difference yourself.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                onClick={() => onNavigate('contact')}
-              >
+              <Button size="lg" onClick={() => onNavigate("contact")}>
                 Request a Demo
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => onNavigate('pricing')}
+                onClick={() => onNavigate("pricing")}
                 className="border-white text-white hover:bg-slate-800"
               >
                 View Pricing

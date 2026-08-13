@@ -121,7 +121,7 @@ export function Home({ onNavigate }: HomeProps) {
 
             {/* Subheading */}
             <p className="text-lg md:text-xl text-blue-100 mb-8 leading-relaxed max-w-2xl mx-auto animate-fade-in animation-delay-300">
-              Replace fragmented systems with HotelOps - the all-in-one PMS,
+              Replace fragmented systems with HotelOpX - the all-in-one PMS,
               POS, and Finance platform designed specifically for Nigerian
               hotels. Works offline, accepts local payments, and delivers
               enterprise features at affordable prices.
@@ -129,7 +129,7 @@ export function Home({ onNavigate }: HomeProps) {
 
             {/* Credits */}
             <p className="text-sm text-blue-200 mb-10 animate-fade-in animation-delay-400">
-              <span className="font-semibold">HotelOps</span> is a product by{" "}
+              <span className="font-semibold">HotelOpX</span> is a product by{" "}
               <span className="font-semibold bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">
                 Polynovex Limited
               </span>
@@ -216,7 +216,7 @@ export function Home({ onNavigate }: HomeProps) {
               Everything You Need in One System
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Stop juggling multiple tools. HotelOps brings together property
+              Stop juggling multiple tools. HotelOpX brings together property
               management, point of sale, and finance in one integrated platform.
             </p>
           </div>
@@ -269,7 +269,7 @@ export function Home({ onNavigate }: HomeProps) {
               Real Business Impact
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              See how HotelOps transforms your hotel operations
+              See how HotelOpX transforms your hotel operations
             </p>
           </div>
 
@@ -329,7 +329,7 @@ export function Home({ onNavigate }: HomeProps) {
             Ready to Modernize Your Hotel Operations?
           </h2>
           <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto animate-fade-in animation-delay-200">
-            Join hundreds of Nigerian hotels that trust HotelOps for their daily
+            Join hundreds of Nigerian hotels that trust HotelOpX for their daily
             operations. Start your free trial today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in animation-delay-300">

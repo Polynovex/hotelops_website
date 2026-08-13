@@ -1,4 +1,4 @@
-# HotelOps Frontend Refactoring Summary
+# HotelOpX Frontend Refactoring Summary
 
 ## Completed Tasks
 
@@ -11,7 +11,7 @@
 ### ✅ 2. Removed Bolt AI References
 - **Removed**: `.bolt/` directory references
 - **Updated**: `index.html` - removed Bolt.new meta tags and OG image
-- **Updated**: Meta tags now reflect HotelOps branding
+- **Updated**: Meta tags now reflect HotelOpX branding
 - **Impact**: Frontend is completely independent from Bolt AI
 
 ### ✅ 3. Created Standalone Architecture
@@ -95,7 +95,7 @@
 
 ### 1. Install & Run
 ```bash
-cd /Users/mac/Desktop/Projects/HotelOps/hotelopsx
+cd /Users/mac/Desktop/Projects/HotelOpX/hotelopsx
 npm install
 npm run dev
 ```

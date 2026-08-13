@@ -148,7 +148,7 @@ export function Home({ onNavigate }: HomeProps) {
             </div>
 
             <p className="text-sm text-slate-500">
-              <span className="font-semibold">HotelOps</span> is a product by{' '}
+              <span className="font-semibold">HotelOpX</span> is a product by{' '}
               <span className="font-semibold text-slate-700">Polynovex Limited</span>
             </p>
           </div>
@@ -224,7 +224,7 @@ export function Home({ onNavigate }: HomeProps) {
               Proven Results
             </h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Hotels that switch to HotelOps see immediate impact on their bottom line and operations.
+              Hotels that switch to HotelOpX see immediate impact on their bottom line and operations.
             </p>
           </div>
 

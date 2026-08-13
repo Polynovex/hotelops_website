@@ -1,10 +1,10 @@
-# Quick Start - HotelOps Frontend
+# Quick Start - HotelOpX Frontend
 
 ## 🚀 Get Started in 3 Steps
 
 ### Step 1: Install Dependencies
 ```bash
-cd /Users/mac/Desktop/Projects/HotelOps/hotelopsx
+cd /Users/mac/Desktop/Projects/HotelOpX/hotelopsx
 npm install
 ```
 
@@ -143,7 +143,7 @@ colors: {
 
 ## ✨ You're Ready!
 
-Your HotelOps frontend is:
+Your HotelOpX frontend is:
 - 🎨 Beautiful and modern
 - 🚀 Completely standalone
 - 🔌 Ready for backend integration

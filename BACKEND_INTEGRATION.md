@@ -2,7 +2,7 @@
 
 ## Overview
 
-Your HotelOps frontend is completely standalone and ready to connect with the `hotelopsx-backend` Express server when you're ready.
+Your HotelOpX frontend is completely standalone and ready to connect with the `hotelopsx-backend` Express server when you're ready.
 
 ## Current State
 

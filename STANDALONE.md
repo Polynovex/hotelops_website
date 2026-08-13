@@ -1,6 +1,6 @@
-# HotelOps Frontend - Standalone Setup
+# HotelOpX Frontend - Standalone Setup
 
-This is the premium frontend for HotelOps, built with React, TypeScript, and Tailwind CSS. It's now completely standalone and can be viewed without backend integration.
+This is the premium frontend for HotelOpX, built with React, TypeScript, and Tailwind CSS. It's now completely standalone and can be viewed without backend integration.
 
 ## Features
 
