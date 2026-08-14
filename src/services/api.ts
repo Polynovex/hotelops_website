@@ -1,5 +1,33 @@
 // Configure API base URL - can be updated to point to backend
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+/**
+ * Vite inlines VITE_* at build time. If the variable was missing when this
+ * bundle was built, the localhost fallback ships to production and every
+ * request hits the *visitor's own machine* — which is exactly how the contact
+ * form silently failed before. Falling back is fine on localhost; anywhere
+ * else it is a build misconfiguration and should be loud.
+ */
+const resolveApiBase = () => {
+  const configured = import.meta.env.VITE_API_URL;
+  if (configured) {
+    return configured;
+  }
+
+  const isLocal =
+    typeof window !== 'undefined' &&
+    /^(localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname);
+
+  if (!isLocal) {
+    console.error(
+      '[api] VITE_API_URL was not set when this site was built, so requests ' +
+        'would go to localhost. Set it in .env.production (or the host env) ' +
+        'and REBUILD — setting it without rebuilding has no effect.'
+    );
+  }
+
+  return 'http://localhost:3000/api';
+};
+
+const API_BASE_URL = resolveApiBase();
 
 interface DemoRequest {
   name: string;
