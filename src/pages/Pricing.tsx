@@ -103,6 +103,7 @@ export function Pricing({ onNavigate }: PricingProps) {
     "Staff training included",
     "Data migration assistance",
     "Nigerian Naira billing",
+    "QR-Code Features for Contactless Ordering",
   ];
 
   return (
