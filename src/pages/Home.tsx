@@ -11,6 +11,12 @@ import {
   Zap,
 } from "lucide-react";
 import { Button } from "../components/Button";
+import { WhoItsFor } from "../components/WhoItsFor";
+import { OnboardingSteps } from "../components/OnboardingSteps";
+import { HomeFaq } from "../components/HomeFaq";
+import { Testimonials } from "../components/Testimonials";
+import { ProductShowcase } from "../components/ProductShowcase";
+import { ComingSoon } from "../components/ComingSoon";
 
 interface HomeProps {
   onNavigate: (page: string) => void;
@@ -50,7 +56,7 @@ export function Home({ onNavigate }: HomeProps) {
       icon: Shield,
       title: "Secure & Compliant",
       description:
-        "Bank-level security with local data storage and compliance standards.",
+        "Encryption at rest and in transit, role-based access, audit logs, and automated backups — built to NDPR standards.",
       color: "from-red-500 to-red-600",
     },
     {
@@ -260,6 +266,23 @@ export function Home({ onNavigate }: HomeProps) {
           </div>
         </div>
       </section>
+
+      {/* Segments visitors by property size, straight into the pricing tiers */}
+      <ProductShowcase />
+
+      <WhoItsFor onNavigate={onNavigate} />
+
+      {/* Answers "will my staff be able to use it?" before they have to ask */}
+      <OnboardingSteps />
+
+      {/* Clears objections before the visitor has to contact anyone */}
+      {/* Social proof — renders nothing until real testimonials are published */}
+      <Testimonials />
+
+      {/* Channel manager: what ships today vs what awaits OTA certification */}
+      <ComingSoon />
+
+      <HomeFaq />
 
       {/* Benefits Section */}
       <section className="py-20 bg-gradient-to-b from-slate-50 to-white">

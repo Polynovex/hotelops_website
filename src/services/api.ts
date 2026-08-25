@@ -167,6 +167,33 @@ class ApiService {
   setAuthToken(token: string): void {
     this.authToken = token;
   }
+
+  /**
+   * Published testimonials for the marketing site. Returns an empty list on
+   * any failure so a marketing section can never break the page.
+   */
+  async getTestimonials(): Promise<TestimonialRecord[]> {
+    try {
+      const response = await fetch(`${this.baseURL}/public/testimonials`);
+      if (!response.ok) return [];
+      const data = await response.json();
+      return Array.isArray(data) ? data : [];
+    } catch {
+      return [];
+    }
+  }
+}
+
+export interface TestimonialRecord {
+  id: string;
+  quote: string;
+  authorName: string;
+  authorRole: string | null;
+  hotelName: string | null;
+  location: string | null;
+  rating: number | null;
+  avatarUrl: string | null;
+  logoUrl: string | null;
 }
 
 export const apiService = new ApiService();

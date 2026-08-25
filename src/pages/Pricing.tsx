@@ -8,9 +8,9 @@ interface PricingProps {
 export function Pricing({ onNavigate }: PricingProps) {
   const plans = [
     {
-      name: "Small Hotel",
-      subtitle: "10-30 Rooms",
-      price: "75,000",
+      name: "Starter",
+      subtitle: "1-30 Rooms",
+      price: "25,000",
       period: "per month",
       description:
         "Perfect for guesthouses, small hotels, and budget properties",
@@ -36,9 +36,9 @@ export function Pricing({ onNavigate }: PricingProps) {
       color: "blue",
     },
     {
-      name: "Medium Hotel",
-      subtitle: "30-100 Rooms",
-      price: "175,000",
+      name: "Professional",
+      subtitle: "31-100 Rooms",
+      price: "60,000",
       period: "per month",
       description: "Ideal for mid-sized hotels with multiple revenue centers",
       features: [
@@ -66,8 +66,8 @@ export function Pricing({ onNavigate }: PricingProps) {
     {
       name: "Enterprise",
       subtitle: "100+ Rooms / 5-Star",
-      price: "Custom",
-      period: "contact us",
+      price: "From 150,000",
+      period: "per month",
       description: "Full-featured solution for large hotels and hotel chains",
       features: [
         { name: "Unlimited rooms & users", included: true },
@@ -78,16 +78,16 @@ export function Pricing({ onNavigate }: PricingProps) {
         { name: "Full Finance Suite", included: true },
         { name: "HR & Payroll (PAYE, payslips)", included: true },
         { name: "Inventory management", included: true },
-        { name: "Channel manager & dynamic pricing", included: true },
-        { name: "Guest portal & loyalty programme", included: true },
+        { name: "Loyalty programme", included: true },
         { name: "White-label branding", included: true },
         { name: "Offline mode", included: true },
         { name: "Paystack/Flutterwave", included: true },
         { name: "Mobile app access", included: true },
         { name: "Priority 24/7 support", included: true },
-        { name: "Unlimited properties", included: true },
         { name: "Advanced analytics & insights", included: true },
         { name: "Dedicated account manager", included: true },
+        { name: "Channel manager (Booking.com, Expedia) — coming soon", included: false },
+        { name: "Multi-property management", included: false },
       ],
       popular: false,
       color: "orange",
@@ -117,7 +117,7 @@ export function Pricing({ onNavigate }: PricingProps) {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-block mb-6 px-4 py-2 bg-green-500/20 border border-green-400/50 text-green-200 rounded-full text-sm font-medium backdrop-blur-sm animate-fade-in">
-            💰 Save 20% with annual billing
+            💰 Pay yearly and get 2 months free
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in animation-delay-200">
             Simple, Transparent
@@ -326,7 +326,7 @@ export function Pricing({ onNavigate }: PricingProps) {
                 Do you offer a free trial?
               </h3>
               <p className="text-slate-600 leading-relaxed">
-                Yes, we offer a 14-day free trial with full access to all
+                Yes, we offer a 30-day free trial with full access to all
                 features. No credit card required.
               </p>
             </div>
@@ -346,9 +346,11 @@ export function Pricing({ onNavigate }: PricingProps) {
                 Is my data secure?
               </h3>
               <p className="text-slate-600 leading-relaxed">
-                Absolutely. We use bank-level encryption, store data on secure
-                Nigerian servers, and maintain regular backups. We're ISO 27001
-                certified.
+                Your data is encrypted in transit and at rest, protected by
+                role-based access control and audit logging, and backed up
+                automatically. We host on Amazon Web Services, so data is
+                processed outside Nigeria under Standard Contractual Clauses as
+                the NDPR requires — see our Privacy Notice for the full detail.
               </p>
             </div>
           </div>

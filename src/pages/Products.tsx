@@ -122,9 +122,9 @@ export function Products({ onNavigate }: ProductsProps) {
     },
     {
       icon: Database,
-      title: "Local Data Storage",
+      title: "Secure Cloud Infrastructure",
       description:
-        "Your data stays in Nigeria with local servers for fast access and compliance.",
+        "Hosted on AWS with encryption, automated backups, and NDPR-compliant safeguards for international transfer.",
     },
   ];
 

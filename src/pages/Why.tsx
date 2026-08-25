@@ -48,7 +48,7 @@ export function Why({ onNavigate }: WhyProps) {
       icon: Shield,
       title: "Secure & Compliant",
       description:
-        "Bank-level encryption, local data storage in Nigeria, and ISO 27001 certification. Your guest data is always protected.",
+        "Encryption in transit and at rest, role-based access control, audit logging, and automated backups on AWS. Built to NDPR and Nigeria Data Protection Act 2023 requirements.",
     },
     {
       icon: HeadphonesIcon,

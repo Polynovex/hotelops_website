@@ -80,7 +80,9 @@ export function Footer({ onNavigate }: FooterProps) {
               </li>
               <li className="flex items-center">
                 <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
-                <span>+234 800 000 0000</span>
+                <a href="tel:+2348134393554" className="hover:text-white transition-colors">
+                  +234 813 439 3554
+                </a>
               </li>
               <li className="flex items-center">
                 <Mail className="w-4 h-4 mr-2 flex-shrink-0" />

@@ -182,9 +182,9 @@ export function About() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="text-2xl font-bold text-blue-600 mb-2">
-                ISO 27001
+                AWS
               </div>
-              <div className="text-sm text-slate-600">Security Certified</div>
+              <div className="text-sm text-slate-600">Enterprise Cloud Infrastructure</div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="text-2xl font-bold text-blue-600 mb-2">99.9%</div>
@@ -196,10 +196,11 @@ export function About() {
             </div>
           </div>
           <p className="text-slate-600 mt-8">
-            Your hotel data is stored securely on servers in Nigeria, ensuring
-            compliance with local regulations and fast access times. Polynovex
-            Limited maintains the highest standards of data security and privacy
-            for all HotelOpX users.
+            Your hotel data is hosted on Amazon Web Services, encrypted in
+            transit and at rest, with automated backups. Because AWS processes
+            this data outside Nigeria, transfers are protected by Standard
+            Contractual Clauses as required by the NDPR. Full details are in our
+            Privacy Notice.
           </p>
         </div>
       </section>

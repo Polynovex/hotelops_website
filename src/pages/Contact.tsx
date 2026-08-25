@@ -439,7 +439,7 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
                 Start Your Trial
               </h3>
               <p className="text-slate-600 text-sm">
-                Get a 14-day free trial with full features and support to test
+                Get a 30-day free trial with full features and support to test
                 HotelOpX at your property.
               </p>
             </div>

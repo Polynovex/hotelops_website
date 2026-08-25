@@ -56,7 +56,7 @@ export function Home({ onNavigate }: HomeProps) {
       icon: Shield,
       title: 'Secure & Compliant',
       description:
-        'Bank-level security with local data storage and compliance standards.',
+        'Encryption at rest and in transit, role-based access, audit logs, and automated backups — built to NDPR standards.',
       badge: 'Security',
       color: 'from-red-500 to-red-600',
     },
@@ -260,7 +260,7 @@ export function Home({ onNavigate }: HomeProps) {
             Join Nigerian Hotels Modernizing Their Operations
           </h2>
           <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-            Start with a 14-day free trial. No credit card required. Full access to all features.
+            Start with a 30-day free trial. No credit card required. Full access to all features.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
