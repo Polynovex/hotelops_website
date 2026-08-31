@@ -102,7 +102,7 @@ class ApiService {
         return {
           success: false,
           error:
-            'We could not submit your request. Please email hello@hotelopsx.com or try again shortly.',
+            'We could not submit your request. Please email hello@hotelopx.com or try again shortly.',
         };
       }
     } catch (error) {
