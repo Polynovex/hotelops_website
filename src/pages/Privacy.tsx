@@ -172,8 +172,8 @@ export function Privacy() {
           </ul>
           <p className="text-slate-700 mt-4">
             To exercise any of these, email{" "}
-            <a href="mailto:privacy@hotelopsx.com" className="text-blue-600 underline">
-              privacy@hotelopsx.com
+            <a href="mailto:privacy@hotelopx.com" className="text-blue-600 underline">
+              privacy@hotelopx.com
             </a>
             . We respond within 30 days. If you are not satisfied, you may
             complain to the Nigeria Data Protection Commission (NDPC).
@@ -247,16 +247,16 @@ export function Privacy() {
             <div className="flex gap-2">
               <dt className="font-semibold text-slate-900 w-20 shrink-0">Email</dt>
               <dd>
-                <a href="mailto:dpo@hotelopsx.com" className="text-blue-600 underline">
-                  dpo@hotelopsx.com
+                <a href="mailto:dpo@hotelopx.com" className="text-blue-600 underline">
+                  dpo@hotelopx.com
                 </a>
               </dd>
             </div>
             <div className="flex gap-2">
               <dt className="font-semibold text-slate-900 w-20 shrink-0">Privacy</dt>
               <dd>
-                <a href="mailto:privacy@hotelopsx.com" className="text-blue-600 underline">
-                  privacy@hotelopsx.com
+                <a href="mailto:privacy@hotelopx.com" className="text-blue-600 underline">
+                  privacy@hotelopx.com
                 </a>
               </dd>
             </div>

@@ -62,7 +62,7 @@ export function ProductShowcase() {
               <span className="w-3 h-3 rounded-full bg-red-400" />
               <span className="w-3 h-3 rounded-full bg-amber-400" />
               <span className="w-3 h-3 rounded-full bg-green-400" />
-              <span className="ml-3 text-xs text-slate-500">app.hotelopsx.com — {current.label}</span>
+              <span className="ml-3 text-xs text-slate-500">app.hotelopx.com — {current.label}</span>
             </div>
 
             {missing[current.key] ? (

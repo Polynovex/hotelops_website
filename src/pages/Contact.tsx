@@ -88,8 +88,8 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
     {
       icon: Mail,
       title: "Email",
-      value: "hello@hotelops.ng",
-      link: "mailto:hello@hotelops.ng",
+      value: "info@hotelopx.com",
+      link: "mailto:info@hotelopx.com",
     },
     {
       icon: MapPin,
@@ -377,10 +377,10 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
                       them automatically. You can ask us to delete yours sooner
                       at{" "}
                       <a
-                        href="mailto:privacy@hotelopsx.com"
+                        href="mailto:privacy@hotelopx.com"
                         className="underline hover:text-slate-700"
                       >
-                        privacy@hotelopsx.com
+                        privacy@hotelopx.com
                       </a>
                       .
                     </p>
