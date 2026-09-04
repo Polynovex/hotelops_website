@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   WifiOff,
   DollarSign,
@@ -13,12 +14,38 @@ import {
   HeadphonesIcon,
 } from "lucide-react";
 import { Button } from "../components/Button";
+import { apiService, type TestimonialRecord } from "../services/api";
 
 interface WhyProps {
   onNavigate: (page: string) => void;
 }
 
 export function Why({ onNavigate }: WhyProps) {
+  /**
+   * Pulled from the same admin-managed source as the home page.
+   *
+   * These were previously a hardcoded array of named people with quotes they
+   * never gave. Beyond being unmanageable — editing one meant a website deploy
+   * — attributing invented statements to named individuals is not something a
+   * marketing page should do.
+   */
+  const [testimonials, setTestimonials] = useState<TestimonialRecord[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    apiService
+      .getTestimonials()
+      .then((data) => {
+        if (!cancelled) setTestimonials(data);
+      })
+      .catch(() => {
+        // A marketing section must never break the page.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const reasons = [
     {
       icon: Globe,
@@ -121,29 +148,6 @@ export function Why({ onNavigate }: WhyProps) {
     },
   ];
 
-  const testimonials = [
-    {
-      quote:
-        "HotelOpX saved us over ₦8M in the first year compared to our previous system. And it actually works better.",
-      author: "Chioma Okafor",
-      role: "General Manager, Lagos",
-      hotel: "Medium Hotel (45 rooms)",
-    },
-    {
-      quote:
-        "The offline mode is a game changer. We used to lose bookings when internet went down. Not anymore.",
-      author: "Ibrahim Yusuf",
-      role: "Owner",
-      hotel: "Small Hotel (22 rooms)",
-    },
-    {
-      quote:
-        "Check-in used to take 15 minutes. Now it's under 2 minutes. Our guests love it.",
-      author: "Grace Adeyemi",
-      role: "Front Desk Manager",
-      hotel: "5-Star Hotel, Abuja",
-    },
-  ];
 
   return (
     <div className="bg-white overflow-hidden">
@@ -257,6 +261,10 @@ export function Why({ onNavigate }: WhyProps) {
         </div>
       </section>
 
+      {/* Hidden entirely when nothing is published: a "real feedback"
+          heading with no feedback beneath it undermines trust more than
+          leaving the section out. */}
+      {testimonials.length > 0 && (
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -269,8 +277,8 @@ export function Why({ onNavigate }: WhyProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-slate-50 p-8 rounded-xl">
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.id} className="bg-slate-50 p-8 rounded-xl">
                 <div className="mb-6">
                   <div className="flex text-blue-600 mb-4">
                     {[...Array(5)].map((_, i) => (
@@ -289,20 +297,26 @@ export function Why({ onNavigate }: WhyProps) {
                 </div>
                 <div>
                   <div className="font-semibold text-slate-900">
-                    {testimonial.author}
+                    {testimonial.authorName}
                   </div>
-                  <div className="text-sm text-slate-600">
-                    {testimonial.role}
-                  </div>
-                  <div className="text-sm text-blue-600 mt-1">
-                    {testimonial.hotel}
-                  </div>
+                  {testimonial.authorRole && (
+                    <div className="text-sm text-slate-600">
+                      {testimonial.authorRole}
+                    </div>
+                  )}
+                  {testimonial.hotelName && (
+                    <div className="text-sm text-blue-600 mt-1">
+                      {testimonial.hotelName}
+                      {testimonial.location ? `, ${testimonial.location}` : ''}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+      )}
 
       <section className="py-20 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
