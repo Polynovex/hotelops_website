@@ -29,7 +29,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button
                   onClick={() => onNavigate("about")}
-                  className="hover:text-white transition-colors"
+                  className="block py-1.5 hover:text-white transition-colors"
                 >
                   About Us
                 </button>
@@ -37,7 +37,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button
                   onClick={() => onNavigate("products")}
-                  className="hover:text-white transition-colors"
+                  className="block py-1.5 hover:text-white transition-colors"
                 >
                   Products
                 </button>
@@ -45,7 +45,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button
                   onClick={() => onNavigate("pricing")}
-                  className="hover:text-white transition-colors"
+                  className="block py-1.5 hover:text-white transition-colors"
                 >
                   Pricing
                 </button>
@@ -53,9 +53,23 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button
                   onClick={() => onNavigate("contact")}
-                  className="hover:text-white transition-colors"
+                  className="block py-1.5 hover:text-white transition-colors"
                 >
                   Contact
+                </button>
+              </li>
+              <li>
+                {/*
+                  The privacy policy existed as a page but nothing linked to it,
+                  so it was unreachable. The site collects personal data through
+                  the contact form, and the NDPA requires the policy — and the
+                  data-protection contact it names — to be findable.
+                */}
+                <button
+                  onClick={() => onNavigate("privacy")}
+                  className="block py-1.5 hover:text-white transition-colors"
+                >
+                  Privacy Policy
                 </button>
               </li>
             </ul>
@@ -80,7 +94,7 @@ export function Footer({ onNavigate }: FooterProps) {
               </li>
               <li className="flex items-center">
                 <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
-                <a href="tel:+2348134393554" className="hover:text-white transition-colors">
+                <a href="tel:+2348134393554" className="block py-1.5 hover:text-white transition-colors">
                   +234 813 439 3554
                 </a>
               </li>

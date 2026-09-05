@@ -247,7 +247,7 @@ export function Privacy() {
             <div className="flex gap-2">
               <dt className="font-semibold text-slate-900 w-20 shrink-0">Email</dt>
               <dd>
-                <a href="mailto:dpo@hotelopx.com" className="text-blue-600 underline">
+                <a href="mailto:dpo@hotelopx.com" className="text-blue-600 underline flex items-center min-h-[44px]">
                   dpo@hotelopx.com
                 </a>
               </dd>
@@ -255,7 +255,7 @@ export function Privacy() {
             <div className="flex gap-2">
               <dt className="font-semibold text-slate-900 w-20 shrink-0">Privacy</dt>
               <dd>
-                <a href="mailto:privacy@hotelopx.com" className="text-blue-600 underline">
+                <a href="mailto:privacy@hotelopx.com" className="text-blue-600 underline flex items-center min-h-[44px]">
                   privacy@hotelopx.com
                 </a>
               </dd>

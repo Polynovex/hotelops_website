@@ -142,12 +142,9 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
               <div className="space-y-6">
                 {contactInfo.map((info, index) => {
                   const Icon = info.icon;
-                  return (
-                    <a
-                      key={index}
-                      href={info.link}
-                      className="flex items-start p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors"
-                    >
+
+                  const body = (
+                    <>
                       <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
                         <Icon className="w-6 h-6 text-blue-600" />
                       </div>
@@ -157,7 +154,32 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
                         </div>
                         <div className="text-slate-600">{info.value}</div>
                       </div>
+                    </>
+                  );
+
+                  /*
+                    The office entry has no destination — it was `href="#"`,
+                    which renders as a link, invites a click, and then does
+                    nothing (or jumps to the top of the page). Information that
+                    cannot be acted on should not look actionable.
+                  */
+                  const hasDestination = Boolean(info.link) && info.link !== '#';
+
+                  return hasDestination ? (
+                    <a
+                      key={index}
+                      href={info.link}
+                      className="flex items-start p-4 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors"
+                    >
+                      {body}
                     </a>
+                  ) : (
+                    <div
+                      key={index}
+                      className="flex items-start p-4 bg-slate-50 rounded-lg"
+                    >
+                      {body}
+                    </div>
                   );
                 })}
               </div>
@@ -212,6 +234,8 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
                     <input
                       type="text"
                       id="name"
+                      name="name"
+                      autoComplete="name"
                       required
                       value={formData.name}
                       onChange={(e) =>
@@ -232,6 +256,8 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
                     <input
                       type="email"
                       id="email"
+                      name="email"
+                      autoComplete="email"
                       required
                       value={formData.email}
                       onChange={(e) =>
@@ -252,6 +278,8 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
                     <input
                       type="tel"
                       id="phone"
+                      name="phone"
+                      autoComplete="tel"
                       value={formData.phone}
                       onChange={(e) =>
                         setFormData({ ...formData, phone: e.target.value })
@@ -271,6 +299,8 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
                     <input
                       type="text"
                       id="companyName"
+                      name="companyName"
+                      autoComplete="organization"
                       required
                       value={formData.companyName}
                       onChange={(e) =>
@@ -293,6 +323,7 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
                     </label>
                     <select
                       id="hotelSize"
+                      name="hotelSize"
                       value={formData.hotelSize}
                       onChange={(e) =>
                         setFormData({ ...formData, hotelSize: e.target.value })
@@ -317,6 +348,7 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
                     </label>
                     <textarea
                       id="message"
+                      name="message"
                       rows={4}
                       value={formData.message}
                       onChange={(e) =>
@@ -391,9 +423,25 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
                     className="w-full"
                     size="lg"
                     disabled={loading || !consentGiven}
+                    aria-describedby={!consentGiven ? "submit-blocked" : undefined}
                   >
                     {loading ? "Submitting..." : "Request Demo"}
                   </Button>
+
+                  {/*
+                    Without this the button is simply dead: consent is the only
+                    thing gating it, and someone who has filled the whole form
+                    has no way to tell that an unticked box further up is what
+                    is stopping them.
+                  */}
+                  {!consentGiven && !loading ? (
+                    <p
+                      id="submit-blocked"
+                      className="text-sm text-slate-500 text-center -mt-2"
+                    >
+                      Tick the consent box above to enable this button.
+                    </p>
+                  ) : null}
                 </form>
               </div>
             </div>
