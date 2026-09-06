@@ -1,0 +1,14 @@
+import { chromium } from 'playwright';
+import path from 'path';
+import fs from 'fs';
+const OUT = path.join(process.cwd(), 'e2e', 'screenshots');
+fs.mkdirSync(OUT, { recursive: true });
+const b = await chromium.launch({ channel: 'chrome', headless: true });
+const p = await (await b.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2 })).newPage();
+await p.goto('http://localhost:5175', { waitUntil: 'networkidle', timeout: 30000 });
+const heading = p.getByRole('heading', { name: /see hotelopx in action/i }).first();
+await heading.scrollIntoViewIfNeeded();
+await p.waitForTimeout(1500);
+await p.screenshot({ path: path.join(OUT, 'showcase.png') });
+console.log('captured showcase');
+await b.close();
