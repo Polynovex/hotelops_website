@@ -100,7 +100,7 @@ export function Footer({ onNavigate }: FooterProps) {
               </li>
               <li className="flex items-center">
                 <Mail className="w-4 h-4 mr-2 flex-shrink-0" />
-                <span>hello@hotelops.ng</span>
+                <span>info@hotelopx.com</span>
               </li>
             </ul>
           </div>

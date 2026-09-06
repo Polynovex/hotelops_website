@@ -5,19 +5,25 @@ import { LayoutDashboard, CalendarCheck, BedDouble, Receipt, Sparkles, BarChart3
  * Product showcase.
  *
  * The research names "you cannot see the product" as the biggest presentation
- * weakness. These are PLACEHOLDERS: each renders a labelled frame naming the
- * screen and the exact file to drop in. Replace the files in
- * `public/screenshots/` and the placeholders disappear automatically — no code
- * change needed. The frames are deliberately obvious so a missing capture can
- * never be mistaken for finished design.
+ * weakness, so these are real captures of the shipping application, taken from
+ * its bundled demo dataset — a fictional 50-room property. Never a live
+ * tenant: a marketing page must not carry a real hotel's guests or takings.
+ *
+ * The tabs follow the product's own structure. Each role signs in to a
+ * dashboard built for their job rather than to one shared screen, and showing
+ * five of them is the clearest way to make that concrete.
+ *
+ * Any capture that goes missing falls back to a labelled placeholder naming
+ * the file to drop into `public/screenshots/` — deliberately obvious, so a
+ * gap can never be mistaken for finished design.
  */
 const SCREENS = [
-  { key: "dashboard",    label: "Dashboard",      icon: LayoutDashboard, blurb: "Occupancy, ADR and RevPAR at a glance, with today's arrivals and revenue." },
-  { key: "reservations", label: "Reservations",   icon: CalendarCheck,   blurb: "Every booking in one place — create, modify, assign rooms and check guests in." },
-  { key: "rooms",        label: "Room status",    icon: BedDouble,       blurb: "Live room board: available, occupied, dirty, being cleaned, out of order." },
-  { key: "housekeeping", label: "Housekeeping",   icon: Sparkles,        blurb: "Assign rooms to staff, then approve or reject the work before the room is sellable." },
-  { key: "billing",      label: "Folios & billing", icon: Receipt,       blurb: "Room, restaurant and bar charges on one guest folio, settled in any payment method." },
-  { key: "reports",      label: "Reports",        icon: BarChart3,       blurb: "Daily sales, occupancy, revenue by department and full financial statements." },
+  { key: "dashboard",     label: "Owner",        icon: LayoutDashboard, blurb: "Occupancy, ADR and RevPAR at a glance, with today's arrivals, room status and revenue." },
+  { key: "front-desk",    label: "Front desk",   icon: CalendarCheck,   blurb: "Arrivals, departures, who is in house and which rooms are ready to sell — the desk's whole day on one screen." },
+  { key: "rooms",         label: "Room status",  icon: BedDouble,       blurb: "Live room board: available, occupied, dirty, being cleaned, out of order." },
+  { key: "housekeeping",  label: "Housekeeping", icon: Sparkles,        blurb: "Rooms waiting on service, what is in progress, and anything blocked on maintenance." },
+  { key: "point-of-sale", label: "Point of sale", icon: Receipt,        blurb: "Open orders, the kitchen queue and takings so far, tied to the operator's shift." },
+  { key: "finance",       label: "Finance",      icon: BarChart3,       blurb: "Revenue in, money out, and every expense waiting on a decision." },
 ];
 
 export function ProductShowcase() {
