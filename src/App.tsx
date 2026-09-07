@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Navigation } from "./components/Navigation";
 import { Footer } from "./components/Footer";
 import { WhatsAppButton } from "./components/WhatsAppButton";
+import { NigeriaBanner } from "./components/NigeriaBanner";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Products } from "./pages/Products";
@@ -9,25 +10,34 @@ import { Pricing } from "./pages/Pricing";
 import { Why } from "./pages/Why";
 import { Contact } from "./pages/Contact";
 import { Privacy } from "./pages/Privacy";
+import { Resources } from "./pages/Resources";
+import { applyPageSeo } from "./utils/seo";
+import {
+  initAnalytics,
+  installScrollTracking,
+  resetScrollTracking,
+  trackPageView,
+} from "./utils/analytics";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
 
+  // Loaded once, and only when a measurement ID is configured.
   useEffect(() => {
-    const updateTitle = () => {
-      const titles: Record<string, string> = {
-        home: "HotelOpX - Modern Hotel Management for Nigerian Hotels",
-        about: "About Us - HotelOpX",
-        products: "Products - HotelOpX PMS, POS & Finance",
-        pricing: "Pricing Plans - HotelOpX",
-        why: "Why HotelOpX - Built for Nigerian Hotels",
-        contact: "Request a Demo - HotelOpX",
-        privacy: "Privacy Notice - HotelOpX",
-      };
-      document.title = titles[currentPage] || "HotelOpX";
-    };
+    initAnalytics();
+    const teardown = installScrollTracking();
+    return teardown;
+  }, []);
 
-    updateTitle();
+  useEffect(() => {
+    /**
+     * Title, description, Open Graph and canonical all come from one table, so
+     * every page carries its own. Navigation is state-based, so nothing else
+     * updates the document head when the page changes.
+     */
+    applyPageSeo(currentPage);
+    resetScrollTracking();
+    trackPageView(currentPage);
 
     // Scroll to top when page changes
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -51,6 +61,8 @@ function App() {
         return <Why onNavigate={handleNavigate} />;
       case "contact":
         return <Contact onNavigate={handleNavigate} />;
+      case "resources":
+        return <Resources onNavigate={handleNavigate} />;
       case "privacy":
         return <Privacy />;
       default:
@@ -60,6 +72,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Above the navigation: who this is for, before anything else */}
+      <NigeriaBanner />
       <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
       <main>{renderPage()}</main>
       <Footer onNavigate={handleNavigate} />

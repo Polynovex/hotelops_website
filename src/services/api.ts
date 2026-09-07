@@ -35,6 +35,8 @@ interface DemoRequest {
   phone: string;
   companyName: string;
   hotelSize: string;
+  /** When the visitor would like the walkthrough. Optional on the form. */
+  preferredDateTime?: string;
   message: string;
   /** NDPR: explicit, unbundled consent captured at submission. */
   consentGiven: boolean;
@@ -73,6 +75,25 @@ class ApiService {
           },
           body: JSON.stringify(data),
         });
+
+        /**
+         * A rate limit is not a fault, and should not read like one.
+         *
+         * The demo form allows a handful of submissions per window. Someone who
+         * mistypes an address and resubmits can reach that honestly, and
+         * telling them "something went wrong" invites them to keep trying
+         * against a limit that will keep refusing. Naming the cause, and
+         * offering WhatsApp instead, turns a dead end into the channel this
+         * audience prefers anyway.
+         */
+        if (response.status === 429) {
+          return {
+            success: false,
+            error:
+              'You have sent a few requests already. Please wait a minute and try again, ' +
+              'or message us on WhatsApp and we will pick it up straight away.',
+          };
+        }
 
         if (!response.ok) {
           throw new Error(`Backend error: ${response.status}`);
@@ -169,6 +190,37 @@ class ApiService {
   }
 
   /**
+   * Headline figures for the stats strip. Returns an empty list on any
+   * failure, so the page falls back to its bundled values rather than showing
+   * a row of blanks.
+   */
+  async getPlatformMetrics(): Promise<PlatformMetricRecord[]> {
+    try {
+      const response = await fetch(`${this.baseURL}/public/metrics`);
+      if (!response.ok) return [];
+      const data = await response.json();
+      return Array.isArray(data) ? data : [];
+    } catch {
+      return [];
+    }
+  }
+
+  /**
+   * Published blog posts. Returns an empty list on any failure, so the
+   * resources page falls back to whatever is bundled rather than breaking.
+   */
+  async getBlogPosts(): Promise<BlogPostRecord[]> {
+    try {
+      const response = await fetch(`${this.baseURL}/public/blog`);
+      if (!response.ok) return [];
+      const data = await response.json();
+      return Array.isArray(data) ? data : [];
+    } catch {
+      return [];
+    }
+  }
+
+  /**
    * Published testimonials for the marketing site. Returns an empty list on
    * any failure so a marketing section can never break the page.
    */
@@ -182,6 +234,29 @@ class ApiService {
       return [];
     }
   }
+}
+
+export interface PlatformMetricRecord {
+  key: string;
+  label: string;
+  value: string;
+}
+
+/** One block of an article body, as the API stores it. */
+export type BlogBlock =
+  | { type: 'paragraph'; text: string }
+  | { type: 'heading'; text: string }
+  | { type: 'callout'; text: string }
+  | { type: 'list'; items: string[] };
+
+export interface BlogPostRecord {
+  slug: string;
+  title: string;
+  summary: string;
+  body: BlogBlock[];
+  category: string;
+  readMinutes: number;
+  publishedAt: string | null;
 }
 
 export interface TestimonialRecord {

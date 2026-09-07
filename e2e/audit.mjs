@@ -38,6 +38,7 @@ const PAGES = [
   { key: 'why', label: 'Why HotelOpX' },
   { key: 'contact', label: 'Contact' },
   // Reached from the footer rather than the header.
+  { key: 'resources', label: 'Resources' },
   { key: 'privacy', label: 'Privacy Policy' }
 ];
 
