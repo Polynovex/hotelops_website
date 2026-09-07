@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { FileCheck, Headphones, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 
 interface FooterProps {
   onNavigate: (page: string) => void;
@@ -60,6 +60,21 @@ export function Footer({ onNavigate }: FooterProps) {
               </li>
               <li>
                 {/*
+                  Reached from the footer rather than the main navigation.
+                  These guides are for someone researching a problem in search,
+                  not for someone already weighing a purchase — putting them in
+                  the top nav would add a step to the buying path without
+                  adding any persuasion to it.
+                */}
+                <button
+                  onClick={() => onNavigate("resources")}
+                  className="block py-1.5 hover:text-white transition-colors"
+                >
+                  Resources
+                </button>
+              </li>
+              <li>
+                {/*
                   The privacy policy existed as a page but nothing linked to it,
                   so it was unreachable. The site collects personal data through
                   the contact form, and the NDPA requires the policy — and the
@@ -114,6 +129,52 @@ export function Footer({ onNavigate }: FooterProps) {
               Polynovex Limited
             </span>
           </p>
+        </div>
+
+        {/*
+          Trust markers at the point of exit.
+          Someone who has read to the bottom of the footer is deciding whether
+          to enquire, and these are the three things that most often stop them:
+          is our data safe, is anyone actually reachable, and is this legal
+          here.
+        */}
+        <div className="mt-8 pt-8 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="flex items-start gap-3">
+            <ShieldCheck
+              className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5"
+              aria-hidden="true"
+            />
+            <p className="text-sm text-slate-400 leading-relaxed">
+              <span className="block font-semibold text-slate-200 mb-0.5">
+                Security
+              </span>
+              Your data is secure with encryption and automatic backups.
+            </p>
+          </div>
+          <div className="flex items-start gap-3">
+            <Headphones
+              className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5"
+              aria-hidden="true"
+            />
+            <p className="text-sm text-slate-400 leading-relaxed">
+              <span className="block font-semibold text-slate-200 mb-0.5">
+                Support
+              </span>
+              Nigerian support on WhatsApp, phone and email.
+            </p>
+          </div>
+          <div className="flex items-start gap-3">
+            <FileCheck
+              className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5"
+              aria-hidden="true"
+            />
+            <p className="text-sm text-slate-400 leading-relaxed">
+              <span className="block font-semibold text-slate-200 mb-0.5">
+                Compliance
+              </span>
+              NDPR compliant — your guests' data is protected.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

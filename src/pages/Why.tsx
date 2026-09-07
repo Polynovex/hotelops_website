@@ -105,8 +105,11 @@ export function Why({ onNavigate }: WhyProps) {
       better: true,
     },
     {
+      // Matches the Professional tier on the Pricing page (31–100 rooms).
+      // These previously disagreed — ₦175,000 here against ₦60,000 there —
+      // and a prospect who opens both tabs catches it.
       feature: "Monthly Cost (Medium Hotel)",
-      hotelops: "₦175,000",
+      hotelops: "₦60,000",
       traditional: "₦500,000+",
       better: true,
     },
@@ -141,9 +144,18 @@ export function Why({ onNavigate }: WhyProps) {
       better: true,
     },
     {
-      feature: "Data Location",
-      hotelops: "Nigeria",
-      traditional: "Foreign servers",
+      /**
+       * This row previously claimed the data sits in Nigeria. It does not:
+       * the platform runs on AWS us-east-2, which the FAQ and the Privacy
+       * Notice on this same site both state plainly. Data residency is exactly
+       * the sort of claim a compliance-minded buyer relies on and can check,
+       * so it has been replaced with the comparison that is both true and
+       * actually meaningful — a foreign PMS typically has no NDPR posture at
+       * all, whereas this one does.
+       */
+      feature: "NDPR Compliance",
+      hotelops: "Built in, with signed safeguards",
+      traditional: "Rarely addressed",
       better: true,
     },
   ];

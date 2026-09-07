@@ -2,6 +2,7 @@ import { useState, FormEvent } from "react";
 import { Mail, Phone, MapPin, MessageSquare, CheckCircle } from "lucide-react";
 import { Button } from "../components/Button";
 import { apiService } from "../services/api";
+import { trackEvent } from "../utils/analytics";
 
 const CONSENT_WORDING =
   "I agree to HotelOpX processing my details to respond to this enquiry, as described in the Privacy Notice.";
@@ -13,6 +14,7 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
     phone: "",
     companyName: "",
     hotelSize: "",
+    preferredDateTime: "",
     message: "",
   });
   // NDPR: consent must be explicit and unticked by default. Marketing is a
@@ -41,6 +43,7 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
         phone: formData.phone,
         companyName: formData.companyName,
         hotelSize: formData.hotelSize,
+        preferredDateTime: formData.preferredDateTime || undefined,
         message: formData.message,
         consentGiven,
         // Send the exact wording shown, so the stored record reflects what
@@ -53,6 +56,12 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
         throw new Error(response.error || "Failed to submit demo request");
       }
 
+      // Fired here, after the server accepted it — reporting on click would
+      // count submissions that never arrived.
+      trackEvent("demo_request_submitted", {
+        hotel_size: formData.hotelSize || "unspecified",
+        has_preferred_time: Boolean(formData.preferredDateTime),
+      });
       setSuccess(true);
       setFormData({
         name: "",
@@ -60,11 +69,23 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
         phone: "",
         companyName: "",
         hotelSize: "",
+        preferredDateTime: "",
         message: "",
       });
     } catch (err) {
+      /**
+       * Prefer the reason the service gave.
+       *
+       * It distinguishes a rate limit from an outage from a rejected payload,
+       * and this previously discarded all of that in favour of one generic
+       * line — so a visitor who could have waited a minute and succeeded was
+       * told only that something went wrong.
+       */
+      const specific = err instanceof Error ? err.message.trim() : "";
       setError(
-        "Something went wrong. Please try again or contact us via WhatsApp.",
+        specific && specific !== "Failed to submit demo request"
+          ? specific
+          : "Something went wrong. Please try again or contact us via WhatsApp.",
       );
       console.error(err);
     } finally {
@@ -210,7 +231,7 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
                         Demo Request Submitted!
                       </div>
                       <div className="text-sm text-green-800">
-                        Thank you for your interest. We'll contact you within 24
+                        Thank you! A HotelOpX specialist will contact you within 24
                         hours.
                       </div>
                     </div>
@@ -319,24 +340,54 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
                       htmlFor="hotelSize"
                       className="block text-sm font-medium text-slate-700 mb-2"
                     >
-                      Hotel Size
+                      Number of Rooms <span className="text-red-500">*</span>
                     </label>
                     <select
                       id="hotelSize"
                       name="hotelSize"
+                      required
                       value={formData.hotelSize}
                       onChange={(e) =>
                         setFormData({ ...formData, hotelSize: e.target.value })
                       }
                       className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                     >
-                      <option value="">Select hotel size</option>
-                      <option value="small">Small (10-30 rooms)</option>
-                      <option value="medium">Medium (30-100 rooms)</option>
-                      <option value="enterprise">
-                        Enterprise (100+ rooms / 5-star)
-                      </option>
+                      <option value="">Select number of rooms</option>
+                      <option value="1-10">1–10 rooms</option>
+                      <option value="11-30">11–30 rooms</option>
+                      <option value="31-100">31–100 rooms</option>
+                      <option value="100+">100+ rooms</option>
                     </select>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="preferredDateTime"
+                      className="block text-sm font-medium text-slate-700 mb-2"
+                    >
+                      Preferred date &amp; time{" "}
+                      <span className="text-slate-400 font-normal">(optional)</span>
+                    </label>
+                    <input
+                      type="datetime-local"
+                      id="preferredDateTime"
+                      name="preferredDateTime"
+                      autoComplete="off"
+                      value={formData.preferredDateTime}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          preferredDateTime: e.target.value,
+                        })
+                      }
+                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                    />
+                    {/* Optional on purpose: an extra required field on a lead
+                        form costs more enquiries than the scheduling saves. */}
+                    <p className="mt-1.5 text-xs text-slate-500">
+                      When suits you for a 30-minute walkthrough? We will confirm
+                      by WhatsApp or email.
+                    </p>
                   </div>
 
                   <div>

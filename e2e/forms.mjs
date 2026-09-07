@@ -57,6 +57,7 @@ const CASES = [
       email: 'ada@example.com',
       phone: '08031234567',
       companyName: 'Test Hotel',
+      rooms: '11-30',
       message: '<script>alert(1)</script>'
     },
     // Not expected to be blocked — the point is that it must never execute.
@@ -70,6 +71,7 @@ const CASES = [
       email: 'ada.chike@example.com',
       phone: '08031234567',
       companyName: 'Test Hotel Lagos',
+      rooms: '31-100',
       message: 'Please get in touch about a demo.'
     },
     expectBlocked: false
@@ -98,6 +100,18 @@ const fillForm = async (page, values) => {
         await el.fill(values[field] ?? '');
         break;
       }
+    }
+  }
+
+  /**
+   * Room count is a required <select>, so a case meant to be accepted has to
+   * choose one — otherwise native validation blocks the submit and a working
+   * form reads as broken.
+   */
+  if (values.rooms) {
+    const rooms = page.locator('select#hotelSize');
+    if (await rooms.isVisible().catch(() => false)) {
+      await rooms.selectOption(values.rooms).catch(() => null);
     }
   }
 };

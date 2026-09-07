@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Building2,
@@ -11,12 +12,17 @@ import {
   Zap,
 } from "lucide-react";
 import { Button } from "../components/Button";
+import { trackEvent } from "../utils/analytics";
+import { apiService, type PlatformMetricRecord } from "../services/api";
 import { WhoItsFor } from "../components/WhoItsFor";
 import { OnboardingSteps } from "../components/OnboardingSteps";
 import { HomeFaq } from "../components/HomeFaq";
 import { Testimonials } from "../components/Testimonials";
 import { ProductShowcase } from "../components/ProductShowcase";
 import { ComingSoon } from "../components/ComingSoon";
+import { NigerianAdvantage } from "../components/NigerianAdvantage";
+import { ProblemSolution } from "../components/ProblemSolution";
+import { SecurityTrust } from "../components/SecurityTrust";
 
 interface HomeProps {
   onNavigate: (page: string) => void;
@@ -68,12 +74,56 @@ export function Home({ onNavigate }: HomeProps) {
     },
   ];
 
-  const stats = [
-    { value: "500+", label: "Hotels Served", icon: Building2 },
-    { value: "99.9%", label: "Uptime", icon: TrendingUp },
-    { value: "50+", label: "Cities", icon: Globe },
-    { value: "24/7", label: "Support", icon: Zap },
+  /**
+   * Headline figures, loaded from the API so the super admin can keep them
+   * true without a deploy.
+   *
+   * The bundled values below are only a fallback for an unreachable API. They
+   * are deliberately conservative: the previous literals claimed several
+   * hundred hotels and fifty cities, which the platform could not evidence,
+   * and a marketing figure nobody can stand behind is worse than a small one.
+   */
+  const FALLBACK_STATS = [
+    { key: "hotels_served", value: "7", label: "Hotels Served", icon: Building2 },
+    { key: "uptime", value: "99.9%", label: "Uptime", icon: TrendingUp },
+    { key: "cities", value: "3", label: "Cities", icon: Globe },
+    { key: "support", value: "24/7", label: "Support", icon: Zap },
   ];
+
+  const ICONS: Record<string, typeof Building2> = {
+    hotels_served: Building2,
+    uptime: TrendingUp,
+    cities: Globe,
+    support: Zap,
+  };
+
+  const [liveMetrics, setLiveMetrics] = useState<PlatformMetricRecord[] | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    apiService
+      .getPlatformMetrics()
+      .then((rows) => {
+        if (active) setLiveMetrics(rows);
+      })
+      .catch(() => {
+        if (active) setLiveMetrics([]);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const stats =
+    liveMetrics && liveMetrics.length > 0
+      ? liveMetrics.map((metric) => ({
+          value: metric.value,
+          label: metric.label,
+          // Falls back to a neutral mark for a metric the super admin added
+          // after this page was written.
+          icon: ICONS[metric.key] ?? TrendingUp,
+        }))
+      : FALLBACK_STATS;
 
   const benefits = [
     {
@@ -101,7 +151,7 @@ export function Home({ onNavigate }: HomeProps) {
   return (
     <div className="bg-white overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+      <section className="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
@@ -110,56 +160,101 @@ export function Home({ onNavigate }: HomeProps) {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
           <div className="text-center max-w-4xl mx-auto">
             {/* Badge */}
-            <div className="inline-block mb-6 px-4 py-2 bg-blue-500/20 border border-blue-400/50 text-blue-200 rounded-full text-sm font-medium backdrop-blur-sm hover:bg-blue-500/30 transition-all duration-300 animate-fade-in">
-              By Polynovex Limited • Trusted by Nigerian Hotels
+            <div className="inline-block mb-4 sm:mb-6 px-4 py-2 bg-blue-500/20 border border-blue-400/50 text-blue-200 rounded-full text-sm font-medium backdrop-blur-sm hover:bg-blue-500/30 transition-all duration-300 animate-fade-in">
+              By Polynovex Limited • Hotel software built in Nigeria
             </div>
 
-            {/* Main Heading */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-fade-in animation-delay-200">
-              One Platform for
-              <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
-                All Your Hotel Operations
+            {/*
+              The headline names the job, the product and the modules, because
+              a hotel owner arriving from a search for "hotel management
+              software Nigeria" needs to know within one line whether this is
+              the right kind of thing. The scale steps down on small screens so
+              the whole proposition still fits above the fold on a phone, where
+              most of this audience is reading.
+            */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight animate-fade-in animation-delay-200">
+              Run Your Hotel Smarter With HotelOpX
+              <span className="block mt-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-300 bg-clip-text text-transparent">
+                One Powerful PMS for Bookings, Rooms, Payments, Housekeeping and
+                Hotel Operations
               </span>
             </h1>
 
             {/* Subheading */}
-            <p className="text-lg md:text-xl text-blue-100 mb-8 leading-relaxed max-w-2xl mx-auto animate-fade-in animation-delay-300">
-              Replace fragmented systems with HotelOpX - the all-in-one PMS,
-              POS, and Finance platform designed specifically for Nigerian
-              hotels. Works offline, accepts local payments, and delivers
-              enterprise features at affordable prices.
+            <p className="text-base sm:text-lg md:text-xl text-blue-100 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto animate-fade-in animation-delay-300">
+              Manage your entire hotel from one platform. Stop losing bookings in
+              WhatsApp and notebooks. Get real-time visibility into your
+              operations.
             </p>
 
-            {/* Credits */}
-            <p className="text-sm text-blue-200 mb-10 animate-fade-in animation-delay-400">
-              <span className="font-semibold">HotelOpX</span> is a product by{" "}
-              <span className="font-semibold bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">
-                Polynovex Limited
-              </span>
-            </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in animation-delay-500">
+            {/*
+              Three entry points for three states of readiness: buy now, see it
+              first, understand it first. Each reports which one was taken, so
+              the split between them can actually be read later.
+            */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-fade-in animation-delay-500">
               <Button
                 size="lg"
-                onClick={() => onNavigate("contact")}
-                className="shadow-2xl bg-blue-600 hover:bg-blue-700 text-white transform hover:scale-105 transition-all duration-300"
+                onClick={() => {
+                  trackEvent("cta_clicked", { cta: "start_free_trial", location: "hero" });
+                  trackEvent("free_trial_started", { location: "hero" });
+                  onNavigate("contact");
+                }}
+                className="shadow-2xl bg-blue-600 hover:bg-blue-700 text-white transform hover:scale-105 transition-all duration-300 min-h-[52px]"
               >
-                Request a Demo
+                Start Free Trial
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => onNavigate("pricing")}
-                className="border-2 border-blue-400 text-blue-100 hover:bg-blue-400/10 backdrop-blur-sm"
+                onClick={() => {
+                  trackEvent("cta_clicked", { cta: "book_a_demo", location: "hero" });
+                  onNavigate("contact");
+                }}
+                className="border-2 border-blue-400 text-blue-100 hover:bg-blue-400/10 backdrop-blur-sm min-h-[52px]"
               >
-                View Pricing
+                Book a Demo
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => {
+                  trackEvent("cta_clicked", { cta: "see_how_it_works", location: "hero" });
+                  document
+                    .getElementById("how-it-works")
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="border-2 border-white/30 text-blue-100 hover:bg-white/10 backdrop-blur-sm min-h-[52px]"
+              >
+                See How It Works
               </Button>
             </div>
+
+            {/*
+              Trust bar. The four things a Nigerian hotel owner weighs before
+              reading any further: is it for us, what does it cost to start,
+              can we try it, and is anyone here if it breaks.
+            */}
+            <ul className="mt-6 sm:mt-10 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm text-blue-100 animate-fade-in animation-delay-500">
+              {[
+                { badge: "🇳🇬", label: "Built for Nigerian hotels" },
+                { badge: "✓", label: "No setup fee" },
+                { badge: "✓", label: "30-day free trial" },
+                { badge: "✓", label: "Local support" },
+              ].map((item) => (
+                <li key={item.label} className="flex items-center gap-2">
+                  <span aria-hidden="true" className="text-blue-300">
+                    {item.badge}
+                  </span>
+                  <span>{item.label}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
@@ -185,6 +280,15 @@ export function Home({ onNavigate }: HomeProps) {
           </div>
         </div> */}
       </section>
+
+      {/*
+        Positioning before proof: a visitor deciding between HotelOpX and an
+        international PMS needs to see the local fit first, then recognise
+        their own problem, before any list of features means anything.
+      */}
+      <NigerianAdvantage />
+
+      <ProblemSolution onNavigate={onNavigate} />
 
       {/* Stats Section */}
       <section className="py-20 bg-gradient-to-b from-white to-slate-50 border-b border-slate-200">
@@ -273,7 +377,9 @@ export function Home({ onNavigate }: HomeProps) {
       <WhoItsFor onNavigate={onNavigate} />
 
       {/* Answers "will my staff be able to use it?" before they have to ask */}
-      <OnboardingSteps />
+      <div id="how-it-works">
+        <OnboardingSteps />
+      </div>
 
       {/* Clears objections before the visitor has to contact anyone */}
       {/* Social proof — renders nothing until real testimonials are published */}
@@ -281,6 +387,9 @@ export function Home({ onNavigate }: HomeProps) {
 
       {/* Channel manager: what ships today vs what awaits OTA certification */}
       <ComingSoon />
+
+      {/* Guest data and takings are the objection that stops a sale late */}
+      <SecurityTrust />
 
       <HomeFaq />
 
