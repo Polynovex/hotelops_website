@@ -7,6 +7,7 @@ import {
   UserCog,
   Wallet,
 } from "lucide-react";
+import { SwipeDeck } from "./SwipeDeck";
 
 /**
  * What happens to a hotel's data, and to its guests'.
@@ -84,7 +85,10 @@ export function SecurityTrust() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <SwipeDeck
+          label="How your data is protected"
+          desktopClass="md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5"
+        >
           {MEASURES.map((measure) => (
             <div
               key={measure.title}
@@ -101,7 +105,7 @@ export function SecurityTrust() {
               </p>
             </div>
           ))}
-        </div>
+        </SwipeDeck>
       </div>
     </section>
   );

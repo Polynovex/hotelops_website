@@ -1,6 +1,7 @@
 import { ArrowRight, BarChart3, Smartphone, Users, Wallet } from "lucide-react";
 import { Button } from "./Button";
 import { trackEvent } from "../utils/analytics";
+import { SwipeDeck } from "./SwipeDeck";
 
 /**
  * Names the problem before offering the product.
@@ -62,7 +63,10 @@ export function ProblemSolution({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+        <SwipeDeck
+          label="Problems HotelOpX solves"
+          desktopClass="md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 md:mb-12"
+        >
           {PROBLEMS.map((problem) => (
             <div
               key={problem.title}
@@ -79,7 +83,7 @@ export function ProblemSolution({
               </p>
             </div>
           ))}
-        </div>
+        </SwipeDeck>
 
         <div className="rounded-2xl bg-gradient-to-br from-slate-900 to-blue-900 px-6 py-10 sm:px-10 text-center">
           <p className="text-xl sm:text-2xl font-bold text-white mb-3 text-balance">

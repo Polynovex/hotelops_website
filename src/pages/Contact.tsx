@@ -123,7 +123,7 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
   return (
     <div className="bg-white overflow-hidden">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
+      <section className="relative py-12 md:py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0">
           <div className="absolute top-20 -right-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -147,7 +147,7 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
@@ -500,7 +500,7 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
         </div>
       </section>
 
-      <section className="py-20 bg-slate-50">
+      <section className="py-12 md:py-20 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">
             What Happens Next?

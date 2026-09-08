@@ -8,6 +8,7 @@ import {
   WifiOff,
   Headphones,
 } from "lucide-react";
+import { SwipeDeck } from "./SwipeDeck";
 
 /**
  * What makes this software fit a Nigerian hotel rather than a generic one.
@@ -92,7 +93,10 @@ export function NigerianAdvantage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <SwipeDeck
+          label="Built for how Nigerian hotels operate"
+          desktopClass="md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5"
+        >
           {ADVANTAGES.map((item) => (
             <div
               key={item.title}
@@ -109,7 +113,7 @@ export function NigerianAdvantage() {
               </p>
             </div>
           ))}
-        </div>
+        </SwipeDeck>
       </div>
     </section>
   );

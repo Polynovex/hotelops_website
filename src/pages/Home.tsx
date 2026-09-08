@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Building2,
@@ -13,7 +12,6 @@ import {
 } from "lucide-react";
 import { Button } from "../components/Button";
 import { trackEvent } from "../utils/analytics";
-import { apiService, type PlatformMetricRecord } from "../services/api";
 import { WhoItsFor } from "../components/WhoItsFor";
 import { OnboardingSteps } from "../components/OnboardingSteps";
 import { HomeFaq } from "../components/HomeFaq";
@@ -23,6 +21,8 @@ import { ComingSoon } from "../components/ComingSoon";
 import { NigerianAdvantage } from "../components/NigerianAdvantage";
 import { ProblemSolution } from "../components/ProblemSolution";
 import { SecurityTrust } from "../components/SecurityTrust";
+import { SwipeDeck } from "../components/SwipeDeck";
+import { usePlatformMetrics } from "../hooks/usePlatformMetrics";
 
 interface HomeProps {
   onNavigate: (page: string) => void;
@@ -83,13 +83,6 @@ export function Home({ onNavigate }: HomeProps) {
    * hundred hotels and fifty cities, which the platform could not evidence,
    * and a marketing figure nobody can stand behind is worse than a small one.
    */
-  const FALLBACK_STATS = [
-    { key: "hotels_served", value: "7", label: "Hotels Served", icon: Building2 },
-    { key: "uptime", value: "99.9%", label: "Uptime", icon: TrendingUp },
-    { key: "cities", value: "3", label: "Cities", icon: Globe },
-    { key: "support", value: "24/7", label: "Support", icon: Zap },
-  ];
-
   const ICONS: Record<string, typeof Building2> = {
     hotels_served: Building2,
     uptime: TrendingUp,
@@ -97,33 +90,17 @@ export function Home({ onNavigate }: HomeProps) {
     support: Zap,
   };
 
-  const [liveMetrics, setLiveMetrics] = useState<PlatformMetricRecord[] | null>(null);
+  // Shared with the About page: one fetch, one set of fallbacks, one place to
+  // correct a figure.
+  const { all: liveStats } = usePlatformMetrics();
 
-  useEffect(() => {
-    let active = true;
-    apiService
-      .getPlatformMetrics()
-      .then((rows) => {
-        if (active) setLiveMetrics(rows);
-      })
-      .catch(() => {
-        if (active) setLiveMetrics([]);
-      });
-    return () => {
-      active = false;
-    };
-  }, []);
-
-  const stats =
-    liveMetrics && liveMetrics.length > 0
-      ? liveMetrics.map((metric) => ({
-          value: metric.value,
-          label: metric.label,
-          // Falls back to a neutral mark for a metric the super admin added
-          // after this page was written.
-          icon: ICONS[metric.key] ?? TrendingUp,
-        }))
-      : FALLBACK_STATS;
+  const stats = liveStats.map((metric) => ({
+    value: metric.value,
+    label: metric.label,
+    // A neutral mark for any metric the super admin adds after this page was
+    // written.
+    icon: ICONS[metric.key] ?? TrendingUp,
+  }));
 
   const benefits = [
     {
@@ -291,7 +268,7 @@ export function Home({ onNavigate }: HomeProps) {
       <ProblemSolution onNavigate={onNavigate} />
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-slate-50 border-b border-slate-200">
+      <section className="py-12 md:py-20 bg-gradient-to-b from-white to-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => {
@@ -319,7 +296,7 @@ export function Home({ onNavigate }: HomeProps) {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
@@ -331,7 +308,10 @@ export function Home({ onNavigate }: HomeProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <SwipeDeck
+          label="Everything you need in one system"
+          desktopClass="md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8"
+        >
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
@@ -367,7 +347,7 @@ export function Home({ onNavigate }: HomeProps) {
                 </div>
               );
             })}
-          </div>
+          </SwipeDeck>
         </div>
       </section>
 
@@ -394,7 +374,7 @@ export function Home({ onNavigate }: HomeProps) {
       <HomeFaq />
 
       {/* Benefits Section */}
-      <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
+      <section className="py-12 md:py-20 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
@@ -406,13 +386,16 @@ export function Home({ onNavigate }: HomeProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+            <SwipeDeck
+              label="Business impact of HotelOpX"
+              desktopClass="md:grid-cols-1 md:gap-6"
+            >
               {benefits.map((benefit, index) => {
                 const Icon = benefit.icon;
                 return (
                   <div
                     key={index}
-                    className="flex gap-4 animate-fade-in"
+                    className="flex gap-4 animate-fade-in bg-white md:bg-transparent rounded-2xl md:rounded-none border border-slate-200 md:border-0 p-5 md:p-0 shadow-sm md:shadow-none"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -427,10 +410,14 @@ export function Home({ onNavigate }: HomeProps) {
                   </div>
                 );
               })}
-            </div>
+            </SwipeDeck>
 
-            {/* Illustration Space */}
-            <div className="relative h-96 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl border-2 border-slate-200 flex items-center justify-center overflow-hidden group">
+            {/*
+              Decorative only — an icon and a caption. Worth 384px of a laptop
+              screen, not of a phone, where it sat between the benefits and the
+              call to action saying nothing.
+            */}
+            <div className="relative h-96 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl border-2 border-slate-200 hidden md:flex items-center justify-center overflow-hidden group">
               {/* Animated Background Pattern */}
               <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-blue-400 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
@@ -449,7 +436,7 @@ export function Home({ onNavigate }: HomeProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-20 bg-gradient-to-br from-blue-600 to-blue-800 overflow-hidden">
+      <section className="relative py-12 md:py-20 bg-gradient-to-br from-blue-600 to-blue-800 overflow-hidden">
         {/* Background Animation */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>

@@ -1,6 +1,13 @@
 import { Target, Eye, Shield, Clock, Users, Award } from "lucide-react";
+import { SwipeDeck } from "../components/SwipeDeck";
+import { usePlatformMetrics } from "../hooks/usePlatformMetrics";
 
 export function About() {
+  // Same source as the home page's stats strip.
+  const { metric } = usePlatformMetrics();
+  const hotelsServed = metric("hotels_served");
+  const cities = metric("cities");
+
   const values = [
     {
       icon: Shield,
@@ -31,7 +38,7 @@ export function About() {
   return (
     <div className="bg-white overflow-hidden">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
+      <section className="relative py-12 md:py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0">
           <div className="absolute top-20 right-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -64,7 +71,7 @@ export function About() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -107,7 +114,7 @@ export function About() {
         </div>
       </section>
 
-      <section className="py-20 bg-slate-50">
+      <section className="py-12 md:py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
@@ -119,7 +126,10 @@ export function About() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <SwipeDeck
+          label="What we believe"
+          desktopClass="md:grid-cols-2 gap-4 md:gap-8"
+        >
             {values.map((value, index) => {
               const Icon = value.icon;
               return (
@@ -134,11 +144,11 @@ export function About() {
                 </div>
               );
             })}
-          </div>
+          </SwipeDeck>
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -153,25 +163,45 @@ export function About() {
               Polynovex Limited is committed to delivering world-class
               hospitality solutions for Africa.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            {/*
+              The two platform figures come from the super admin's metrics
+              editor, the same source the home page reads.
+
+              They were hardcoded as "500+" and "50+" — numbers the platform
+              could not evidence, and which stayed put when the home page was
+              corrected to the real ones. A figure worth publishing is worth
+              publishing from one place.
+
+              The founding year stays written down: it is a fact about the
+              company, not a platform metric, and nothing tracks it.
+            */}
+            <div className="grid grid-cols-3 gap-3 md:gap-8 mt-12">
               <div>
-                <div className="text-4xl font-bold text-white mb-2">2019</div>
-                <div className="text-blue-100">Polynovex Founded in Lagos</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">2019</div>
+                <div className="text-blue-100 text-sm md:text-base">
+                  Polynovex Founded in Lagos
+                </div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-white mb-2">500+</div>
-                <div className="text-blue-100">Hotels Using HotelOpX</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                  {hotelsServed.value}
+                </div>
+                <div className="text-blue-100 text-sm md:text-base">
+                  Hotels Using HotelOpX
+                </div>
               </div>
               <div>
-                <div className="text-4xl font-bold text-white mb-2">50+</div>
-                <div className="text-blue-100">Cities Covered</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                  {cities.value}
+                </div>
+                <div className="text-blue-100 text-sm md:text-base">Cities Covered</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-slate-50">
+      <section className="py-12 md:py-20 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-slate-900 mb-2">
             Trust and Compliance
@@ -179,7 +209,7 @@ export function About() {
           <p className="text-lg font-semibold text-slate-700 mb-6">
             By Polynovex Limited
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          <div className="grid grid-cols-3 gap-3 md:gap-8 mt-12">
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="text-2xl font-bold text-blue-600 mb-2">
                 AWS
