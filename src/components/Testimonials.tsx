@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Star, Quote } from "lucide-react";
 import { apiService, type TestimonialRecord as Testimonial } from "../services/api";
+import { SwipeDeck } from "./SwipeDeck";
 
 /**
  * Testimonials pulled live from the API and managed in the super-admin
@@ -37,7 +38,7 @@ export function Testimonials() {
   }
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
@@ -48,7 +49,10 @@ export function Testimonials() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <SwipeDeck
+          label="What hotel owners say"
+          desktopClass="md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+        >
           {items.map((t) => (
             <figure
               key={t.id}
@@ -99,7 +103,7 @@ export function Testimonials() {
               </figcaption>
             </figure>
           ))}
-        </div>
+        </SwipeDeck>
       </div>
     </section>
   );

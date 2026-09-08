@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { Button } from "../components/Button";
 import { apiService, type TestimonialRecord } from "../services/api";
+import { SwipeDeck } from "../components/SwipeDeck";
 
 interface WhyProps {
   onNavigate: (page: string) => void;
@@ -164,7 +165,7 @@ export function Why({ onNavigate }: WhyProps) {
   return (
     <div className="bg-white overflow-hidden">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
+      <section className="relative py-12 md:py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0">
           <div className="absolute top-20 right-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -190,9 +191,12 @@ export function Why({ onNavigate }: WhyProps) {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <SwipeDeck
+          label="Why hotels choose HotelOpX"
+          desktopClass="md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8"
+        >
             {reasons.map((reason, index) => {
               const Icon = reason.icon;
               return (
@@ -207,11 +211,11 @@ export function Why({ onNavigate }: WhyProps) {
                 </div>
               );
             })}
-          </div>
+          </SwipeDeck>
         </div>
       </section>
 
-      <section className="py-20 bg-slate-50">
+      <section className="py-12 md:py-20 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
@@ -223,7 +227,48 @@ export function Why({ onNavigate }: WhyProps) {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+          {/*
+            Phones get one card per row of the table.
+
+            The table itself scrolled sideways here, which meant reading a
+            single comparison — the feature, our figure, theirs — took a
+            horizontal drag and a lost sense of which column was which. A card
+            carries the whole row at once, and the deck moves through them.
+          */}
+          <div className="md:hidden">
+            <SwipeDeck label="HotelOpX compared with traditional systems" desktopClass="">
+              {comparison.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl shadow-lg p-6 flex flex-col"
+                >
+                  <p className="font-bold text-slate-900 mb-4">{item.feature}</p>
+
+                  <div className="rounded-xl bg-green-50 border border-green-100 p-4 mb-3">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-green-700 mb-1">
+                      HotelOpX
+                    </p>
+                    <div className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-slate-800 font-semibold">{item.hotelops}</span>
+                    </div>
+                  </div>
+
+                  <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">
+                      Traditional systems
+                    </p>
+                    <div className="flex items-start">
+                      <XCircle className="w-5 h-5 text-red-400 mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-slate-600">{item.traditional}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </SwipeDeck>
+          </div>
+
+          <div className="hidden md:block bg-white rounded-2xl shadow-lg overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-slate-900 text-white">
@@ -277,7 +322,7 @@ export function Why({ onNavigate }: WhyProps) {
           heading with no feedback beneath it undermines trust more than
           leaving the section out. */}
       {testimonials.length > 0 && (
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
@@ -288,7 +333,10 @@ export function Why({ onNavigate }: WhyProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <SwipeDeck
+          label="What you get with HotelOpX"
+          desktopClass="md:grid-cols-3 gap-4 md:gap-8"
+        >
             {testimonials.map((testimonial) => (
               <div key={testimonial.id} className="bg-slate-50 p-8 rounded-xl">
                 <div className="mb-6">
@@ -325,12 +373,12 @@ export function Why({ onNavigate }: WhyProps) {
                 </div>
               </div>
             ))}
-          </div>
+          </SwipeDeck>
         </div>
       </section>
       )}
 
-      <section className="py-20 bg-slate-50">
+      <section className="py-12 md:py-20 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -366,7 +414,7 @@ export function Why({ onNavigate }: WhyProps) {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-slate-900 rounded-2xl p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">

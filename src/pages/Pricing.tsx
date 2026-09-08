@@ -1,5 +1,6 @@
 import { Check, X, ArrowRight } from "lucide-react";
 import { Button } from "../components/Button";
+import { SwipeDeck } from "../components/SwipeDeck";
 
 interface PricingProps {
   onNavigate: (page: string) => void;
@@ -109,7 +110,7 @@ export function Pricing({ onNavigate }: PricingProps) {
   return (
     <div className="bg-white overflow-hidden">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
+      <section className="relative py-12 md:py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0">
           <div className="absolute top-20 -right-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -134,9 +135,12 @@ export function Pricing({ onNavigate }: PricingProps) {
       </section>
 
       {/* Pricing Cards Section */}
-      <section className="py-24 bg-gradient-to-b from-white to-slate-50">
+      <section className="py-12 md:py-24 bg-gradient-to-b from-white to-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <SwipeDeck
+          label="Pricing plans"
+          desktopClass="lg:grid-cols-3 gap-4 md:gap-8"
+        >
             {plans.map((plan, index) => {
               const gradients = {
                 blue: "from-blue-500 to-blue-600",
@@ -259,12 +263,12 @@ export function Pricing({ onNavigate }: PricingProps) {
                 </div>
               );
             })}
-          </div>
+          </SwipeDeck>
         </div>
       </section>
 
       {/* Every Plan Includes Section */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
@@ -295,7 +299,7 @@ export function Pricing({ onNavigate }: PricingProps) {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+      <section className="py-12 md:py-24 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-12 text-center animate-fade-in">
             Frequently Asked Questions
@@ -359,7 +363,7 @@ export function Pricing({ onNavigate }: PricingProps) {
       </section>
 
       {/* Final CTA Section */}
-      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
+      <section className="relative py-12 md:py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
         {/* Background Animation */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>

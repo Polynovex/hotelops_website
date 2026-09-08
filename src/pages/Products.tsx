@@ -18,6 +18,7 @@ import {
   Check,
 } from "lucide-react";
 import { Button } from "../components/Button";
+import { SwipeDeck } from "../components/SwipeDeck";
 
 interface ProductsProps {
   onNavigate: (page: string) => void;
@@ -131,7 +132,7 @@ export function Products({ onNavigate }: ProductsProps) {
   return (
     <div className="bg-white overflow-hidden">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
+      <section className="relative py-12 md:py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0">
           <div className="absolute top-20 right-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -169,7 +170,7 @@ export function Products({ onNavigate }: ProductsProps) {
         };
 
         return (
-          <section key={index} className={`py-24 ${bgColor}`}>
+          <section key={index} className={`py-12 md:py-24 ${bgColor}`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div
@@ -237,7 +238,7 @@ export function Products({ onNavigate }: ProductsProps) {
       })}
 
       {/* Platform Features Section */}
-      <section className="relative py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 overflow-hidden">
+      <section className="relative py-12 md:py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 overflow-hidden">
         {/* Background Animation */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 right-20 w-72 h-72 bg-white rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
@@ -255,7 +256,10 @@ export function Products({ onNavigate }: ProductsProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <SwipeDeck
+          label="Built for the Nigerian market"
+          desktopClass="md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8"
+        >
             {platformFeatures.map((feature, index) => {
               const Icon = feature.icon;
               return (
@@ -276,12 +280,12 @@ export function Products({ onNavigate }: ProductsProps) {
                 </div>
               );
             })}
-          </div>
+          </SwipeDeck>
         </div>
       </section>
 
       {/* Payment Solutions Section */}
-      <section className="py-24 bg-gradient-to-b from-slate-50 to-white">
+      <section className="py-12 md:py-24 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 animate-fade-in">
             Integrated Payment Solutions
@@ -290,7 +294,10 @@ export function Products({ onNavigate }: ProductsProps) {
             Accept payments with confidence using Nigeria's leading payment
             processors.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <SwipeDeck
+          label="Integrated payment solutions"
+          desktopClass="md:grid-cols-2 gap-4 md:gap-8"
+        >
             <div className="group bg-white p-10 rounded-2xl shadow-lg border-2 border-transparent hover:border-blue-500 transition-all duration-300 hover:-translate-y-2 animate-fade-in animation-delay-300">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                 <CreditCard className="w-6 h-6 text-white" />
@@ -315,12 +322,12 @@ export function Products({ onNavigate }: ProductsProps) {
                 settlement to your bank account.
               </p>
             </div>
-          </div>
+          </SwipeDeck>
         </div>
       </section>
 
       {/* Final CTA Section */}
-      <section className="relative py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
+      <section className="relative py-12 md:py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 overflow-hidden">
         {/* Background Animation */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>

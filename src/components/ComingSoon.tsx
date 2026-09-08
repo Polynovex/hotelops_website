@@ -1,4 +1,5 @@
 import { Globe2, CalendarRange, RefreshCw } from "lucide-react";
+import { SwipeDeck } from "./SwipeDeck";
 
 /**
  * Roadmap strip for the channel manager.
@@ -33,7 +34,7 @@ const ITEMS = [
 
 export function ComingSoon() {
   return (
-    <section className="py-20 bg-slate-900">
+    <section className="py-12 md:py-20 bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <span className="inline-block px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold tracking-wide uppercase mb-4">
@@ -47,7 +48,10 @@ export function ComingSoon() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <SwipeDeck
+          label="Distribution channels"
+          desktopClass="md:grid-cols-3 gap-4 md:gap-6"
+        >
           {ITEMS.map((item) => (
             <div
               key={item.title}
@@ -71,7 +75,7 @@ export function ComingSoon() {
               <p className="text-sm text-slate-400 leading-relaxed">{item.body}</p>
             </div>
           ))}
-        </div>
+        </SwipeDeck>
       </div>
     </section>
   );

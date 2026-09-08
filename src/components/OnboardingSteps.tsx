@@ -1,4 +1,5 @@
 import { ClipboardCheck, Database, GraduationCap, Rocket, LifeBuoy } from "lucide-react";
+import { SwipeDeck } from "./SwipeDeck";
 
 /**
  * Addresses the objection the research identifies as decisive for Nigerian
@@ -36,7 +37,7 @@ const STEPS = [
 
 export function OnboardingSteps() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
@@ -49,7 +50,10 @@ export function OnboardingSteps() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <SwipeDeck
+          label="How onboarding works"
+          desktopClass="md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6"
+        >
           {STEPS.map((step, index) => (
             <div key={step.title} className="relative">
               <div className="bg-slate-50 rounded-2xl p-6 h-full border border-slate-200 hover:border-blue-300 hover:shadow-md transition-all duration-300">
@@ -64,7 +68,7 @@ export function OnboardingSteps() {
               </div>
             </div>
           ))}
-        </div>
+        </SwipeDeck>
       </div>
     </section>
   );

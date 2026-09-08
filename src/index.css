@@ -65,3 +65,101 @@
     animation-delay: 4s;
   }
 }
+
+@layer components {
+  /**
+   * Horizontal card deck on phones, ordinary grid from md upwards.
+   *
+   * The marketing pages stack their card grids into one column on a phone,
+   * which turned the home page into roughly twenty-four screens of scrolling
+   * before a visitor reached the footer or a call to action. Below md the same
+   * cards become a snap carousel; from md up the rules switch off entirely and
+   * the grid classes on the element take over.
+   *
+   * Laid out in CSS rather than by cloning children in JavaScript, so the
+   * markup and the document order are identical on both — one copy of every
+   * card, which matters for both weight and for what a crawler reads.
+   */
+  @media (max-width: 767.98px) {
+    .swipe-deck {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+
+      /*
+       * Bleed to the screen edges so a card can sit flush while the deck keeps
+       * the section's own gutter as its scroll padding. The negative margin is
+       * matched by the padding, so the element never widens the page.
+       */
+      margin-inline: -1rem;
+      padding-inline: 1rem;
+      scroll-padding-inline: 1rem;
+
+      /* A visible scrollbar under a card deck reads as a bug on a phone. */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .swipe-deck::-webkit-scrollbar {
+      display: none;
+    }
+
+    /*
+     * 20px of the next card stays on screen. That overhang is the only thing
+     * telling a visitor the deck moves sideways, so it is deliberate rather
+     * than a rounding artefact: the container's content box is the viewport
+     * less the section gutters, and taking 20px off the card width leaves
+     * exactly that much of the neighbour showing at every screen width.
+     */
+    .swipe-deck > * {
+      flex: 0 0 calc(100% - 20px);
+      /*
+       * Flex items default to min-width:auto, so a card whose content has a
+       * wider intrinsic minimum ignores the basis above and pushes its
+       * neighbour off screen — which is what happened to the pricing cards at
+       * 320px, where the next card started past the right edge and the peek
+       * that advertises the deck disappeared.
+       */
+      min-width: 0;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    /* Two-up for narrow cards that would look absurd at full width. */
+    .swipe-deck-compact > * {
+      flex: 0 0 calc(50% - 10px);
+    }
+  }
+
+  /*
+   * The sections switch from px-4 to sm:px-6 at 640px, and the deck has to
+   * bleed by whatever the gutter actually is. Left at 1rem, the extra 8px of
+   * padding each side widened the overhang to 28px between 640 and 767px —
+   * outside the 12-20px the affordance is meant to sit in.
+   */
+  @media (min-width: 640px) and (max-width: 767.98px) {
+    .swipe-deck {
+      margin-inline: -1.5rem;
+      padding-inline: 1.5rem;
+      scroll-padding-inline: 1.5rem;
+    }
+
+    /*
+     * Two cards at a time on a small tablet.
+     *
+     * One card here is 707px wide — cards drawn for a four-column desktop grid
+     * stretched across most of the screen, which looks like a mistake rather
+     * than a choice. Two-up uses the width and keeps the deck's purpose.
+     *
+     * The overhang is vw - gutter - 2*card - 2*gap, so 50% - 14px lands it on
+     * the same 20px as everywhere else.
+     */
+    .swipe-deck > * {
+      flex-basis: calc(50% - 14px);
+    }
+  }
+}

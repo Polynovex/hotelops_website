@@ -178,7 +178,7 @@ export function Home({ onNavigate }: HomeProps) {
       </section>
 
       {/* Features Section - Premium Grid */}
-      <section className="py-24">
+      <section className="py-12 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
@@ -217,7 +217,7 @@ export function Home({ onNavigate }: HomeProps) {
       </section>
 
       {/* Benefits Section */}
-      <section className={`py-24 ${gradientBg.primary}`}>
+      <section className={`py-12 md:py-24 ${gradientBg.primary}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
@@ -251,7 +251,7 @@ export function Home({ onNavigate }: HomeProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-slate-900 text-white overflow-hidden relative">
+      <section className="py-12 md:py-24 bg-slate-900 text-white overflow-hidden relative">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 -mr-48 -mt-48 w-96 h-96 bg-blue-500 rounded-full opacity-10"></div>
 
