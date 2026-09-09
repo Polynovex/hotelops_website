@@ -38,7 +38,7 @@ export function Products({ onNavigate }: ProductsProps) {
         "Room assignment & status board",
         "Front desk operations",
         "Guest profiles & history",
-        "Channel manager integration",
+        "Rate plans & availability calendar",
         "Automated check-in/check-out",
         "Real-time room status",
         "Night audit automation",
@@ -50,7 +50,7 @@ export function Products({ onNavigate }: ProductsProps) {
       name: "HotelOpX POS",
       tagline: "Point of Sale for All Revenue Centers",
       description:
-        "Integrated POS system for restaurant, bar, spa, and all hotel revenue centers. Accept payments with Paystack and Flutterwave integration.",
+        "Integrated POS system for restaurant, bar, spa, and all hotel revenue centers. Take card payments through your own Paystack or Flutterwave account, and record cash, transfers and terminal payments against the right room or table.",
       features: [
         "QR code ordering — guests scan, browse & order",
         "Restaurant & bar management",
@@ -59,7 +59,8 @@ export function Products({ onNavigate }: ProductsProps) {
         "Table management",
         "Kitchen display system",
         "Inventory tracking",
-        "Local payment integration",
+        "Card payments via Paystack & Flutterwave",
+        "Cash, transfer & POS terminal payments",
         "Receipt printing & email",
       ],
       color: "green",
@@ -69,7 +70,7 @@ export function Products({ onNavigate }: ProductsProps) {
       name: "HotelOpX Finance",
       tagline: "Financial Management & Reporting",
       description:
-        "Comprehensive financial tools with real-time reporting, invoicing, and accounting integration. Track every naira that flows through your hotel.",
+        "A full double-entry ledger with real-time reporting, invoicing and bank reconciliation. Track every naira that flows through your hotel.",
       features: [
         "Real-time financial reports",
         "Automated invoicing",
@@ -77,8 +78,7 @@ export function Products({ onNavigate }: ProductsProps) {
         "Expense tracking",
         "Bank reconciliation",
         "Tax compliance",
-        "Multi-currency support",
-        "Export to accounting software",
+        "Naira billing throughout",
       ],
       color: "orange",
     },
@@ -113,13 +113,13 @@ export function Products({ onNavigate }: ProductsProps) {
       icon: Smartphone,
       title: "Mobile Apps",
       description:
-        "iOS and Android apps for staff to manage operations from anywhere in the property.",
+        "iOS and Android apps for staff to manage operations from anywhere in the property. We install them on your devices during onboarding.",
     },
     {
       icon: Monitor,
       title: "Desktop & Web",
       description:
-        "Full-featured desktop application for Windows and Mac, plus web access from any browser.",
+        "Desktop applications for Windows and Mac, installed by our team, plus full web access from any browser on any device.",
     },
     {
       icon: Database,
@@ -284,18 +284,29 @@ export function Products({ onNavigate }: ProductsProps) {
         </div>
       </section>
 
-      {/* Payment Solutions Section */}
+      {/*
+        Payments, described precisely.
+
+        Card payments run on the hotel's own Paystack or Flutterwave merchant
+        account: HotelOpX starts the charge with their keys and the money
+        settles into their bank account, never into ours. That distinction is
+        worth stating plainly — it is why there is no platform cut on takings
+        and no waiting for us to pay out.
+
+        Everything else a Nigerian hotel is actually paid in still has to be
+        recorded and reconciled, which is the second card.
+      */}
       <section className="py-12 md:py-24 bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 animate-fade-in">
-            Integrated Payment Solutions
+            Every Naira Accounted For
           </h2>
           <p className="text-lg text-slate-600 mb-12 animate-fade-in animation-delay-200">
-            Accept payments with confidence using Nigeria's leading payment
-            processors.
+            Take cards through your own Paystack or Flutterwave account, and
+            record every other kind of payment against the right room or table.
           </p>
           <SwipeDeck
-          label="Integrated payment solutions"
+          label="How payments are recorded"
           desktopClass="md:grid-cols-2 gap-4 md:gap-8"
         >
             <div className="group bg-white p-10 rounded-2xl shadow-lg border-2 border-transparent hover:border-blue-500 transition-all duration-300 hover:-translate-y-2 animate-fade-in animation-delay-300">
@@ -303,23 +314,25 @@ export function Products({ onNavigate }: ProductsProps) {
                 <CreditCard className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                Paystack Integration
+                Cards, on your own account
               </h3>
               <p className="text-slate-600">
-                Accept cards, bank transfers, and mobile money with Nigeria's
-                most trusted payment platform.
+                Connect your Paystack or Flutterwave keys and take card
+                payments from the front desk or straight from a guest&apos;s
+                phone. The money settles into your bank account, not ours.
               </p>
             </div>
             <div className="group bg-white p-10 rounded-2xl shadow-lg border-2 border-transparent hover:border-emerald-500 transition-all duration-300 hover:-translate-y-2 animate-fade-in animation-delay-400">
               <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                <CreditCard className="w-6 h-6 text-white" />
+                <Receipt className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                Flutterwave Integration
+                Cash and transfers, balanced at close
               </h3>
               <p className="text-slate-600">
-                Process payments across multiple channels with instant
-                settlement to your bank account.
+                Record cash at the desk, a transfer alert on the phone or a
+                swipe on the POS machine. Open a float, close the shift, and
+                see the variance before anyone goes home.
               </p>
             </div>
           </SwipeDeck>

@@ -13,19 +13,19 @@ export function About() {
       icon: Shield,
       title: "Security First",
       description:
-        "Bank-level encryption and data protection. Your hotel data is always secure and compliant.",
+        "Encrypted in transit and at rest, with role-based access and audit logging. Built to the requirements of the Nigeria Data Protection Act.",
     },
     {
       icon: Clock,
       title: "Always Available",
       description:
-        "99.9% uptime guarantee with offline-first architecture. Your operations never stop.",
+        "Designed for 99.9% availability, and offline-first so the front desk keeps working even when the connection does not.",
     },
     {
       icon: Users,
       title: "Local Support",
       description:
-        "Nigerian-based support team that understands your business and responds in minutes.",
+        "A Nigerian support team that understands your business, reachable around the clock on WhatsApp, phone and email.",
     },
     {
       icon: Award,
@@ -206,8 +206,24 @@ export function About() {
           <h2 className="text-3xl font-bold text-slate-900 mb-2">
             Trust and Compliance
           </h2>
-          <p className="text-lg font-semibold text-slate-700 mb-6">
-            By Polynovex Limited
+          {/*
+            The registration number and company site sit here rather than only
+            in the footer: this is the section a cautious buyer reads before
+            deciding whether a young software company is real.
+          */}
+          <p className="text-lg font-semibold text-slate-700 mb-1">
+            By{" "}
+            <a
+              href="https://polynovexlimited.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-700 hover:text-blue-800 underline underline-offset-2"
+            >
+              Polynovex Limited
+            </a>
+          </p>
+          <p className="text-sm text-slate-500 mb-6">
+            Registered in Nigeria • Company Registration No. 8231712
           </p>
           <div className="grid grid-cols-3 gap-3 md:gap-8 mt-12">
             <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -218,7 +234,7 @@ export function About() {
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="text-2xl font-bold text-blue-600 mb-2">99.9%</div>
-              <div className="text-sm text-slate-600">Guaranteed Uptime</div>
+              <div className="text-sm text-slate-600">Availability Target</div>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="text-2xl font-bold text-blue-600 mb-2">24/7</div>

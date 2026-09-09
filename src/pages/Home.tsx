@@ -105,7 +105,8 @@ export function Home({ onNavigate }: HomeProps) {
   const benefits = [
     {
       title: "Reduce Operational Costs",
-      description: "Cut costs by 40% by eliminating redundant systems",
+      description:
+        "One subscription instead of separate PMS, POS and accounting tools",
       icon: TrendingUp,
     },
     {
@@ -448,8 +449,8 @@ export function Home({ onNavigate }: HomeProps) {
             Ready to Modernize Your Hotel Operations?
           </h2>
           <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto animate-fade-in animation-delay-200">
-            Join hundreds of Nigerian hotels that trust HotelOpX for their daily
-            operations. Start your free trial today.
+            Built in Nigeria for Nigerian hotels, and priced for them. Start
+            your free trial today — no setup fee, no card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in animation-delay-300">
             <Button

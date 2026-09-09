@@ -36,19 +36,18 @@ const lawfulBases = [
     basis: "Legitimate interest — preventing fraud and unauthorised access",
     retention: "12 months",
   },
-  {
-    purpose: "Sending product updates, where you have asked for them",
-    data: "Name and email",
-    basis: "Consent — a separate opt-in you can withdraw at any time",
-    retention: "Until you unsubscribe",
-  },
 ];
 
+/**
+ * Only parties that actually receive personal data belong here.
+ *
+ * Termii, Paystack and Flutterwave were listed and have been removed: no
+ * messaging provider is configured, and nothing in the platform transmits data
+ * to a payment gateway. Overstating where personal data travels defeats the
+ * purpose of publishing the list at all.
+ */
 const subProcessors = [
-  { name: "Amazon Web Services (AWS)", role: "Hosting, database, and file storage", location: "Europe / United States", safeguard: "Standard Contractual Clauses" },
-  { name: "Termii", role: "SMS and WhatsApp delivery", location: "Nigeria", safeguard: "Data processing agreement" },
-  { name: "Paystack", role: "Payment processing", location: "Nigeria", safeguard: "PCI-DSS certified" },
-  { name: "Flutterwave", role: "Payment processing", location: "Nigeria", safeguard: "PCI-DSS certified" },
+  { name: "Amazon Web Services (AWS)", role: "Hosting, database, file storage and outbound email", location: "United States", safeguard: "Standard Contractual Clauses" },
   { name: "Vercel", role: "Website and dashboard hosting", location: "United States", safeguard: "Standard Contractual Clauses" },
 ];
 

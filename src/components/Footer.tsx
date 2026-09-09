@@ -87,6 +87,21 @@ export function Footer({ onNavigate }: FooterProps) {
                   Privacy Policy
                 </button>
               </li>
+              <li>
+                {/*
+                  A business selling a subscription has to publish its terms
+                  somewhere findable. This is also where the company's
+                  registration details live, for anyone who wants to check that
+                  Polynovex Limited is a real registered entity before paying
+                  it money.
+                */}
+                <button
+                  onClick={() => onNavigate("terms")}
+                  className="block py-1.5 hover:text-white transition-colors"
+                >
+                  Terms of Service
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -105,7 +120,7 @@ export function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start">
                 <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
-                <span>Lagos, Nigeria</span>
+                <span>20 Samera St, Ketu, Lagos 105102, Nigeria</span>
               </li>
               <li className="flex items-center">
                 <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
@@ -125,9 +140,18 @@ export function Footer({ onNavigate }: FooterProps) {
           <p>&copy; {currentYear} HotelOpX. All rights reserved.</p>
           <p className="text-slate-400 mt-2">
             HotelOpX is a product of{" "}
-            <span className="font-semibold text-slate-300">
+            <a
+              href="https://polynovexlimited.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-slate-300 hover:text-white transition-colors underline decoration-slate-600 underline-offset-2"
+            >
               Polynovex Limited
-            </span>
+            </a>
+          </p>
+          <p className="text-slate-500 mt-1 text-xs">
+            Polynovex Limited • Company Registration No. 8231712 •{" "}
+            20 Samera St, Ketu, Lagos 105102, Nigeria
           </p>
         </div>
 
@@ -172,7 +196,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <span className="block font-semibold text-slate-200 mb-0.5">
                 Compliance
               </span>
-              NDPR compliant — your guests' data is protected.
+              Built to NDPR requirements — your guests' data is protected.
             </p>
           </div>
         </div>

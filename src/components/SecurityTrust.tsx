@@ -63,7 +63,7 @@ const MEASURES = [
     icon: Wallet,
     title: "Secure payments",
     description:
-      "Card payments are handled by Paystack, Flutterwave and Interswitch — we never store card numbers.",
+      "Card details are entered on Paystack's or Flutterwave's own secure page, never in HotelOpX. We hold the reference and the amount, never a card number.",
   },
 ];
 
