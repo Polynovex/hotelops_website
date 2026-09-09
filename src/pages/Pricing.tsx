@@ -23,13 +23,12 @@ export function Pricing({ onNavigate }: PricingProps) {
         { name: "Housekeeping workflow", included: true },
         { name: "Basic Finance & Reporting", included: true },
         { name: "Offline mode", included: true },
-        { name: "Paystack/Flutterwave", included: true },
-        { name: "Mobile app access", included: true },
+        { name: "Card payments via Paystack & Flutterwave", included: true },
+        { name: "Mobile app, installed by our team", included: true },
         { name: "Email support", included: true },
         { name: "WhatsApp support (business hours)", included: true },
         { name: "HR & Payroll", included: false },
         { name: "Inventory management", included: false },
-        { name: "Multi-property management", included: false },
         { name: "Advanced analytics", included: false },
         { name: "Dedicated account manager", included: false },
       ],
@@ -52,11 +51,10 @@ export function Pricing({ onNavigate }: PricingProps) {
         { name: "HR & Payroll (PAYE, payslips)", included: true },
         { name: "Inventory management", included: true },
         { name: "Offline mode", included: true },
-        { name: "Paystack/Flutterwave", included: true },
-        { name: "Mobile app access", included: true },
+        { name: "Card payments via Paystack & Flutterwave", included: true },
+        { name: "Mobile app, installed by our team", included: true },
         { name: "Priority email & phone support", included: true },
         { name: "WhatsApp support (24/7)", included: true },
-        { name: "Multi-property (up to 3)", included: true },
         { name: "Advanced analytics & insights", included: true },
         { name: "White-label branding", included: false },
         { name: "Dedicated account manager", included: false },
@@ -82,13 +80,12 @@ export function Pricing({ onNavigate }: PricingProps) {
         { name: "Loyalty programme", included: true },
         { name: "White-label branding", included: true },
         { name: "Offline mode", included: true },
-        { name: "Paystack/Flutterwave", included: true },
-        { name: "Mobile app access", included: true },
+        { name: "Card payments via Paystack & Flutterwave", included: true },
+        { name: "Mobile app, installed by our team", included: true },
         { name: "Priority 24/7 support", included: true },
         { name: "Advanced analytics & insights", included: true },
         { name: "Dedicated account manager", included: true },
         { name: "Channel manager (Booking.com, Expedia) — coming soon", included: false },
-        { name: "Multi-property management", included: false },
       ],
       popular: false,
       color: "orange",
@@ -97,7 +94,7 @@ export function Pricing({ onNavigate }: PricingProps) {
 
   const allFeatures = [
     "Offline-first capability",
-    "Local payment integration",
+    "Card payments on your own Paystack or Flutterwave account",
     "Real-time synchronization",
     "Cloud backup & security",
     "Regular software updates",
@@ -341,8 +338,10 @@ export function Pricing({ onNavigate }: PricingProps) {
                 What payment methods do you accept?
               </h3>
               <p className="text-slate-600 leading-relaxed">
-                We accept bank transfer, card payments via Paystack, and can set
-                up direct debit for annual subscriptions.
+                Bank transfer, or card through a secure Paystack link we send
+                you — no account with us needed to pay. Monthly and annual
+                subscriptions can be set to renew automatically on a saved
+                card, so nobody has to remember to pay.
               </p>
             </div>
 

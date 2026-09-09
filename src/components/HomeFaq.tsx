@@ -28,7 +28,7 @@ const FAQS = [
   },
   {
     q: "How do guests pay?",
-    a: "Cash, bank transfer, POS terminal and card via Paystack or Flutterwave. Every payment is recorded against the guest folio with its reference, so reconciliation at the end of the day actually adds up.",
+    a: "Cash, bank transfer, your POS terminal, and cards online through your own Paystack or Flutterwave account — you connect your keys and the money settles into your own bank account, not ours. Every payment is recorded against the guest folio with its reference, so reconciliation at the end of the day actually adds up.",
   },
   {
     q: "Do you connect to Booking.com or Expedia?",

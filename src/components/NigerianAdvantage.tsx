@@ -3,7 +3,7 @@ import {
   Building2,
   CreditCard,
   Coins,
-  MessageCircle,
+  Smartphone,
   ReceiptText,
   WifiOff,
   Headphones,
@@ -50,10 +50,10 @@ const ADVANTAGES = [
       "Open a float, close a shift, and see the variance immediately instead of at month end.",
   },
   {
-    icon: MessageCircle,
-    title: "WhatsApp communication",
+    icon: Smartphone,
+    title: "Card payments online",
     description:
-      "Send booking confirmations and updates where your guests already are.",
+      "Connect your own Paystack or Flutterwave account. Guests pay by card, the money settles into your bank.",
   },
   {
     icon: ReceiptText,

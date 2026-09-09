@@ -10,6 +10,7 @@ import { Pricing } from "./pages/Pricing";
 import { Why } from "./pages/Why";
 import { Contact } from "./pages/Contact";
 import { Privacy } from "./pages/Privacy";
+import { Terms } from "./pages/Terms";
 import { Resources } from "./pages/Resources";
 import { applyPageSeo } from "./utils/seo";
 import {
@@ -65,6 +66,8 @@ function App() {
         return <Resources onNavigate={handleNavigate} />;
       case "privacy":
         return <Privacy />;
+      case "terms":
+        return <Terms onNavigate={handleNavigate} />;
       default:
         return <Home onNavigate={handleNavigate} />;
     }

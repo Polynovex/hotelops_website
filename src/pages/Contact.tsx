@@ -20,7 +20,6 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
   // NDPR: consent must be explicit and unticked by default. Marketing is a
   // separate opt-in — bundling it with the enquiry consent is not valid consent.
   const [consentGiven, setConsentGiven] = useState(false);
-  const [marketingOptIn, setMarketingOptIn] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -49,7 +48,7 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
         // Send the exact wording shown, so the stored record reflects what
         // this person actually agreed to.
         consentText: CONSENT_WORDING,
-        marketingOptIn,
+        marketingOptIn: false,
       });
 
       if (!response.success) {
@@ -115,8 +114,10 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
     {
       icon: MapPin,
       title: "Office",
-      value: "Lagos, Nigeria",
-      link: "#",
+      value: "20 Samera St, Ketu, Lagos 105102, Nigeria",
+      // Now a real address, so it is worth making it actionable — someone on a
+      // phone deciding whether we are local can open it in maps.
+      link: "https://maps.google.com/?q=20+Samera+St+Ketu+Lagos+105102+Nigeria",
     },
   ];
 
@@ -207,12 +208,12 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
 
               <div className="mt-8 p-6 bg-green-50 rounded-lg border border-green-200">
                 <h3 className="font-semibold text-green-900 mb-2">
-                  Quick Response Guarantee
+                  How quickly we reply
                 </h3>
                 <p className="text-green-800 text-sm">
-                  We respond to all demo requests within 24 hours during
-                  business days. For urgent inquiries, WhatsApp us for immediate
-                  assistance.
+                  We reply to demo requests within one working day. If you are
+                  already a customer and something is wrong, support is
+                  reachable around the clock on WhatsApp.
                 </p>
               </div>
             </div>
@@ -410,8 +411,14 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
                     />
                   </div>
 
-                  {/* NDPR consent: explicit, unticked by default, and
-                      separate from the marketing opt-in. */}
+                  {/*
+                    NDPR consent: explicit and unticked by default.
+
+                    There is no marketing opt-in beside it any more. HotelOpX
+                    sends transactional email only — no newsletter, no product
+                    updates — so offering to subscribe someone to a list that
+                    does not exist collected a consent we could never act on.
+                  */}
                   <div className="space-y-3 rounded-lg bg-slate-50 border border-slate-200 p-4">
                     <label className="flex items-start gap-3 cursor-pointer">
                       <input
@@ -439,19 +446,6 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
                           Privacy Notice
                         </a>
                         . <span className="text-red-600">*</span>
-                      </span>
-                    </label>
-
-                    <label className="flex items-start gap-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={marketingOptIn}
-                        onChange={(e) => setMarketingOptIn(e.target.checked)}
-                        className="mt-1 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
-                      />
-                      <span className="text-sm text-slate-600">
-                        Optional: send me product updates and hospitality
-                        insights. You can unsubscribe at any time.
                       </span>
                     </label>
 

@@ -56,6 +56,11 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     title: 'Privacy Notice — HotelOpX',
     description:
       'How HotelOpX collects, uses and protects personal data, in line with the Nigeria Data Protection Act and NDPR.'
+  },
+  terms: {
+    title: 'Terms of Service — HotelOpX',
+    description:
+      'The subscription agreement between your hotel and Polynovex Limited: what HotelOpX provides, what it costs, how to cancel and what happens to your data.'
   }
 };
 

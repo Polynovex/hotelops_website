@@ -52,7 +52,7 @@ export function Why({ onNavigate }: WhyProps) {
       icon: Globe,
       title: "Nigerian-First Design",
       description:
-        "Built specifically for Nigerian hotels, not a foreign system adapted for our market. We understand NEPA, internet issues, and local payment preferences.",
+        "Built for Nigerian hotels from the start, not a foreign system bent to fit afterwards. Power cuts, patchy connections and the way guests here actually pay were design constraints, not afterthoughts.",
     },
     {
       icon: WifiOff,
@@ -64,13 +64,13 @@ export function Why({ onNavigate }: WhyProps) {
       icon: DollarSign,
       title: "Affordable Pricing",
       description:
-        "Get enterprise features at a fraction of the cost of Opera, Micros, or other foreign systems. Plans start at ₦75,000/month, not millions in setup fees.",
+        "Get enterprise features at a fraction of the cost of Opera, Micros, or other foreign systems. Plans start at ₦25,000/month, with no setup fee.",
     },
     {
       icon: Zap,
       title: "Faster Check-In/Out",
       description:
-        "Reduce check-in time from 10+ minutes to under 2 minutes. Your guests will notice and appreciate the difference.",
+        "Guest details, room status and folio are on one screen, so the desk is not moving between a book, a spreadsheet and a card machine to check someone in.",
     },
     {
       icon: Shield,
@@ -82,13 +82,13 @@ export function Why({ onNavigate }: WhyProps) {
       icon: HeadphonesIcon,
       title: "Nigerian Support Team",
       description:
-        "Get help in minutes, not days. Our support team is based in Lagos and understands your business. Available via phone, WhatsApp, and email.",
+        "Our support team is based in Lagos, Anambra and other parts of Nigeria, so wherever your hotel is, someone who understands how it runs can reach you. Message us on WhatsApp, email us or call directly — we answer promptly, around the clock.",
     },
     {
       icon: Smartphone,
       title: "Mobile-First",
       description:
-        "Manage your hotel from anywhere with iOS and Android apps. Staff can update room status, take orders, and process payments on the go.",
+        "Manage your hotel from anywhere. We install the iOS and Android apps on your staff devices during onboarding, so housekeeping can update room status and waiters can take orders from the floor.",
     },
     {
       icon: TrendingUp,
@@ -121,20 +121,20 @@ export function Why({ onNavigate }: WhyProps) {
       better: true,
     },
     {
-      feature: "Local Payment Integration",
-      hotelops: "Paystack, Flutterwave",
+      feature: "Local Payment Methods",
+      hotelops: "Cash, transfer, POS terminal, Paystack & Flutterwave",
       traditional: "Limited or None",
       better: true,
     },
     {
-      feature: "Response Time",
-      hotelops: "Minutes (Nigerian team)",
+      feature: "Support Availability",
+      hotelops: "24/7 (Nigerian team)",
       traditional: "Days (Foreign support)",
       better: true,
     },
     {
       feature: "Mobile Apps",
-      hotelops: "Included",
+      hotelops: "Included, installed by us",
       traditional: "Extra cost",
       better: true,
     },
@@ -421,7 +421,7 @@ export function Why({ onNavigate }: WhyProps) {
               Ready to Switch to HotelOpX?
             </h2>
             <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-              Join hundreds of Nigerian hotels that made the smart choice.
+              Built in Nigeria, for Nigerian hotels.
               Schedule a demo and see the difference yourself.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
