@@ -415,13 +415,16 @@ export function Home({ onNavigate }: HomeProps) {
             </SwipeDeck>
 
             {/*
-              Kept off phones, as the icon-and-caption block it replaced was.
-              That is now doing more work than saving 384px of vertical space:
-              the clip is 908 KB, and this is what keeps it off a metered
-              connection entirely. On desktop it is still withheld until the
-              section is nearly in view — see LazyVideo.
+              Shown at every width. On a phone the single-column grid puts it
+              directly beneath the benefit cards, which is where it belongs —
+              the cards make the claim, the clip shows it.
+
+              The 908 KB is still not spent unless it is scrolled to: LazyVideo
+              withholds the source until the element is near the viewport, so a
+              visitor on a metered connection who reads the hero and leaves
+              pays nothing for it.
             */}
-            <div className="hidden md:block rounded-2xl border-2 border-slate-200 overflow-hidden shadow-sm">
+            <div className="rounded-2xl border-2 border-slate-200 overflow-hidden shadow-sm">
               <LazyVideo
                 src="/animation.mp4"
                 width={1280}
