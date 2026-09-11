@@ -22,6 +22,7 @@ import { NigerianAdvantage } from "../components/NigerianAdvantage";
 import { ProblemSolution } from "../components/ProblemSolution";
 import { SecurityTrust } from "../components/SecurityTrust";
 import { SwipeDeck } from "../components/SwipeDeck";
+import { LazyVideo } from "../components/LazyVideo";
 import { usePlatformMetrics } from "../hooks/usePlatformMetrics";
 
 interface HomeProps {
@@ -414,23 +415,21 @@ export function Home({ onNavigate }: HomeProps) {
             </SwipeDeck>
 
             {/*
-              Decorative only — an icon and a caption. Worth 384px of a laptop
-              screen, not of a phone, where it sat between the benefits and the
-              call to action saying nothing.
+              Kept off phones, as the icon-and-caption block it replaced was.
+              That is now doing more work than saving 384px of vertical space:
+              the clip is 908 KB, and this is what keeps it off a metered
+              connection entirely. On desktop it is still withheld until the
+              section is nearly in view — see LazyVideo.
             */}
-            <div className="relative h-96 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl border-2 border-slate-200 hidden md:flex items-center justify-center overflow-hidden group">
-              {/* Animated Background Pattern */}
-              <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
-                <div className="absolute top-0 right-0 w-40 h-40 bg-blue-400 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
-                <div className="absolute bottom-0 left-0 w-40 h-40 bg-cyan-400 rounded-full blur-3xl animate-blob"></div>
-              </div>
-
-              <div className="relative text-center">
-                <Building2 className="w-24 h-24 text-blue-300 mx-auto mb-4 animate-bounce animation-delay-200" />
-                <p className="text-slate-600 font-medium">
-                  Modern Hotel Management
-                </p>
-              </div>
+            <div className="hidden md:block rounded-2xl border-2 border-slate-200 overflow-hidden shadow-sm">
+              <LazyVideo
+                src="/animation.mp4"
+                width={1280}
+                height={720}
+                /* Decorative. Replace with a description of what the clip
+                   actually shows if it carries meaning of its own. */
+                label="HotelOpX product animation"
+              />
             </div>
           </div>
         </div>
