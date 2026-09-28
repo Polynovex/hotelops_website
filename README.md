@@ -8,7 +8,6 @@ Modern, beautiful hotel management platform frontend built with React, TypeScrip
 - 🚀 **Completely Standalone** - Works without backend (frontend-only viewing)
 - 🔌 **API Service Layer** - Ready for Express backend integration
 - 📱 **Responsive Design** - Works perfectly on all devices
-- 🎯 **No Supabase** - Removed all Supabase dependencies
 - 🏢 **No Bolt References** - Completely independent
 - 💾 **Local Storage** - Demo requests stored locally until backend connects
 

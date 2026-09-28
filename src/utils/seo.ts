@@ -1,3 +1,5 @@
+import { pathForPage } from './routes';
+
 /**
  * Per-page title and meta description.
  *
@@ -96,9 +98,9 @@ export const applyPageSeo = (page: string) => {
   /**
    * A canonical per page.
    *
-   * State-based navigation means every page shares one URL, so without this
-   * search engines see a single document whose content keeps changing. The
-   * hash marks each view distinctly until real routing is introduced.
+   * Each page now has its own path, so the canonical is that path. It is
+   * written from the page key rather than read from location, so the tag is
+   * correct even on the render before history.pushState runs.
    */
   let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
   if (!canonical) {
@@ -106,8 +108,5 @@ export const applyPageSeo = (page: string) => {
     canonical.setAttribute('rel', 'canonical');
     document.head.appendChild(canonical);
   }
-  canonical.setAttribute(
-    'href',
-    `${window.location.origin}${page === 'home' ? '/' : `/#${page}`}`
-  );
+  canonical.setAttribute('href', `${window.location.origin}${pathForPage(page)}`);
 };

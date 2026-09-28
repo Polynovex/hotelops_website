@@ -4,7 +4,6 @@ This is the premium frontend for HotelOpX, built with React, TypeScript, and Tai
 
 ## Features
 
-- ✅ **Removed Supabase Dependencies** - No backend required to view the frontend
 - ✅ **No Bolt AI References** - Completely standalone
 - ✅ **Material UI Ready** - Prepared for Material UI integration where needed
 - ✅ **Premium Theme** - Beautiful, modern design with advanced animations
@@ -59,7 +58,6 @@ src/
 │   └── api.ts          # Central API service
 ├── theme/              # Theme configuration
 │   └── premium.ts      # Premium theme settings
-└── lib/                # Utilities (supabase.ts removed)
 ```
 
 ### API Service
@@ -132,10 +130,7 @@ When you're ready to connect to the Express backend:
 
 ## Removed Dependencies
 
-### Supabase
-- **Removed from**: `package.json`, `src/lib/supabase.ts`
 - **Replacement**: Local storage with API service layer
-- **Status**: Frontend now works without Supabase
 
 ### Bolt AI References
 - **Removed from**: `index.html`, `.bolt/` directory

@@ -1,42 +1,54 @@
-# Crawler-facing pages
+# Real URLs, and what a crawler sees
 
-The React site navigates by state and never changes the URL: every page lives
-at `/`, and a fetch of `/` returned an empty `<body>`. Anything that does not
-run JavaScript — Google, a WhatsApp link preview, the AWS Activate review —
-saw a blank page. `/about`, `/pricing` and `/contact` did not exist at all and
-returned 404.
+## The problem
 
-Two changes fix that, and neither touches `src/`:
+Navigation was state-based: one `currentPage` string decided what `App`
+rendered, and every page lived at `/`. Two consequences —
 
-### 1. Pre-hydration content in `index.html`
+- `/about`, `/pricing` and `/contact` returned **404**. Nothing could be
+  linked to, shared or indexed separately.
+- A fetch of `/` returned an empty `<body>`: 206 characters of readable text.
+  Google, WhatsApp link previews and the AWS Activate review all saw a blank
+  page. Activate rejected the application for "website not functional".
 
-Real copy now sits inside `<div id="root">`. React clears those children the
-moment it mounts, so the live site is unchanged — but a fetch of `/` returns
-1,282 characters of readable content instead of 206.
+## The fix, in three parts
 
-Also added: canonical URL, Open Graph image and URL, theme colour, and
-JSON-LD describing the product, the ₦25,000 price and the Lagos address.
+### 1. The URL now carries the page (`src/utils/routes.ts`, `src/App.tsx`)
 
-### 2. Static pages under `public/`
+`pathForPage` / `pageForPath` map between a path and the page key the existing
+switch already uses. The app reads the URL on first render, `pushState`s on
+navigate, and listens for `popstate` so back and forward work.
 
-| URL | File |
-|-----|------|
-| `/about/` | `public/about/index.html` |
-| `/pricing/` | `public/pricing/index.html` |
-| `/contact/` | `public/contact/index.html` |
-| `/robots.txt` | `public/robots.txt` |
-| `/sitemap.xml` | `public/sitemap.xml` |
+No router dependency, and `Navigation`, `Footer` and the page components are
+untouched — they still call `onNavigate(page)` exactly as before. Old `/#about`
+links still resolve, so anything already shared keeps working.
 
-Vite copies `public/` to `dist/` untouched, so these keep working whatever
-happens to the app build.
+| Page key | URL |
+|----------|-----|
+| home | `/` |
+| about | `/about` |
+| products | `/products` |
+| pricing | `/pricing` |
+| why | `/why` |
+| contact | `/contact` |
+| resources | `/resources` |
+| privacy | `/privacy` |
+| terms | `/terms` |
 
-**Trailing slashes are deliberate.** `/about/` resolves through directory-index
-handling on every static host. The bare `/about` depends on the host rewriting
-it — on Vercel, adding `{ "cleanUrls": true }` to a `vercel.json` makes it work
-too, but nothing here depends on that.
+### 2. The host serves the app for those paths (`vercel.json`)
 
-### Keeping them honest
+A rewrite sends every path to `/index.html`. Vercel checks the filesystem
+first, so assets, `robots.txt` and `sitemap.xml` are still served directly.
+**Without this, a hard refresh on `/pricing` 404s.**
 
-These pages duplicate content from `src/pages/`. When prices or the pitch
-change, update both. Current figures: Starter ₦25,000/month, Professional
-₦60,000/month, Enterprise on application.
+### 3. Content in the HTML before JavaScript runs (`index.html`)
+
+Real copy sits inside `<div id="root">`. React clears those children the moment
+it mounts, so the live site is unchanged — but a fetch of `/` now returns
+**1,282 characters** instead of 206. Also added: canonical, Open Graph image
+and URL, theme colour, and JSON-LD describing the product, the ₦25,000 price
+and the Lagos address.
+
+Keep that copy in step with `src/pages/Home.tsx` when the pitch or price
+changes. Per-page titles and descriptions already come from `src/utils/seo.ts`,
+whose canonical tag now points at the real path rather than a `/#hash`.
