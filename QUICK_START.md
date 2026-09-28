@@ -36,7 +36,6 @@ Open `http://localhost:5173`
 ## 🎨 What Changed
 
 ### ✅ Removed
-- ❌ Supabase (`@supabase/supabase-js`)
 - ❌ Bolt AI references (`.bolt/`, meta tags)
 - ❌ All backend dependencies
 

@@ -13,6 +13,7 @@ import { Privacy } from "./pages/Privacy";
 import { Terms } from "./pages/Terms";
 import { Resources } from "./pages/Resources";
 import { applyPageSeo } from "./utils/seo";
+import { pageForPath, pathForPage } from "./utils/routes";
 import {
   initAnalytics,
   installScrollTracking,
@@ -21,7 +22,22 @@ import {
 } from "./utils/analytics";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("home");
+  /*
+    The URL is the source of truth for which page shows, so a link to
+    /pricing opens on pricing rather than always on home.
+  */
+  const [currentPage, setCurrentPage] = useState(() =>
+    pageForPath(window.location.pathname, window.location.hash)
+  );
+
+  // Back and forward buttons move between pages rather than leaving the site.
+  useEffect(() => {
+    const onPopState = () => {
+      setCurrentPage(pageForPath(window.location.pathname, window.location.hash));
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
 
   // Loaded once, and only when a measurement ID is configured.
   useEffect(() => {
@@ -46,6 +62,16 @@ function App() {
 
   const handleNavigate = (page: string) => {
     setCurrentPage(page);
+
+    /*
+      Write the URL so the page can be linked to and shared. pushState rather
+      than assigning location: the app is already loaded, and a navigation
+      would throw the bundle away and fetch it again.
+    */
+    const path = pathForPage(page);
+    if (window.location.pathname !== path) {
+      window.history.pushState({ page }, "", path);
+    }
   };
 
   const renderPage = () => {
