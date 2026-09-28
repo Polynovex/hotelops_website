@@ -13,9 +13,86 @@
     <meta property="og:description" content="Modern hotel management platform designed for Nigerian hotels." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="HotelOpX" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hotelopx.com/" />
+    <meta property="og:image" content="https://hotelopx.com/logo.png" />
+    <meta name="twitter:description" content="Property management, point of sale, housekeeping, finance and staff in one platform. Built for Nigerian hotels." />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="canonical" href="https://hotelopx.com/" />
+
+    <!--
+      Structured data, so a search result and a link preview carry the product,
+      the price and the Lagos address rather than a bare domain.
+    -->
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"SoftwareApplication","name":"HotelOpX",
+      "applicationCategory":"BusinessApplication","operatingSystem":"Web, Android, iOS",
+      "url":"https://hotelopx.com","description":"Hotel management software for Nigerian hotels covering property management, point of sale, housekeeping, finance and staff.",
+      "offers":{"@type":"Offer","price":"25000","priceCurrency":"NGN"},
+      "publisher":{"@type":"Organization","name":"HotelOpX","url":"https://hotelopx.com","logo":"https://hotelopx.com/logo.png","email":"info@hotelopx.com","telephone":"+2348134393554",
+      "address":{"@type":"PostalAddress","streetAddress":"20 Samera St, Ketu","addressLocality":"Lagos","postalCode":"105102","addressCountry":"NG"}}}
+    </script>
+
+    <style>
+      /*
+        Styling for the pre-hydration content below. Matches the app's own dark
+        ground so the hand-off is invisible rather than a white flash.
+      */
+      html, body { margin: 0; background: #070d1a; }
+      #seo-shell {
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        color: #cbd5e1; max-width: 760px; margin: 0 auto; padding: 48px 20px; line-height: 1.6;
+      }
+      #seo-shell h1 { color: #fff; font-size: 34px; line-height: 1.2; margin: 0 0 14px; }
+      #seo-shell h2 { color: #fff; font-size: 20px; margin: 26px 0 8px; }
+      #seo-shell a { color: #60a5fa; }
+      #seo-shell nav a { margin-right: 16px; }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <!--
+      Content inside #root is the page a crawler, a link preview or an
+      automated review sees. React clears these children the moment it mounts,
+      so it costs the live site nothing.
+
+      It exists because navigation in this app is state-based: every page lives
+      at "/", and a fetch of "/" used to return an empty body. To anything that
+      does not run JavaScript, the site looked blank.
+
+      Keep it in step with src/pages/Home.tsx when the pitch or price changes.
+    -->
+    <div id="root">
+      <div id="seo-shell">
+        <nav>
+          <a href="/about/">About</a><a href="/pricing/">Pricing</a><a href="/contact/">Contact</a>
+        </nav>
+        <h1>Hotel management software built for Nigerian hotels</h1>
+        <p>HotelOpX brings the front desk, restaurant and bar, housekeeping, accounts and staff
+           into one platform, so you can see what is happening across your hotel as it happens —
+           instead of piecing it together from notebooks, spreadsheets and WhatsApp messages.</p>
+
+        <h2>Built for how hotels here actually run</h2>
+        <p>It keeps working when the power and the network go, and syncs everything once they
+           return. Guests pay by card, transfer, cash or POS terminal, and every payment lands
+           against the right room and the right shift. Pricing is in naira.</p>
+
+        <h2>What it covers</h2>
+        <p>Property management for reservations, check-in and room status. Point of sale for the
+           restaurant and bar, with QR ordering and kitchen screens. Housekeeping assignment and
+           inspection. Finance, with daily revenue, expenditure and shift reconciliation. Staff
+           records, roles and shifts.</p>
+
+        <h2>Pricing</h2>
+        <p>From <strong>₦25,000 per month</strong> for small hotels and guest houses, ₦60,000 per
+           month for mid-sized hotels with several revenue centres, and a tailored plan for chains.
+           <a href="/pricing/">See full pricing</a>.</p>
+
+        <h2>Talk to us</h2>
+        <p>HotelOpX, 20 Samera St, Ketu, Lagos 105102, Nigeria.<br />
+           Email <a href="mailto:info@hotelopx.com">info@hotelopx.com</a> or message
+           <a href="https://wa.me/2348134393554">WhatsApp +234 813 439 3554</a> to book a demo.</p>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
