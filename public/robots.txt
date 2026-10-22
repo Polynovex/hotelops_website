@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hotelopx.com/sitemap.xml
+Sitemap: https://www.hotelopx.com/sitemap.xml

@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import {
   WifiOff,
   DollarSign,
   Zap,
   Shield,
-  Users,
   TrendingUp,
-  Clock,
   CheckCircle,
   XCircle,
   Globe,
