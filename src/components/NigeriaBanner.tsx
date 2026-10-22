@@ -15,7 +15,10 @@ const DISMISSED_KEY = "hotelopx.nigeriaBannerDismissed";
  * matters most on the phones this audience mostly browses on.
  */
 export function NigeriaBanner() {
-  const [dismissed, setDismissed] = useState(true);
+  // Shown in the prerendered page, so it is there from the first paint rather
+  // than pushing the page down when JavaScript arrives. A visitor who closed
+  // it before has it removed by the effect below.
+  const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
     // Read in an effect, not during render: a private window or blocked

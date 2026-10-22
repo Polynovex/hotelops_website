@@ -1,6 +1,13 @@
 import { pathForPage } from './routes';
 
 /**
+ * The address search engines should index. Fixed rather than read from the
+ * browser, so a preview deployment or the bare domain (which redirects here)
+ * never ends up named as the canonical copy.
+ */
+export const SITE_URL = 'https://www.hotelopx.com';
+
+/**
  * Per-page title and meta description.
  *
  * Navigation is state-based rather than routed, so the document head does not
@@ -59,6 +66,10 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     description:
       'How HotelOpX collects, uses and protects personal data, in line with the Nigeria Data Protection Act and NDPR.'
   },
+  notfound: {
+    title: 'Page not found — HotelOpX',
+    description: 'This page does not exist. Visit the HotelOpX home page for hotel management software built for Nigerian hotels.'
+  },
   terms: {
     title: 'Terms of Service — HotelOpX',
     description:
@@ -108,5 +119,5 @@ export const applyPageSeo = (page: string) => {
     canonical.setAttribute('rel', 'canonical');
     document.head.appendChild(canonical);
   }
-  canonical.setAttribute('href', `${window.location.origin}${pathForPage(page)}`);
+  canonical.setAttribute('href', `${SITE_URL}${pathForPage(page)}`);
 };

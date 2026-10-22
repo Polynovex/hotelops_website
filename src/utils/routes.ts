@@ -23,23 +23,30 @@ const PATHS: Record<string, string> = {
 
 export const pathForPage = (page: string): string => PATHS[page] ?? '/';
 
+/** The page key for an address that is not one of the pages above. */
+export const NOT_FOUND = 'notfound';
+
 /**
  * Path → page key, tolerant of a trailing slash and of the older `/#about`
  * links that were shared while the site had no routing.
  */
 export const pageForPath = (pathname: string, hash = ''): string => {
   const cleaned = pathname.replace(/\/+$/, '') || '/';
+
+  // Checked before the path: those old links are all "/#page", and "/" on its
+  // own would otherwise match home first.
+  const fromHash = hash.replace(/^#/, '');
+  if (cleaned === '/' && fromHash && PATHS[fromHash]) {
+    return fromHash;
+  }
+
   const fromPath = Object.entries(PATHS).find(([, path]) => path === cleaned);
   if (fromPath) {
     return fromPath[0];
   }
 
-  const fromHash = hash.replace(/^#/, '');
-  if (fromHash && PATHS[fromHash]) {
-    return fromHash;
-  }
-
-  return 'home';
+  // Anything else is not a page: say so rather than showing home at a stray URL.
+  return cleaned === '/' ? 'home' : NOT_FOUND;
 };
 
 export const ROUTABLE_PAGES = Object.keys(PATHS);

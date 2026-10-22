@@ -12,8 +12,9 @@ import { Contact } from "./pages/Contact";
 import { Privacy } from "./pages/Privacy";
 import { Terms } from "./pages/Terms";
 import { Resources } from "./pages/Resources";
+import { NotFound } from "./pages/NotFound";
 import { applyPageSeo } from "./utils/seo";
-import { pageForPath, pathForPage } from "./utils/routes";
+import { NOT_FOUND, pageForPath, pathForPage } from "./utils/routes";
 import {
   initAnalytics,
   installScrollTracking,
@@ -21,13 +22,14 @@ import {
   trackPageView,
 } from "./utils/analytics";
 
-function App() {
+function App({ initialPage }: { initialPage?: string }) {
   /*
     The URL is the source of truth for which page shows, so a link to
-    /pricing opens on pricing rather than always on home.
+    /pricing opens on pricing rather than always on home. At build time there
+    is no URL; the prerender says which page it is rendering.
   */
   const [currentPage, setCurrentPage] = useState(() =>
-    pageForPath(window.location.pathname, window.location.hash)
+    initialPage ?? pageForPath(window.location.pathname, window.location.hash)
   );
 
   // Back and forward buttons move between pages rather than leaving the site.
@@ -94,6 +96,8 @@ function App() {
         return <Privacy />;
       case "terms":
         return <Terms onNavigate={handleNavigate} />;
+      case NOT_FOUND:
+        return <NotFound onNavigate={handleNavigate} />;
       default:
         return <Home onNavigate={handleNavigate} />;
     }

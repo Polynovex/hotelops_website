@@ -1,4 +1,5 @@
 import { FileCheck, Headphones, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { PageLink } from "./PageLink";
 
 interface FooterProps {
   onNavigate: (page: string) => void;
@@ -27,36 +28,32 @@ export function Footer({ onNavigate }: FooterProps) {
             <h3 className="text-white font-semibold mb-4">Company</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <button
-                  onClick={() => onNavigate("about")}
+                <PageLink page="about" onNavigate={onNavigate}
                   className="block py-1.5 hover:text-white transition-colors"
                 >
                   About Us
-                </button>
+                </PageLink>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate("products")}
+                <PageLink page="products" onNavigate={onNavigate}
                   className="block py-1.5 hover:text-white transition-colors"
                 >
                   Products
-                </button>
+                </PageLink>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate("pricing")}
+                <PageLink page="pricing" onNavigate={onNavigate}
                   className="block py-1.5 hover:text-white transition-colors"
                 >
                   Pricing
-                </button>
+                </PageLink>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate("contact")}
+                <PageLink page="contact" onNavigate={onNavigate}
                   className="block py-1.5 hover:text-white transition-colors"
                 >
                   Contact
-                </button>
+                </PageLink>
               </li>
               <li>
                 {/*
@@ -66,12 +63,11 @@ export function Footer({ onNavigate }: FooterProps) {
                   the top nav would add a step to the buying path without
                   adding any persuasion to it.
                 */}
-                <button
-                  onClick={() => onNavigate("resources")}
+                <PageLink page="resources" onNavigate={onNavigate}
                   className="block py-1.5 hover:text-white transition-colors"
                 >
                   Resources
-                </button>
+                </PageLink>
               </li>
               <li>
                 {/*
@@ -80,12 +76,11 @@ export function Footer({ onNavigate }: FooterProps) {
                   the contact form, and the NDPA requires the policy — and the
                   data-protection contact it names — to be findable.
                 */}
-                <button
-                  onClick={() => onNavigate("privacy")}
+                <PageLink page="privacy" onNavigate={onNavigate}
                   className="block py-1.5 hover:text-white transition-colors"
                 >
                   Privacy Policy
-                </button>
+                </PageLink>
               </li>
               <li>
                 {/*
@@ -95,12 +90,11 @@ export function Footer({ onNavigate }: FooterProps) {
                   Polynovex Limited is a real registered entity before paying
                   it money.
                 */}
-                <button
-                  onClick={() => onNavigate("terms")}
+                <PageLink page="terms" onNavigate={onNavigate}
                   className="block py-1.5 hover:text-white transition-colors"
                 >
                   Terms of Service
-                </button>
+                </PageLink>
               </li>
             </ul>
           </div>

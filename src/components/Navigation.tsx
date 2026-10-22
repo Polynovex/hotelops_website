@@ -1,5 +1,6 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { PageLink } from './PageLink';
 import { Button } from './Button';
 
 interface NavigationProps {
@@ -29,25 +30,27 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
     <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div
+          <PageLink
+            page="home"
+            onNavigate={handleNavigate}
             className="flex items-center cursor-pointer"
-            onClick={() => handleNavigate('home')}
           >
             <div className="w-40 h-40 flex items-center justify-left" >
-             <img src="/logo.png" alt="" />
+             <img src="/logo.png" alt="HotelOpX" width={160} height={160} />
             </div>
          
             {/* <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
               <span className="text-white font-bold text-xl">H</span>
             </div>
             <span className="text-xl font-bold text-slate-800">HotelOpX</span> */}
-          </div>
+          </PageLink>
 
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
+              <PageLink
                 key={item.path}
-                onClick={() => handleNavigate(item.path)}
+                page={item.path}
+                onNavigate={handleNavigate}
                 className={`text-sm font-medium transition-colors ${
                   currentPage === item.path
                     ? 'text-blue-600'
@@ -55,7 +58,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 }`}
               >
                 {item.name}
-              </button>
+              </PageLink>
             ))}
             <Button
               size="sm"
@@ -82,9 +85,10 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
         <div className="md:hidden border-t border-slate-200 bg-white">
           <div className="px-4 py-3 space-y-3">
             {navItems.map((item) => (
-              <button
+              <PageLink
                 key={item.path}
-                onClick={() => handleNavigate(item.path)}
+                page={item.path}
+                onNavigate={handleNavigate}
                 className={`block w-full text-left px-3 py-2 rounded-lg text-base font-medium transition-colors ${
                   currentPage === item.path
                     ? 'text-blue-600 bg-blue-50'
@@ -92,7 +96,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 }`}
               >
                 {item.name}
-              </button>
+              </PageLink>
             ))}
             <Button
               className="w-full"

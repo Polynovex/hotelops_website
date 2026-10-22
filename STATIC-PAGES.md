@@ -41,14 +41,40 @@ A rewrite sends every path to `/index.html`. Vercel checks the filesystem
 first, so assets, `robots.txt` and `sitemap.xml` are still served directly.
 **Without this, a hard refresh on `/pricing` 404s.**
 
-### 3. Content in the HTML before JavaScript runs (`index.html`)
+### 3. Every page is prerendered at build time (`src/entry-server.tsx`, `scripts/prerender.mjs`)
 
-Real copy sits inside `<div id="root">`. React clears those children the moment
-it mounts, so the live site is unchanged — but a fetch of `/` now returns
-**1,282 characters** instead of 206. Also added: canonical, Open Graph image
-and URL, theme colour, and JSON-LD describing the product, the ₦25,000 price
-and the Lagos address.
+The first version of this put a hand-written text block inside `<div id="root">`
+of the one `index.html`. Two problems with that: every URL still returned the
+same file (home's title, description and canonical on `/pricing`), and
+visitors saw the plain block for about a second before React replaced it with
+the real site.
 
-Keep that copy in step with `src/pages/Home.tsx` when the pitch or price
-changes. Per-page titles and descriptions already come from `src/utils/seo.ts`,
-whose canonical tag now points at the real path rather than a `/#hash`.
+Now `npm run build` does three things:
+
+1. `vite build`: the browser bundle, as before.
+2. `vite build --ssr src/entry-server.tsx`: the same app, for Node.
+3. `node scripts/prerender.mjs`: renders each page with `renderToString` into
+   its own file, with that page's title, description, Open Graph tags and
+   canonical from `src/utils/seo.ts`:
+
+| File | Served at |
+|------|-----------|
+| `dist/index.html` | `/` |
+| `dist/<page>.html` | `/<page>` (`cleanUrls` in `vercel.json`) |
+| `dist/404.html` | anything else, with a real **404** status and `noindex` |
+
+The browser paints that HTML at once; `src/main.tsx` then **hydrates** it
+(attaches React without redrawing), so there is no swap. `#root` carries
+`data-page`; if it does not match the address (an old `/#pricing` link lands
+on the home file) the app renders fresh instead.
+
+Rules that keep it working:
+
+- Nothing may touch `window`, `document` or `localStorage` during render;
+  do it in `useEffect`. The prerender runs in Node and will fail loudly.
+- Internal links use `PageLink` (a real `<a href>`), so crawlers can follow
+  them; buttons are invisible to search engines.
+- The canonical origin is `SITE_URL` in `src/utils/seo.ts`
+  (`https://www.hotelopx.com`); the bare domain redirects there.
+- Add a page: add it to `PATHS` in `src/utils/routes.ts`, `PAGE_SEO`, the
+  switch in `App.tsx`, and `public/sitemap.xml`.
