@@ -1,5 +1,8 @@
 import {
   Building2,
+  Package,
+  CalendarDays,
+  Star,
   CreditCard,
   BarChart3,
   Users,
@@ -18,80 +21,133 @@ interface ProductsProps {
 }
 
 export function Products({ onNavigate }: ProductsProps) {
+  /*
+   * What is built today. Features marked (Enterprise) are on the Enterprise
+   * plan only; everything else is on every plan unless the pricing page says
+   * otherwise. Keep this in step with the product, and with Pricing.tsx.
+   */
   const products = [
     {
       icon: Building2,
       name: "HotelOpX PMS",
       tagline: "Complete Property Management System",
       description:
-        "Manage every aspect of your hotel operations from a single, intuitive platform. From reservations to housekeeping, front desk to guest services.",
+        "Run the front desk, rooms and housekeeping from one screen: reservations and walk-ins, check-in and check-out, room status, and a clean hand-over from housekeeping to sale.",
       features: [
-        "Online & walk-in reservations",
-        "Housekeeping assignment & manager approval",
-        "Room assignment & status board",
-        "Front desk operations",
-        "Guest profiles & history",
-        "Rate plans & availability calendar",
-        "Automated check-in/check-out",
-        "Real-time room status",
-        "Night audit automation",
+        "Online & walk-in reservations, Q-rooms and waitlist",
+        "Front desk check-in and check-out",
+        "Guest QR self-registration before arrival",
+        "Room status board and real-time availability",
+        "Housekeeping tasks, assignment and room inspection",
+        "Check-out review: late check-out fees, damage and minibar charges with approval",
+        "Guest and company profiles with stay history",
+        "Rate plans, room types and availability calendar",
+        "Night audit with automatic backup",
       ],
       color: "blue",
     },
     {
       icon: CreditCard,
       name: "HotelOpX POS",
-      tagline: "Point of Sale for All Revenue Centers",
+      tagline: "Point of Sale for Every Outlet",
       description:
-        "Integrated POS system for restaurant, bar, spa, and all hotel revenue centers. Take card payments through your own Paystack or Flutterwave account, and record cash, transfers and terminal payments against the right room or table.",
+        "One POS for the restaurant, bar, pool and room service. Guests order from a QR code at their table; staff take cash, card, transfer or send the bill to the guest's room.",
       features: [
-        "QR code ordering — guests scan, browse & order",
-        "Restaurant & bar management",
-        "Room service ordering",
-        "Split bills & transfers",
-        "Table management",
-        "Kitchen display system",
-        "Inventory tracking",
-        "Card payments via Paystack & Flutterwave",
-        "Cash, transfer & POS terminal payments",
-        "Receipt printing & email",
+        "QR code ordering: guests scan, browse, order and pay",
+        "Restaurant, bar and room service",
+        "Send the bill to a guest's room",
+        "Menu add-ons priced automatically",
+        "Kitchen display and table management",
+        "Split bills, discounts and manager approval",
+        "Card payments via your own Paystack or Flutterwave account",
+        "Cash, transfer and POS terminal payments",
+        "Works offline and syncs when back online",
       ],
       color: "green",
     },
     {
+      icon: Package,
+      name: "HotelOpX Inventory",
+      tagline: "Stock Linked to the POS",
+      description:
+        "Know what is in the store, what went out and what it cost. Stock received updates the cost price, and what is issued is tracked against your outlets.",
+      features: [
+        "Stock items by category and store",
+        "Receive and issue stock with full history",
+        "Cost price updated from each delivery",
+        "Items issued and quantity on hand at a glance",
+        "Linked to POS menu items and outlets",
+        "Printable stock sheets",
+      ],
+      color: "cyan",
+    },
+    {
       icon: BarChart3,
       name: "HotelOpX Finance",
-      tagline: "Financial Management & Reporting",
+      tagline: "From Daily Records to Full Accounts",
       description:
-        "A full double-entry ledger with real-time reporting, invoicing and bank reconciliation. Track every naira that flows through your hotel.",
+        "Every plan records each day's money with owner approval, so no figure reaches a report until it is signed off. Enterprise adds a full double-entry ledger, financial statements and USALI-aligned reporting.",
       features: [
-        "Real-time financial reports",
-        "Automated invoicing",
-        "Revenue management",
-        "Expense tracking",
-        "Bank reconciliation",
-        "Tax compliance",
-        "Naira billing throughout",
+        "Daily records with owner approval",
+        "Daily expenditure: recorded by the GM or accountant, approved by someone else",
+        "Budgets against actual spend",
+        "Suppliers and creditors",
+        "Transaction history and POS payments",
+        "Management reports in naira",
+        "Double-entry ledger, journals and bank reconciliation (Enterprise)",
+        "Trial balance, P&L, balance sheet, aging and VAT (Enterprise)",
+        "USALI-aligned operating statement and forecasting (Enterprise)",
       ],
       color: "orange",
     },
     {
       icon: Users,
       name: "HotelOpX HR & Payroll",
-      tagline: "Staff, Attendance & Nigerian Payroll",
+      tagline: "Staff, Rota, Attendance & Nigerian Payroll",
       description:
-        "Manage your team end to end \u2014 employee records, attendance, leave, and monthly payroll with PAYE calculated to Nigerian tax law automatically.",
+        "Manage your team end to end: staff records, the rota, attendance, leave and monthly payroll with PAYE calculated to Nigerian tax law automatically.",
       features: [
-        "Staff records & employment history",
+        "Staff profiles with promotion and transfer history",
+        "Rota generator, with sign-in tied to each shift",
         "Clock in/out via QR, PIN or GPS",
+        "Overtime requests, approvals and pay rates",
         "Leave requests, approvals & balances",
         "Automatic PAYE & Consolidated Relief",
         "Payslip generation & printing",
-        "Overtime tracking from attendance",
-        "Performance reviews",
-        "Bank details for salary payment",
+        "Staff self-service hub",
       ],
       color: "green",
+    },
+    {
+      icon: CalendarDays,
+      name: "HotelOpX Banquet & Events",
+      tagline: "Conferences, Weddings and Functions (Enterprise)",
+      description:
+        "Book the venue, the rooms and the catering in one place. Quote, invoice and take deposits, and the rooms you hold for an event are kept off sale for the dates.",
+      features: [
+        "Event calendar across every venue",
+        "Event types, quotes and invoices",
+        "Catering menus from your banquet outlet",
+        "Room blocks held from your room inventory",
+        "Deposits, payments and balance tracking",
+        "Add-ons after payment, priced and invoiced",
+      ],
+      color: "purple",
+    },
+    {
+      icon: Star,
+      name: "HotelOpX Guest Experience",
+      tagline: "Feedback, Loyalty and Promotions",
+      description:
+        "Hear from guests while they are still with you, reward the ones who come back, and fill quiet nights with targeted offers.",
+      features: [
+        "Guest feedback QR codes, with low ratings sent to managers at once",
+        "Ratings by service: room, cleanliness, food, front desk, value",
+        "Birthday wishes for guests",
+        "Loyalty programme (Enterprise)",
+        "Room, F&B and event promotions (Enterprise)",
+      ],
+      color: "blue",
     },
   ];
 
@@ -134,7 +190,7 @@ export function Products({ onNavigate }: ProductsProps) {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-block mb-6 px-4 py-2 bg-blue-500/20 border border-blue-400/50 text-blue-200 rounded-full text-sm font-medium backdrop-blur-sm animate-fade-in">
-            🎯 Four Powerful Products, One Platform
+            🎯 Seven modules, one platform
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in animation-delay-200">
             Everything You Need to Run
@@ -160,6 +216,8 @@ export function Products({ onNavigate }: ProductsProps) {
           blue: "from-blue-500 to-blue-600",
           green: "from-emerald-500 to-emerald-600",
           orange: "from-orange-500 to-orange-600",
+          cyan: "from-cyan-500 to-cyan-600",
+          purple: "from-violet-500 to-violet-600",
         };
 
         return (
