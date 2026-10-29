@@ -1,4 +1,5 @@
 import { Check, X, ArrowRight } from "lucide-react";
+import { AddOnsGrid } from "../components/AddOns";
 import { Button } from "../components/Button";
 import { SwipeDeck } from "../components/SwipeDeck";
 
@@ -7,55 +8,57 @@ interface PricingProps {
 }
 
 export function Pricing({ onNavigate }: PricingProps) {
+  /*
+   * Plans are chosen by what a hotel needs, not by its room count: a small
+   * hotel can take a higher plan. Prices are "from" because the final figure
+   * depends on the add-ons chosen (pool, spa, events…).
+   */
   const plans = [
     {
       name: "Starter",
-      subtitle: "1-30 Rooms",
+      subtitle: "Run the essentials",
       price: "25,000",
-      period: "per month",
+      from: true,
+      period: "per month, plus any add-ons",
       description:
-        "Perfect for guesthouses, small hotels, and budget properties",
+        "Front desk, rooms and housekeeping, a POS for your restaurant or bar, and finance with owner approval.",
       features: [
-        { name: "Up to 30 rooms, 10 users", included: true },
         { name: "HotelOpX PMS", included: true },
         { name: "HotelOpX POS (1 terminal)", included: true },
         { name: "QR code ordering", included: true },
         { name: "Housekeeping workflow", included: true },
-        { name: "Basic Finance & Reporting", included: true },
+        { name: "Check-out charges (late check-out, damage)", included: true },
+        { name: "Basic finance: daily records, expenditure, budgets, suppliers", included: true },
         { name: "Offline mode", included: true },
         { name: "Card payments via Paystack & Flutterwave", included: true },
         { name: "Mobile app, installed by our team", included: true },
-        { name: "Email support", included: true },
-        { name: "WhatsApp support (business hours)", included: true },
+        { name: "Email & WhatsApp support (business hours)", included: true },
         { name: "HR & Payroll", included: false },
-        { name: "Inventory management", included: false },
+        { name: "Promotions", included: false },
+        { name: "Full finance: ledger, statements, USALI, forecasting", included: false },
         { name: "Advanced analytics", included: false },
-        { name: "Dedicated account manager", included: false },
       ],
       popular: false,
       color: "blue",
     },
     {
       name: "Professional",
-      subtitle: "31-100 Rooms",
+      subtitle: "Grow with confidence",
       price: "60,000",
-      period: "per month",
-      description: "Ideal for mid-sized hotels with multiple revenue centers",
+      from: true,
+      period: "per month, plus any add-ons",
+      description:
+        "Everything in Starter, with the full finance suite, HR & payroll, promotions, more POS terminals and advanced analytics.",
       features: [
-        { name: "Up to 100 rooms, 50 users", included: true },
-        { name: "HotelOpX PMS", included: true },
+        { name: "Everything in Starter", included: true },
         { name: "HotelOpX POS (5 terminals)", included: true },
-        { name: "QR code ordering", included: true },
-        { name: "Housekeeping workflow", included: true },
-        { name: "Full Finance Suite & Ledger", included: true },
-        { name: "HR & Payroll (PAYE, payslips)", included: true },
-        { name: "Inventory management", included: true },
-        { name: "Offline mode", included: true },
-        { name: "Card payments via Paystack & Flutterwave", included: true },
-        { name: "Mobile app, installed by our team", included: true },
+        { name: "HR & Payroll: rota, attendance, PAYE, payslips", included: true },
+        { name: "Full finance: ledger, statements, USALI, forecasting", included: true },
+        { name: "Promotions: room, F&B and event", included: true },
+        { name: "Advanced analytics & insights", included: true },
         { name: "Priority email & phone support", included: true },
         { name: "WhatsApp support (24/7)", included: true },
-        { name: "Advanced analytics & insights", included: true },
+        { name: "Loyalty programme", included: false },
         { name: "White-label branding", included: false },
         { name: "Dedicated account manager", included: false },
       ],
@@ -64,26 +67,18 @@ export function Pricing({ onNavigate }: PricingProps) {
     },
     {
       name: "Enterprise",
-      subtitle: "100+ Rooms / 5-Star",
-      price: "From 150,000",
-      period: "per month",
-      description: "Full-featured solution for large hotels and hotel chains",
+      subtitle: "The complete suite",
+      price: "150,000",
+      from: true,
+      period: "per month, plus any add-ons",
+      description:
+        "Everything in Professional, with the loyalty programme, a dedicated account manager, unlimited POS terminals and white-label branding.",
       features: [
-        { name: "Unlimited rooms & users", included: true },
-        { name: "HotelOpX PMS", included: true },
+        { name: "Everything in Professional", included: true },
         { name: "HotelOpX POS (unlimited)", included: true },
-        { name: "QR code ordering", included: true },
-        { name: "Housekeeping workflow", included: true },
-        { name: "Full Finance Suite", included: true },
-        { name: "HR & Payroll (PAYE, payslips)", included: true },
-        { name: "Inventory management", included: true },
         { name: "Loyalty programme", included: true },
         { name: "White-label branding", included: true },
-        { name: "Offline mode", included: true },
-        { name: "Card payments via Paystack & Flutterwave", included: true },
-        { name: "Mobile app, installed by our team", included: true },
         { name: "Priority 24/7 support", included: true },
-        { name: "Advanced analytics & insights", included: true },
         { name: "Dedicated account manager", included: true },
         { name: "Channel manager (Booking.com, Expedia) — coming soon", included: false },
       ],
@@ -93,15 +88,18 @@ export function Pricing({ onNavigate }: PricingProps) {
   ];
 
   const allFeatures = [
+    "Inventory linked to your POS",
+    "Guest feedback QR codes",
+    "Guest QR self-registration",
+    "QR code ordering for tables and rooms",
     "Offline-first capability",
     "Card payments on your own Paystack or Flutterwave account",
     "Real-time synchronization",
-    "Cloud backup & security",
+    "Cloud backup & security, with backups you can download",
     "Regular software updates",
     "Staff training included",
     "Data migration assistance",
     "Nigerian Naira billing",
-    "QR-Code Features for Contactless Ordering",
   ];
 
   return (
@@ -125,8 +123,9 @@ export function Pricing({ onNavigate }: PricingProps) {
             </span>
           </h1>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto animate-fade-in animation-delay-300">
-            Choose the plan that fits your hotel size. All plans include PMS,
-            POS, and Finance modules. No hidden fees, no surprises.
+            Choose the plan that fits how you run your hotel, whatever its size,
+            then add what you need: pool, spa, events, laundry and more. Every
+            plan includes PMS, POS, inventory, guest feedback and finance.
           </p>
         </div>
       </section>
@@ -197,7 +196,12 @@ export function Pricing({ onNavigate }: PricingProps) {
                         </>
                       ) : (
                         <>
-                          <div className="flex items-baseline mb-2">
+                          <div className="flex items-baseline mb-2 gap-1">
+                            {plan.from && (
+                              <span className="text-sm font-semibold uppercase tracking-wide text-slate-500 mr-1">
+                                From
+                              </span>
+                            )}
                             <span className="text-2xl font-medium text-slate-600">
                               ₦
                             </span>
@@ -261,6 +265,20 @@ export function Pricing({ onNavigate }: PricingProps) {
               );
             })}
           </SwipeDeck>
+        </div>
+      </section>
+
+      {/* Add-ons: on any plan, priced on top */}
+      <section className="py-12 md:py-20 bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Add what your property offers</h2>
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+              Add-ons work with any plan. Each one plugs into your PMS, POS and Finance: sold at its own outlet,
+              billed to a guest&apos;s room, and reported under its own line.
+            </p>
+          </div>
+          <AddOnsGrid dark />
         </div>
       </section>
 

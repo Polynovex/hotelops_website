@@ -9,6 +9,8 @@ import {
   TrendingUp,
   Globe,
   Zap,
+  Star,
+  CalendarDays,
 } from "lucide-react";
 import { Button } from "../components/Button";
 import { trackEvent } from "../utils/analytics";
@@ -35,22 +37,36 @@ export function Home({ onNavigate }: HomeProps) {
       icon: Building2,
       title: "Property Management",
       description:
-        "Complete PMS for reservations, housekeeping, front desk, and guest management.",
+        "Reservations, front desk, housekeeping and inspection, guest QR self-registration, and check-out charges with approval.",
       color: "from-blue-500 to-blue-600",
     },
     {
       icon: CreditCard,
-      title: "Point of Sale",
+      title: "Point of Sale & Inventory",
       description:
-        "Integrated POS for restaurant, bar, spa, and all revenue centers.",
+        "QR table ordering, kitchen display, send-to-room billing, menu add-ons, and stock linked to every outlet.",
       color: "from-purple-500 to-purple-600",
     },
     {
       icon: BarChart3,
-      title: "Finance & Ledger",
+      title: "Finance",
       description:
-        "Real-time financial reports, invoicing, and accounting integration.",
+        "Daily records and expenditure with approval on every plan; full ledger, statements and USALI reporting on Professional and Enterprise.",
       color: "from-emerald-500 to-emerald-600",
+    },
+    {
+      icon: Star,
+      title: "Guest Feedback",
+      description:
+        "A QR code in every room: guests rate their stay, and low ratings reach your managers straight away.",
+      color: "from-amber-500 to-amber-600",
+    },
+    {
+      icon: CalendarDays,
+      title: "Banquet & Events",
+      description:
+        "Venues, catering and room blocks booked together, with quotes, invoices and deposits. An add-on for any plan.",
+      color: "from-violet-500 to-violet-600",
     },
     {
       icon: Wifi,

@@ -34,7 +34,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   products: {
     title: 'Hotel PMS — Hotel Management Software Features | HotelOpX',
     description:
-      'Explore HotelOpX features: reservations, front desk, housekeeping, billing, reports and restaurant POS. Hotel management software built for Nigeria.'
+      'HotelOpX features: PMS, POS with QR ordering, inventory, finance, HR & payroll, banquet & events, and guest feedback QR codes. Built for Nigerian hotels.'
   },
   pricing: {
     title: 'Hotel PMS Pricing — Affordable Plans for Nigerian Hotels | HotelOpX',
