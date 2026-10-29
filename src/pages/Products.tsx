@@ -88,7 +88,7 @@ export function Products({ onNavigate }: ProductsProps) {
       name: "HotelOpX Finance",
       tagline: "From Daily Records to Full Accounts",
       description:
-        "Every plan records each day's money with owner approval, so no figure reaches a report until it is signed off. Enterprise adds a full double-entry ledger, financial statements and USALI-aligned reporting.",
+        "Every plan records each day's money with owner approval, so no figure reaches a report until it is signed off. Professional and Enterprise add a full double-entry ledger, financial statements and USALI-aligned reporting.",
       features: [
         "Daily records with owner approval",
         "Daily expenditure: recorded by the GM or accountant, approved by someone else",
@@ -96,9 +96,9 @@ export function Products({ onNavigate }: ProductsProps) {
         "Suppliers and creditors",
         "Transaction history and POS payments",
         "Management reports in naira",
-        "Double-entry ledger, journals and bank reconciliation (Enterprise)",
-        "Trial balance, P&L, balance sheet, aging and VAT (Enterprise)",
-        "USALI-aligned operating statement and forecasting (Enterprise)",
+        "Double-entry ledger, journals and bank reconciliation (Professional and Enterprise)",
+        "Trial balance, P&L, balance sheet, aging and VAT (Professional and Enterprise)",
+        "USALI-aligned operating statement and forecasting (Professional and Enterprise)",
       ],
       color: "orange",
     },

@@ -51,7 +51,7 @@ export function Home({ onNavigate }: HomeProps) {
       icon: BarChart3,
       title: "Finance",
       description:
-        "Daily records and expenditure with approval on every plan; full ledger, statements and USALI reporting on Enterprise.",
+        "Daily records and expenditure with approval on every plan; full ledger, statements and USALI reporting on Professional and Enterprise.",
       color: "from-emerald-500 to-emerald-600",
     },
     {

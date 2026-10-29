@@ -48,16 +48,17 @@ export function Pricing({ onNavigate }: PricingProps) {
       from: true,
       period: "per month, plus any add-ons",
       description:
-        "Everything in Starter, with HR & payroll, promotions, more POS terminals and advanced analytics.",
+        "Everything in Starter, with the full finance suite, HR & payroll, promotions, more POS terminals and advanced analytics.",
       features: [
         { name: "Everything in Starter", included: true },
         { name: "HotelOpX POS (5 terminals)", included: true },
         { name: "HR & Payroll: rota, attendance, PAYE, payslips", included: true },
+        { name: "Full finance: ledger, statements, USALI, forecasting", included: true },
         { name: "Promotions: room, F&B and event", included: true },
         { name: "Advanced analytics & insights", included: true },
         { name: "Priority email & phone support", included: true },
         { name: "WhatsApp support (24/7)", included: true },
-        { name: "Full finance: ledger, statements, USALI, forecasting", included: false },
+        { name: "Loyalty programme", included: false },
         { name: "White-label branding", included: false },
         { name: "Dedicated account manager", included: false },
       ],
@@ -71,11 +72,10 @@ export function Pricing({ onNavigate }: PricingProps) {
       from: true,
       period: "per month, plus any add-ons",
       description:
-        "Everything in Professional, with the full finance suite, unlimited POS terminals, white-label branding and a dedicated account manager.",
+        "Everything in Professional, with the loyalty programme, a dedicated account manager, unlimited POS terminals and white-label branding.",
       features: [
         { name: "Everything in Professional", included: true },
         { name: "HotelOpX POS (unlimited)", included: true },
-        { name: "Full finance: ledger, statements, USALI, forecasting", included: true },
         { name: "Loyalty programme", included: true },
         { name: "White-label branding", included: true },
         { name: "Priority 24/7 support", included: true },
