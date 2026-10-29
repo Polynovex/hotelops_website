@@ -224,6 +224,18 @@ class ApiService {
    * Published testimonials for the marketing site. Returns an empty list on
    * any failure so a marketing section can never break the page.
    */
+  /** Add-ons businesses can have (pool, spa, events, and any HotelOpX adds). */
+  async getAddOns(): Promise<AddOnRecord[]> {
+    try {
+      const response = await fetch(`${this.baseURL}/public/add-ons`);
+      if (!response.ok) return [];
+      const data = await response.json();
+      return Array.isArray(data) ? data : [];
+    } catch {
+      return [];
+    }
+  }
+
   async getTestimonials(): Promise<TestimonialRecord[]> {
     try {
       const response = await fetch(`${this.baseURL}/public/testimonials`);
@@ -234,6 +246,15 @@ class ApiService {
       return [];
     }
   }
+}
+
+export interface AddOnRecord {
+  code: string;
+  name: string;
+  description: string | null;
+  icon: string;
+  behavior: 'OUTLET' | 'MINIBAR' | 'EVENTS';
+  monthlyPriceNgn: number | null;
 }
 
 export interface PlatformMetricRecord {

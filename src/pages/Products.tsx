@@ -2,6 +2,7 @@ import {
   Building2,
   Package,
   CalendarDays,
+  Martini,
   Star,
   CreditCard,
   BarChart3,
@@ -14,6 +15,7 @@ import {
   Check,
 } from "lucide-react";
 import { Button } from "../components/Button";
+import { AddOnsGrid } from "../components/AddOns";
 import { SwipeDeck } from "../components/SwipeDeck";
 
 interface ProductsProps {
@@ -120,10 +122,10 @@ export function Products({ onNavigate }: ProductsProps) {
     },
     {
       icon: CalendarDays,
-      name: "HotelOpX Banquet & Events",
-      tagline: "Conferences, Weddings and Functions (Enterprise)",
+      name: "HotelOpX Events & Banquet",
+      tagline: "Add-on: Conferences, Weddings and Functions",
       description:
-        "Book the venue, the rooms and the catering in one place. Quote, invoice and take deposits, and the rooms you hold for an event are kept off sale for the dates.",
+        "Book the venue, the rooms and the catering in one place. Quote, invoice and take deposits, and the rooms you hold for an event are kept off sale for the dates. Catering comes from your banquet menu in the POS, payments reach Finance, and the room block reduces what the front desk can sell.",
       features: [
         "Event calendar across every venue",
         "Event types, quotes and invoices",
@@ -131,8 +133,24 @@ export function Products({ onNavigate }: ProductsProps) {
         "Room blocks held from your room inventory",
         "Deposits, payments and balance tracking",
         "Add-ons after payment, priced and invoiced",
+        "Professional proforma invoices, quotations and receipts",
       ],
       color: "purple",
+    },
+    {
+      icon: Martini,
+      name: "HotelOpX Minibar",
+      tagline: "Add-on: Room Minibars, Charged at Check-out",
+      description:
+        "Set what each room's minibar holds and its prices. Housekeeping counts what is left when the guest leaves; the system works out what was taken and puts it on the guest's bill for the front desk to confirm.",
+      features: [
+        "Minibar items and prices",
+        "Stock per room or per room type",
+        "Counted by housekeeping at room inspection",
+        "Charged to the guest bill at check-out, with approval",
+        "Takings reported in Finance",
+      ],
+      color: "cyan",
     },
     {
       icon: Star,
@@ -144,8 +162,8 @@ export function Products({ onNavigate }: ProductsProps) {
         "Guest feedback QR codes, with low ratings sent to managers at once",
         "Ratings by service: room, cleanliness, food, front desk, value",
         "Birthday wishes for guests",
+        "Room, F&B and event promotions (Professional and Enterprise)",
         "Loyalty programme (Enterprise)",
-        "Room, F&B and event promotions (Enterprise)",
       ],
       color: "blue",
     },
@@ -190,7 +208,7 @@ export function Products({ onNavigate }: ProductsProps) {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-block mb-6 px-4 py-2 bg-blue-500/20 border border-blue-400/50 text-blue-200 rounded-full text-sm font-medium backdrop-blur-sm animate-fade-in">
-            🎯 Seven modules, one platform
+            🎯 Core products and add-ons, one platform
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in animation-delay-200">
             Everything You Need to Run
@@ -287,6 +305,20 @@ export function Products({ onNavigate }: ProductsProps) {
           </section>
         );
       })}
+
+      {/* Every add-on, including any HotelOpX has added since */}
+      <section className="py-12 md:py-20 bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Add-ons for every revenue centre</h2>
+            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+              Switch on what your property offers. Each add-on sells through the POS, bills to a guest&apos;s room
+              through the PMS, and reports its takings in Finance under its own line.
+            </p>
+          </div>
+          <AddOnsGrid dark />
+        </div>
+      </section>
 
       {/* Platform Features Section */}
       <section className="relative py-12 md:py-24 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 overflow-hidden">

@@ -65,7 +65,7 @@ export function Home({ onNavigate }: HomeProps) {
       icon: CalendarDays,
       title: "Banquet & Events",
       description:
-        "Venues, catering and room blocks booked together, with quotes, invoices and deposits (Enterprise).",
+        "Venues, catering and room blocks booked together, with quotes, invoices and deposits. An add-on for any plan.",
       color: "from-violet-500 to-violet-600",
     },
     {
