@@ -6,41 +6,32 @@ interface WhoItsForProps {
 }
 
 /**
- * Segments visitors by property size so each one lands on the right plan.
- * The room bands mirror the pricing tiers exactly — a visitor who reads
- * "31-100 rooms" here and sees the same band on Pricing knows where they fit
- * without doing arithmetic.
+ * The kinds of hotel HotelOpX serves. Deliberately without room bands or
+ * prices: any size of hotel may choose any plan, and prices live on the
+ * Pricing page alone.
  */
 const SEGMENTS = [
   {
     icon: Building2,
     title: "Small Hotels & Guesthouses",
-    rooms: "1–30 rooms",
-    plan: "Starter — ₦25,000/month",
     body: "Replace notebooks and WhatsApp threads. Take bookings, assign rooms, track every payment and see who is checking in today.",
     colour: "blue",
   },
   {
     icon: Hotel,
     title: "Growing Hotels",
-    rooms: "31–100 rooms",
-    plan: "Professional — ₦60,000/month",
     body: "Add restaurant and bar POS, housekeeping approvals, HR and payroll, inventory and full financial reporting as your team grows.",
     colour: "green",
   },
   {
     icon: Crown,
     title: "Luxury & 5-Star",
-    rooms: "100+ rooms",
-    plan: "Enterprise — from ₦150,000/month",
     body: "Unlimited rooms and users, white-label branding, loyalty programme, priority support and a dedicated account manager.",
     colour: "amber",
   },
   {
     icon: Network,
     title: "Hotel Groups",
-    rooms: "Multiple properties",
-    plan: "Enterprise — talk to sales",
     body: "Central oversight across properties, consolidated reporting and per-property permissions. Tell us your structure and we will scope it.",
     colour: "purple",
   },
@@ -82,13 +73,8 @@ export function WhoItsFor({ onNavigate }: WhoItsForProps) {
                 <segment.icon className="w-6 h-6 text-white" strokeWidth={2} />
               </div>
 
-              <h3 className="text-lg font-bold text-slate-900">{segment.title}</h3>
-              <p className="text-sm font-semibold text-slate-500 mb-3">{segment.rooms}</p>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">{segment.title}</h3>
               <p className="text-slate-600 text-sm leading-relaxed flex-grow">{segment.body}</p>
-
-              <p className="mt-4 pt-4 border-t border-slate-100 text-sm font-semibold text-slate-900">
-                {segment.plan}
-              </p>
             </div>
           ))}
         </SwipeDeck>

@@ -42,6 +42,8 @@ interface DemoRequest {
   consentGiven: boolean;
   consentText?: string;
   marketingOptIn?: boolean;
+  /** One per form fill: a double submit is recognised as one request. */
+  idempotencyKey?: string;
 }
 
 interface ApiResponse<T> {
