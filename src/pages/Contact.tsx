@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useRef, useState, FormEvent } from "react";
 import { Mail, Phone, MapPin, MessageSquare, CheckCircle } from "lucide-react";
 import { Button } from "../components/Button";
 import { apiService } from "../services/api";
@@ -20,6 +20,9 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
   // NDPR: consent must be explicit and unticked by default. Marketing is a
   // separate opt-in — bundling it with the enquiry consent is not valid consent.
   const [consentGiven, setConsentGiven] = useState(false);
+  // One key per form fill, so a double click or a retry is one request.
+  const newKey = () => `web-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
+  const submissionKey = useRef(newKey());
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -49,6 +52,7 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
         // this person actually agreed to.
         consentText: CONSENT_WORDING,
         marketingOptIn: false,
+        idempotencyKey: submissionKey.current,
       });
 
       if (!response.success) {
@@ -62,6 +66,7 @@ export function Contact({ onNavigate }: { onNavigate?: (page: string) => void } 
         has_preferred_time: Boolean(formData.preferredDateTime),
       });
       setSuccess(true);
+      submissionKey.current = newKey();
       setFormData({
         name: "",
         email: "",
